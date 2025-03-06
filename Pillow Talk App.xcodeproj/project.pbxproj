@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		191056372D5E866D00B7AA59 /* Commissioner-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 191056362D5E866D00B7AA59 /* Commissioner-SemiBold.ttf */; };
+		1937BAEC2D65EF2900D03FDB /* ScrollElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1937BAEB2D65EF2900D03FDB /* ScrollElement.swift */; };
+		1948DAF52D1C747F0082F8DC /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1948DAF42D1C747F0082F8DC /* SplashScreenViewController.swift */; };
+		1948DAF72D1C753B0082F8DC /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1948DAF62D1C753B0082F8DC /* SplashScreenView.swift */; };
+		197624222D20C04A00CAC3D7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 197624212D20C04A00CAC3D7 /* FirebaseAnalytics */; };
+		197624242D20C04A00CAC3D7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 197624232D20C04A00CAC3D7 /* FirebaseAuth */; };
+		197624262D20C04A00CAC3D7 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 197624252D20C04A00CAC3D7 /* FirebaseDatabase */; };
+		197624282D20C04A00CAC3D7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 197624272D20C04A00CAC3D7 /* FirebaseFirestore */; };
+		1976242A2D20C3AF00CAC3D7 /* FirebaseServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197624292D20C3AF00CAC3D7 /* FirebaseServise.swift */; };
+		1976242C2D20C4C300CAC3D7 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 1976242B2D20C4C300CAC3D7 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		199BA3942D733D4400C7F751 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199BA3932D733D4400C7F751 /* SettingsView.swift */; };
+		19A7F2362D234404005ED9C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19A7F2342D234404005ED9C4 /* GoogleService-Info.plist */; };
+		19C4FCDE2D07A606007A5E25 /* Commissioner-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19C4FCDD2D07A606007A5E25 /* Commissioner-Regular.ttf */; };
+		19E738C62D04937000E30945 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738BE2D04937000E30945 /* AppDelegate.swift */; };
+		19E738C72D04937000E30945 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738C32D04937000E30945 /* SceneDelegate.swift */; };
+		19E738C82D04937000E30945 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738C42D04937000E30945 /* ViewController.swift */; };
+		19E738C92D04937000E30945 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19E738BF2D04937000E30945 /* Assets.xcassets */; };
+		19E738CB2D04937000E30945 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E738C22D04937000E30945 /* LaunchScreen.storyboard */; };
+		19E738CE2D04938B00E30945 /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738CD2D04938B00E30945 /* FirstScreenViewController.swift */; };
+		19E738D22D04944D00E30945 /* Extension UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738D12D04944D00E30945 /* Extension UIColor.swift */; };
+		19E738D42D04950200E30945 /* FirstScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738D32D04950200E30945 /* FirstScreenView.swift */; };
+		19E738D82D04DDFE00E30945 /* RussoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19E738D72D04DDFE00E30945 /* RussoOne-Regular.ttf */; };
+		19E738DA2D04E4A200E30945 /* QuestionScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738D92D04E4A200E30945 /* QuestionScreenViewController.swift */; };
+		19E738DC2D04E78B00E30945 /* QuestionScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738DB2D04E78B00E30945 /* QuestionScreenView.swift */; };
+		19F96B422D0A36C8004E64A6 /* PaymentScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F96B412D0A36C8004E64A6 /* PaymentScreenViewController.swift */; };
+		19F96B442D0A3702004E64A6 /* PaymentScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F96B432D0A3702004E64A6 /* PaymentScreenView.swift */; };
+		9DD096382D78EE59000F02FC /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD096372D78EE53000F02FC /* QuestionModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		191056362D5E866D00B7AA59 /* Commissioner-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Commissioner-SemiBold.ttf"; sourceTree = "<group>"; };
+		1937BAEB2D65EF2900D03FDB /* ScrollElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollElement.swift; sourceTree = "<group>"; };
+		1948DAF42D1C747F0082F8DC /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		1948DAF62D1C753B0082F8DC /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		197624292D20C3AF00CAC3D7 /* FirebaseServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServise.swift; sourceTree = "<group>"; };
+		199BA3932D733D4400C7F751 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		19A7F2342D234404005ED9C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		19C4FCDD2D07A606007A5E25 /* Commissioner-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Commissioner-Regular.ttf"; sourceTree = "<group>"; };
+		19E7388A2D048E7700E30945 /* Pillow Talk App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pillow Talk App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		19E738BE2D04937000E30945 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		19E738BF2D04937000E30945 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		19E738C02D04937000E30945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19E738C12D04937000E30945 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		19E738C32D04937000E30945 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		19E738C42D04937000E30945 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		19E738CD2D04938B00E30945 /* FirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenViewController.swift; sourceTree = "<group>"; };
+		19E738D12D04944D00E30945 /* Extension UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension UIColor.swift"; sourceTree = "<group>"; };
+		19E738D32D04950200E30945 /* FirstScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
+		19E738D72D04DDFE00E30945 /* RussoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RussoOne-Regular.ttf"; sourceTree = "<group>"; };
+		19E738D92D04E4A200E30945 /* QuestionScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionScreenViewController.swift; sourceTree = "<group>"; };
+		19E738DB2D04E78B00E30945 /* QuestionScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionScreenView.swift; sourceTree = "<group>"; };
+		19F96B412D0A36C8004E64A6 /* PaymentScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentScreenViewController.swift; sourceTree = "<group>"; };
+		19F96B432D0A3702004E64A6 /* PaymentScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentScreenView.swift; sourceTree = "<group>"; };
+		9DD096372D78EE53000F02FC /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		19E738872D048E7700E30945 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				197624262D20C04A00CAC3D7 /* FirebaseDatabase in Frameworks */,
+				1976242C2D20C4C300CAC3D7 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				197624282D20C04A00CAC3D7 /* FirebaseFirestore in Frameworks */,
+				197624222D20C04A00CAC3D7 /* FirebaseAnalytics in Frameworks */,
+				197624242D20C04A00CAC3D7 /* FirebaseAuth in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19E738812D048E7700E30945 = {
+			isa = PBXGroup;
+			children = (
+				19E738C52D04937000E30945 /* Pillow Talk App */,
+				19E7388B2D048E7700E30945 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		19E7388B2D048E7700E30945 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19E7388A2D048E7700E30945 /* Pillow Talk App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		19E738C52D04937000E30945 /* Pillow Talk App */ = {
+			isa = PBXGroup;
+			children = (
+				9DD096362D78EDBE000F02FC /* Services */,
+				19E738D02D04941E00E30945 /* Model */,
+				19E738CF2D04941700E30945 /* Views */,
+				19E738CC2D04937600E30945 /* Controllers */,
+				19E738BE2D04937000E30945 /* AppDelegate.swift */,
+				19E738BF2D04937000E30945 /* Assets.xcassets */,
+				19E738C02D04937000E30945 /* Info.plist */,
+				19E738C22D04937000E30945 /* LaunchScreen.storyboard */,
+				19E738C32D04937000E30945 /* SceneDelegate.swift */,
+				19E738C42D04937000E30945 /* ViewController.swift */,
+				19A7F2342D234404005ED9C4 /* GoogleService-Info.plist */,
+				191056362D5E866D00B7AA59 /* Commissioner-SemiBold.ttf */,
+				19C4FCDD2D07A606007A5E25 /* Commissioner-Regular.ttf */,
+				19E738D72D04DDFE00E30945 /* RussoOne-Regular.ttf */,
+			);
+			path = "Pillow Talk App";
+			sourceTree = "<group>";
+		};
+		19E738CC2D04937600E30945 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1948DAF42D1C747F0082F8DC /* SplashScreenViewController.swift */,
+				19E738CD2D04938B00E30945 /* FirstScreenViewController.swift */,
+				19E738D92D04E4A200E30945 /* QuestionScreenViewController.swift */,
+				19F96B412D0A36C8004E64A6 /* PaymentScreenViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		19E738CF2D04941700E30945 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				19E738D12D04944D00E30945 /* Extension UIColor.swift */,
+				1948DAF62D1C753B0082F8DC /* SplashScreenView.swift */,
+				19E738D32D04950200E30945 /* FirstScreenView.swift */,
+				19E738DB2D04E78B00E30945 /* QuestionScreenView.swift */,
+				19F96B432D0A3702004E64A6 /* PaymentScreenView.swift */,
+				1937BAEB2D65EF2900D03FDB /* ScrollElement.swift */,
+				199BA3932D733D4400C7F751 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		19E738D02D04941E00E30945 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9DD096372D78EE53000F02FC /* QuestionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9DD096362D78EDBE000F02FC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				197624292D20C3AF00CAC3D7 /* FirebaseServise.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		19E738892D048E7700E30945 /* Pillow Talk App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19E738B32D048E7800E30945 /* Build configuration list for PBXNativeTarget "Pillow Talk App" */;
+			buildPhases = (
+				19E738862D048E7700E30945 /* Sources */,
+				19E738872D048E7700E30945 /* Frameworks */,
+				19E738882D048E7700E30945 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pillow Talk App";
+			packageProductDependencies = (
+				197624212D20C04A00CAC3D7 /* FirebaseAnalytics */,
+				197624232D20C04A00CAC3D7 /* FirebaseAuth */,
+				197624252D20C04A00CAC3D7 /* FirebaseDatabase */,
+				197624272D20C04A00CAC3D7 /* FirebaseFirestore */,
+				1976242B2D20C4C300CAC3D7 /* FirebaseAnalyticsWithoutAdIdSupport */,
+			);
+			productName = "Pillow Talk App";
+			productReference = 19E7388A2D048E7700E30945 /* Pillow Talk App.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		19E738822D048E7700E30945 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					19E738892D048E7700E30945 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 19E738852D048E7700E30945 /* Build configuration list for PBXProject "Pillow Talk App" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 19E738812D048E7700E30945;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				197624202D20C04A00CAC3D7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 19E7388B2D048E7700E30945 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				19E738892D048E7700E30945 /* Pillow Talk App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		19E738882D048E7700E30945 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19E738C92D04937000E30945 /* Assets.xcassets in Resources */,
+				19E738D82D04DDFE00E30945 /* RussoOne-Regular.ttf in Resources */,
+				19A7F2362D234404005ED9C4 /* GoogleService-Info.plist in Resources */,
+				19E738CB2D04937000E30945 /* LaunchScreen.storyboard in Resources */,
+				19C4FCDE2D07A606007A5E25 /* Commissioner-Regular.ttf in Resources */,
+				191056372D5E866D00B7AA59 /* Commissioner-SemiBold.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		19E738862D048E7700E30945 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				199BA3942D733D4400C7F751 /* SettingsView.swift in Sources */,
+				19E738C62D04937000E30945 /* AppDelegate.swift in Sources */,
+				19E738D22D04944D00E30945 /* Extension UIColor.swift in Sources */,
+				19E738CE2D04938B00E30945 /* FirstScreenViewController.swift in Sources */,
+				19F96B422D0A36C8004E64A6 /* PaymentScreenViewController.swift in Sources */,
+				19E738D42D04950200E30945 /* FirstScreenView.swift in Sources */,
+				1948DAF52D1C747F0082F8DC /* SplashScreenViewController.swift in Sources */,
+				9DD096382D78EE59000F02FC /* QuestionModel.swift in Sources */,
+				19E738DA2D04E4A200E30945 /* QuestionScreenViewController.swift in Sources */,
+				19E738C72D04937000E30945 /* SceneDelegate.swift in Sources */,
+				19E738DC2D04E78B00E30945 /* QuestionScreenView.swift in Sources */,
+				1937BAEC2D65EF2900D03FDB /* ScrollElement.swift in Sources */,
+				19E738C82D04937000E30945 /* ViewController.swift in Sources */,
+				19F96B442D0A3702004E64A6 /* PaymentScreenView.swift in Sources */,
+				1948DAF72D1C753B0082F8DC /* SplashScreenView.swift in Sources */,
+				1976242A2D20C3AF00CAC3D7 /* FirebaseServise.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		19E738C22D04937000E30945 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19E738C12D04937000E30945 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		19E738B42D048E7800E30945 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.2.0;
+				DEVELOPMENT_TEAM = U6BKV755T9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Pillow Talk App/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = PillowTalk;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		19E738B52D048E7800E30945 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.2.0;
+				DEVELOPMENT_TEAM = U6BKV755T9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Pillow Talk App/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = PillowTalk;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		19E738B62D048E7800E30945 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		19E738B72D048E7800E30945 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		19E738852D048E7700E30945 /* Build configuration list for PBXProject "Pillow Talk App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19E738B62D048E7800E30945 /* Debug */,
+				19E738B72D048E7800E30945 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19E738B32D048E7800E30945 /* Build configuration list for PBXNativeTarget "Pillow Talk App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19E738B42D048E7800E30945 /* Debug */,
+				19E738B52D048E7800E30945 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		197624202D20C04A00CAC3D7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 11.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		197624212D20C04A00CAC3D7 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 197624202D20C04A00CAC3D7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		197624232D20C04A00CAC3D7 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 197624202D20C04A00CAC3D7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		197624252D20C04A00CAC3D7 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 197624202D20C04A00CAC3D7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		197624272D20C04A00CAC3D7 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 197624202D20C04A00CAC3D7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		1976242B2D20C4C300CAC3D7 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 197624202D20C04A00CAC3D7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 19E738822D048E7700E30945 /* Project object */;
+}
