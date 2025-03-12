@@ -14,15 +14,12 @@ protocol CategoriesViewModelProtocol {
     
     func viewDidLoad()
     func selectCategory(with id: Int)
-    func nextCard()
-    func previousCard()
 }
 
 enum CategoriesViewModelState {
     case idle(CategoriesPayload.ScreenType)
     case categories([CategoryViewModel])
-    case card(CardViewModel)
-    case shake
+    case cards([CardViewModel])
 }
 
 final class CategoriesViewModel {
@@ -34,7 +31,6 @@ final class CategoriesViewModel {
     private let payload: CategoriesPayload
     private var currentCards: [CardViewModel] = []
     private var currentCategoryId: Int = .zero
-    private var currentCardIndex: Int = .zero
     
     init(with payload: CategoriesPayload) {
         self.payload = payload
@@ -49,44 +45,15 @@ final class CategoriesViewModel {
         case .cup:
             setupIdeas()
             
-            stateInternal = .card(currentCards[currentCardIndex])
+            stateInternal = .cards(currentCards)
         }
     }
     
     func selectCategory(with id: Int) {
         currentCategoryId = id
-        currentCardIndex = .zero
         currentCards.removeAll()
         
         setupCategories()
-    }
-    
-    func nextCard() {
-        if currentCards.isEmpty {
-            print("No next card to show")
-            return
-        }
-        
-        if currentCardIndex < currentCards.count - 1 {
-            currentCardIndex += 1
-            stateInternal = .card(currentCards[currentCardIndex])
-        } else {
-            stateInternal = .shake
-        }
-    }
-    
-    func previousCard() {
-        if currentCards.isEmpty {
-            print("No previous card to show")
-            return
-        }
-        
-        if currentCardIndex > 0 {
-            currentCardIndex -= 1
-            stateInternal = .card(currentCards[currentCardIndex])
-        } else {
-            stateInternal = .shake
-        }
     }
 }
 
@@ -97,7 +64,7 @@ private extension CategoriesViewModel {
         
         setupQuestionsAndActions()
         
-        stateInternal = .card(currentCards[currentCardIndex])
+        stateInternal = .cards(currentCards)
     }
     
     func setupQuestionsAndActions() {

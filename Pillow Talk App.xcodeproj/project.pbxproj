@@ -30,6 +30,7 @@
 		19E738D82D04DDFE00E30945 /* RussoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19E738D72D04DDFE00E30945 /* RussoOne-Regular.ttf */; };
 		19E738DC2D04E78B00E30945 /* QuestionScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738DB2D04E78B00E30945 /* QuestionScreenView.swift */; };
 		19F96B442D0A3702004E64A6 /* PaymentScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F96B432D0A3702004E64A6 /* PaymentScreenView.swift */; };
+		9D0E492B2D82025D000D3F17 /* QuestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E492A2D82025D000D3F17 /* QuestionCollectionViewCell.swift */; };
 		9D2E054F2D7A44A200C1F9E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E054C2D7A44A200C1F9E7 /* TabBarViewController.swift */; };
 		9D2E05512D7A487D00C1F9E7 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E05502D7A487D00C1F9E7 /* TabView.swift */; };
 		9DA31AA62D7F327300A8CDCA /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA52D7F327300A8CDCA /* CategoriesViewController.swift */; };
@@ -37,7 +38,7 @@
 		9DA31AAA2D7F32D000A8CDCA /* CategoriesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA92D7F32C700A8CDCA /* CategoriesAssembler.swift */; };
 		9DA31AAC2D7F332600A8CDCA /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AAB2D7F331F00A8CDCA /* CategoriesPresenter.swift */; };
 		9DA31AAE2D7F561400A8CDCA /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AAD2D7F561400A8CDCA /* QuestionView.swift */; };
-		9DA31AB02D7F5C6C00A8CDCA /* QuestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AAF2D7F5C6C00A8CDCA /* QuestionCollectionViewCell.swift */; };
+		9DA31AB02D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AAF2D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift */; };
 		9DA31AB32D7F683600A8CDCA /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AB22D7F682F00A8CDCA /* CategoryModel.swift */; };
 		9DA31AB72D7F949800A8CDCA /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AB62D7F948F00A8CDCA /* StorageService.swift */; };
 		9DD69B122D808FC800A715DF /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD69B112D808FBB00A715DF /* CardViewModel.swift */; };
@@ -64,6 +65,7 @@
 		19E738D72D04DDFE00E30945 /* RussoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RussoOne-Regular.ttf"; sourceTree = "<group>"; };
 		19E738DB2D04E78B00E30945 /* QuestionScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionScreenView.swift; sourceTree = "<group>"; };
 		19F96B432D0A3702004E64A6 /* PaymentScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentScreenView.swift; sourceTree = "<group>"; };
+		9D0E492A2D82025D000D3F17 /* QuestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D2E054C2D7A44A200C1F9E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		9D2E05502D7A487D00C1F9E7 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		9DA31AA52D7F327300A8CDCA /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +73,7 @@
 		9DA31AA92D7F32C700A8CDCA /* CategoriesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAssembler.swift; sourceTree = "<group>"; };
 		9DA31AAB2D7F331F00A8CDCA /* CategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPresenter.swift; sourceTree = "<group>"; };
 		9DA31AAD2D7F561400A8CDCA /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
-		9DA31AAF2D7F5C6C00A8CDCA /* QuestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DA31AAF2D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DA31AB22D7F682F00A8CDCA /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		9DA31AB62D7F948F00A8CDCA /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		9DD69B112D808FBB00A715DF /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
@@ -188,7 +190,8 @@
 		9DA31AB12D7F5F1D00A8CDCA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				9DA31AAF2D7F5C6C00A8CDCA /* QuestionCollectionViewCell.swift */,
+				9DA31AAF2D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift */,
+				9D0E492A2D82025D000D3F17 /* QuestionCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				199BA3942D733D4400C7F751 /* SettingsView.swift in Sources */,
 				19E738C62D04937000E30945 /* AppDelegate.swift in Sources */,
 				19E738D22D04944D00E30945 /* Extension UIColor.swift in Sources */,
+				9D0E492B2D82025D000D3F17 /* QuestionCollectionViewCell.swift in Sources */,
 				19E738CE2D04938B00E30945 /* FirstScreenViewController.swift in Sources */,
 				19E738D42D04950200E30945 /* FirstScreenView.swift in Sources */,
 				9DA31AAC2D7F332600A8CDCA /* CategoriesPresenter.swift in Sources */,
@@ -337,7 +341,7 @@
 				1937BAEC2D65EF2900D03FDB /* ScrollElement.swift in Sources */,
 				9DA31AAA2D7F32D000A8CDCA /* CategoriesAssembler.swift in Sources */,
 				19F96B442D0A3702004E64A6 /* PaymentScreenView.swift in Sources */,
-				9DA31AB02D7F5C6C00A8CDCA /* QuestionCollectionViewCell.swift in Sources */,
+				9DA31AB02D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift in Sources */,
 				1948DAF72D1C753B0082F8DC /* SplashScreenView.swift in Sources */,
 				9D2E05512D7A487D00C1F9E7 /* TabView.swift in Sources */,
 				9DA31AA62D7F327300A8CDCA /* CategoriesViewController.swift in Sources */,
@@ -365,7 +369,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2.0;
+				CURRENT_PROJECT_VERSION = 1.2.1;
 				DEVELOPMENT_TEAM = U6BKV755T9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pillow Talk App/Info.plist";
@@ -397,7 +401,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2.0;
+				CURRENT_PROJECT_VERSION = 1.2.1;
 				DEVELOPMENT_TEAM = U6BKV755T9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pillow Talk App/Info.plist";

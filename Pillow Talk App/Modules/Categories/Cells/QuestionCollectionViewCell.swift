@@ -2,87 +2,126 @@
 //  QuestionCollectionViewCell.swift
 //  Pillow Talk App
 //
-//  Created by i.kostiukevych on 10/03/2025.
+//  Created by i.kostiukevych on 12/03/2025.
 //
 
 import UIKit
 
-struct CategoryViewModel: Hashable {
-    let id: Int
-    let iconName: String
-    let selectedIconName: String?
-    let text: String
-    let isSelected: Bool
-}
-
-final class CategoryCollectionViewCell: UICollectionViewCell {
-    static let reuseIdentifier = "CategoryCollectionViewCell"
+final class QuestionCollectionViewCell: UICollectionViewCell {
+    static let reuseIdentifier = "QuestionCollectionViewCell"
     
-    private let iconImageView: UIImageView = {
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "RussoOne-Regular", size: 32)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let textLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Commissioner-Regular", size: 24)
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private let textLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Commissioner-Regular", size: 14)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private let containerView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 10
+        view.backgroundColor = .white
+        view.clipsToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
-    
-    private var model: CategoryViewModel?
-    
-    override var isSelected: Bool {
-        didSet {
-            setSelected(isSelected)
-        }
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupUI()
+        addShadow()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        
+        setupUI()
+        addShadow()
     }
     
-    func set(model: CategoryViewModel) {
-        self.model = model
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
-        textLabel.text = model.text
+        updateShadowPath()
+    }
+    
+    func set(model: CardViewModel) {
+        textLabel.text = model.title
+        imageView.image = UIImage(named: "character\(Int.random(in: 1...14))")
         
-        setSelected(model.isSelected)
+        switch model.type {
+        case .question:
+            titleLabel.textColor = UIColor(hex: "#F99F4F")
+            titleLabel.text = "Питання"
+        case .idea:
+            titleLabel.textColor = UIColor(hex: "#DB5A3D")
+            titleLabel.text = "Ідеї"
+        case .action:
+            titleLabel.textColor = UIColor(hex: "#80B6BC")
+            titleLabel.text = "Дія"
+        }
     }
 }
 
-private extension CategoryCollectionViewCell {
+private extension QuestionCollectionViewCell {
     func setupUI() {
-        contentView.addSubview(iconImageView)
-        contentView.addSubview(textLabel)
+        contentView.addSubview(containerView)
+        containerView.addSubview(imageView)
+        containerView.addSubview(titleLabel)
+        containerView.addSubview(textLabel)
         
         NSLayoutConstraint.activate([
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            iconImageView.heightAnchor.constraint(equalToConstant: 24),
-            iconImageView.widthAnchor.constraint(equalToConstant: 24),
-            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            containerView.topAnchor.constraint(equalTo: topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            containerView.widthAnchor.constraint(equalToConstant: 300),
+            containerView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
-            textLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8),
-            textLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            textLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            textLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 14),
+            titleLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 14),
+            
+            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            textLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 14),
+            textLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -14),
+            
+            imageView.rightAnchor.constraint(equalTo: containerView.rightAnchor),
+            imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 220),
+            imageView.widthAnchor.constraint(equalToConstant: 140),
         ])
         
-        contentView.layer.cornerRadius = 10
-        contentView.backgroundColor = .white
+        backgroundColor = .clear
     }
     
-    func setSelected(_ isSelected: Bool) {
-        iconImageView.image = isSelected ? UIImage(named: model?.selectedIconName ?? "") : UIImage(named: model?.iconName ?? "")
-        textLabel.textColor = isSelected ? UIColor(hex: "#DB5A3D") : .black
+    func addShadow() {
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowOpacity = 0.1
+        containerView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        containerView.layer.shadowRadius = 15
+        containerView.layer.masksToBounds = false
+        
+        updateShadowPath()
+    }
+        
+    func updateShadowPath() {
+        containerView.layer.shadowPath = UIBezierPath(
+            roundedRect: containerView.bounds,
+            cornerRadius: containerView.layer.cornerRadius
+        ).cgPath
     }
 }

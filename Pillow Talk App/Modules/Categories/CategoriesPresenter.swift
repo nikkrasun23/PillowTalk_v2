@@ -12,8 +12,6 @@ import UIKit
 protocol CategoriesPresenterProtocol {
     func viewDidLoad()
     func select(categoryId: Int)
-    func swipeLeft()
-    func swipeRight()
 }
 
 final class CategoriesPresenter: CategoriesPresenterProtocol {
@@ -35,15 +33,7 @@ final class CategoriesPresenter: CategoriesPresenterProtocol {
     func select(categoryId: Int) {
         model.selectCategory(with: categoryId)
     }
-    
-    func swipeLeft() {
-        model.previousCard()
-    }
-    
-    func swipeRight() {
-        model.nextCard()
-    }
-    
+
     deinit {
         cancellables.removeAll()
     }
@@ -57,14 +47,12 @@ private extension CategoriesPresenter {
                 guard let self else { return }
                 
                 switch value {
-                case .card(let card):
-                    view?.showCard(with: card)
+                case .cards(let cards):
+                    view?.showCards(cards)
                 case .categories(let categories):
                     view?.showCategories(categories)
                 case .idle(let screenType):
                     view?.configureScreen(with: screenType)
-                case .shake:
-                    view?.shakeCard()
                 }
             }
             .store(in: &cancellables)
