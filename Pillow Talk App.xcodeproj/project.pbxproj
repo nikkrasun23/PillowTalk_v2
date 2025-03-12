@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		191056372D5E866D00B7AA59 /* Commissioner-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 191056362D5E866D00B7AA59 /* Commissioner-SemiBold.ttf */; };
-		1937BAEC2D65EF2900D03FDB /* ScrollElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1937BAEB2D65EF2900D03FDB /* ScrollElement.swift */; };
 		1948DAF52D1C747F0082F8DC /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1948DAF42D1C747F0082F8DC /* SplashScreenViewController.swift */; };
 		1948DAF72D1C753B0082F8DC /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1948DAF62D1C753B0082F8DC /* SplashScreenView.swift */; };
 		197624222D20C04A00CAC3D7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 197624212D20C04A00CAC3D7 /* FirebaseAnalytics */; };
@@ -28,7 +27,6 @@
 		19E738D22D04944D00E30945 /* Extension UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738D12D04944D00E30945 /* Extension UIColor.swift */; };
 		19E738D42D04950200E30945 /* FirstScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738D32D04950200E30945 /* FirstScreenView.swift */; };
 		19E738D82D04DDFE00E30945 /* RussoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19E738D72D04DDFE00E30945 /* RussoOne-Regular.ttf */; };
-		19E738DC2D04E78B00E30945 /* QuestionScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738DB2D04E78B00E30945 /* QuestionScreenView.swift */; };
 		19F96B442D0A3702004E64A6 /* PaymentScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F96B432D0A3702004E64A6 /* PaymentScreenView.swift */; };
 		9D0E492B2D82025D000D3F17 /* QuestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E492A2D82025D000D3F17 /* QuestionCollectionViewCell.swift */; };
 		9D2E054F2D7A44A200C1F9E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E054C2D7A44A200C1F9E7 /* TabBarViewController.swift */; };
@@ -37,7 +35,6 @@
 		9DA31AA82D7F32AB00A8CDCA /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA72D7F32A300A8CDCA /* CategoriesViewModel.swift */; };
 		9DA31AAA2D7F32D000A8CDCA /* CategoriesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA92D7F32C700A8CDCA /* CategoriesAssembler.swift */; };
 		9DA31AAC2D7F332600A8CDCA /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AAB2D7F331F00A8CDCA /* CategoriesPresenter.swift */; };
-		9DA31AAE2D7F561400A8CDCA /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AAD2D7F561400A8CDCA /* QuestionView.swift */; };
 		9DA31AB02D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AAF2D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift */; };
 		9DA31AB32D7F683600A8CDCA /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AB22D7F682F00A8CDCA /* CategoryModel.swift */; };
 		9DA31AB72D7F949800A8CDCA /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AB62D7F948F00A8CDCA /* StorageService.swift */; };
@@ -46,7 +43,6 @@
 
 /* Begin PBXFileReference section */
 		191056362D5E866D00B7AA59 /* Commissioner-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Commissioner-SemiBold.ttf"; sourceTree = "<group>"; };
-		1937BAEB2D65EF2900D03FDB /* ScrollElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollElement.swift; sourceTree = "<group>"; };
 		1948DAF42D1C747F0082F8DC /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		1948DAF62D1C753B0082F8DC /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		197624292D20C3AF00CAC3D7 /* FirebaseServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServise.swift; sourceTree = "<group>"; };
@@ -63,7 +59,6 @@
 		19E738D12D04944D00E30945 /* Extension UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension UIColor.swift"; sourceTree = "<group>"; };
 		19E738D32D04950200E30945 /* FirstScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
 		19E738D72D04DDFE00E30945 /* RussoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RussoOne-Regular.ttf"; sourceTree = "<group>"; };
-		19E738DB2D04E78B00E30945 /* QuestionScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionScreenView.swift; sourceTree = "<group>"; };
 		19F96B432D0A3702004E64A6 /* PaymentScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentScreenView.swift; sourceTree = "<group>"; };
 		9D0E492A2D82025D000D3F17 /* QuestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D2E054C2D7A44A200C1F9E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +67,6 @@
 		9DA31AA72D7F32A300A8CDCA /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		9DA31AA92D7F32C700A8CDCA /* CategoriesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAssembler.swift; sourceTree = "<group>"; };
 		9DA31AAB2D7F331F00A8CDCA /* CategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPresenter.swift; sourceTree = "<group>"; };
-		9DA31AAD2D7F561400A8CDCA /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		9DA31AAF2D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DA31AB22D7F682F00A8CDCA /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		9DA31AB62D7F948F00A8CDCA /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
@@ -137,11 +131,8 @@
 			children = (
 				1948DAF62D1C753B0082F8DC /* SplashScreenView.swift */,
 				19E738D32D04950200E30945 /* FirstScreenView.swift */,
-				19E738DB2D04E78B00E30945 /* QuestionScreenView.swift */,
 				19F96B432D0A3702004E64A6 /* PaymentScreenView.swift */,
-				1937BAEB2D65EF2900D03FDB /* ScrollElement.swift */,
 				199BA3932D733D4400C7F751 /* SettingsView.swift */,
-				9DA31AAD2D7F561400A8CDCA /* QuestionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -153,6 +144,13 @@
 				9DA31AB22D7F682F00A8CDCA /* CategoryModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		9D0E492C2D820CD2000D3F17 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		9D2E054D2D7A44A200C1F9E7 /* TabBar */ = {
@@ -167,6 +165,7 @@
 		9D2E054E2D7A44A200C1F9E7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9D0E492C2D820CD2000D3F17 /* Profile */,
 				9DD69B142D80941300A715DF /* FirstScreen */,
 				9DD69B132D80940100A715DF /* Splash */,
 				9D2E05522D7A56EA00C1F9E7 /* Categories */,
@@ -322,7 +321,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DA31AAE2D7F561400A8CDCA /* QuestionView.swift in Sources */,
 				199BA3942D733D4400C7F751 /* SettingsView.swift in Sources */,
 				19E738C62D04937000E30945 /* AppDelegate.swift in Sources */,
 				19E738D22D04944D00E30945 /* Extension UIColor.swift in Sources */,
@@ -335,10 +333,8 @@
 				9DA31AB72D7F949800A8CDCA /* StorageService.swift in Sources */,
 				9D2E054F2D7A44A200C1F9E7 /* TabBarViewController.swift in Sources */,
 				19E738C72D04937000E30945 /* SceneDelegate.swift in Sources */,
-				19E738DC2D04E78B00E30945 /* QuestionScreenView.swift in Sources */,
 				9DD69B122D808FC800A715DF /* CardViewModel.swift in Sources */,
 				9DA31AA82D7F32AB00A8CDCA /* CategoriesViewModel.swift in Sources */,
-				1937BAEC2D65EF2900D03FDB /* ScrollElement.swift in Sources */,
 				9DA31AAA2D7F32D000A8CDCA /* CategoriesAssembler.swift in Sources */,
 				19F96B442D0A3702004E64A6 /* PaymentScreenView.swift in Sources */,
 				9DA31AB02D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift in Sources */,
