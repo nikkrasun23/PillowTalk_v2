@@ -166,11 +166,17 @@ private extension CategoriesViewController {
         
         section.visibleItemsInvalidationHandler = { items, offset, environment in
             items.forEach { item in
-                let distanceFromCenter = abs((item.frame.midX - offset.x) - environment.container.contentSize.width / 2.0)
+                let distanceFromCenter = (item.frame.midX - offset.x) - environment.container.contentSize.width / 2.0
+                
                 let minScale: CGFloat = 0.9
                 let maxScale: CGFloat = 1.0
-                let scale = max(maxScale - (distanceFromCenter / environment.container.contentSize.width) * 0.5, minScale)
-                item.transform = CGAffineTransform(scaleX: scale, y: scale)
+                let scale = max(maxScale - (abs(distanceFromCenter) / environment.container.contentSize.width) * 0.5, minScale)
+                let maxRotation: CGFloat = 0.19
+                let rotationCoefficient = min(max(-1, distanceFromCenter / (environment.container.contentSize.width / 2)), 1)
+                let rotation = rotationCoefficient * maxRotation
+                let scaleTransform = CGAffineTransform(scaleX: scale, y: scale)
+                let rotationTransform = CGAffineTransform(rotationAngle: rotation)
+                item.transform = scaleTransform.concatenating(rotationTransform)
             }
         }
         
