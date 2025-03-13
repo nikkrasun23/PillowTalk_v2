@@ -94,17 +94,19 @@ private extension CategoriesViewModel {
     func mapCategories(_ categories: [CategoryModel]) -> [CategoryViewModel] {
         categories.compactMap { model in
             let iconName = switch model.id {
-            case 0: "shapeOneIconBlack"
+            case 0: "shapeOneBlack"
             case 1: "shapeSecondBlack"
             case 2: "shapeThirdBlack"
-            default: ""
+            case 3: "shapeFourthBlack"
+            default: "shapeOneBlack"
             }
             
             let selectedIconName = switch model.id {
-            case 0: "shapeOneIconRed"
-            case 1: "shapeSecondIconRed"
+            case 0: "shapeOneRed"
+            case 1: "shapeSecondRed"
             case 2: "shapeThirdRed"
-            default: ""
+            case 3: "shapeFourthRed"
+            default: "shapeOneRed"
             }
             
             return CategoryViewModel(
