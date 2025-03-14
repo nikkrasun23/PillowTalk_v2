@@ -234,4 +234,19 @@ extension CategoriesViewController: UICollectionViewDelegate {
         
         presenter.select(categoryId: item.id)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if collectionView == questionsCollectionView {
+            let totalItems = questionsDataSource.snapshot().itemIdentifiers.count
+            
+            if indexPath.item == totalItems - 1 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+                    guard let self = self else { return }
+                    if !self.questionsCollectionView.isDragging && !self.questionsCollectionView.isDecelerating {
+                        self.presenter.loadNextPage()
+                    }
+                }
+            }
+        }
+    }
 }

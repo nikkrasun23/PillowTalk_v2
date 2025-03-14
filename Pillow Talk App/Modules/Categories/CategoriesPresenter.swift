@@ -12,6 +12,7 @@ import UIKit
 protocol CategoriesPresenterProtocol {
     func viewDidLoad()
     func select(categoryId: Int)
+    func loadNextPage()
 }
 
 final class CategoriesPresenter: CategoriesPresenterProtocol {
@@ -32,6 +33,10 @@ final class CategoriesPresenter: CategoriesPresenterProtocol {
     
     func select(categoryId: Int) {
         model.selectCategory(with: categoryId)
+    }
+    
+    func loadNextPage() {
+        model.loadNextPage()
     }
 
     deinit {

@@ -14,6 +14,7 @@ protocol CategoriesViewModelProtocol {
     
     func viewDidLoad()
     func selectCategory(with id: Int)
+    func loadNextPage()
 }
 
 enum CategoriesViewModelState {
@@ -39,21 +40,24 @@ final class CategoriesViewModel {
     func viewDidLoad() {
         stateInternal = .idle(payload.screenType)
         
-        switch payload.screenType {
-        case .categories:
-            setupCategories()
-        case .cup:
-            setupIdeas()
-            
-            stateInternal = .cards(currentCards)
-        }
+        loadNextPage()
     }
     
     func selectCategory(with id: Int) {
         currentCategoryId = id
         currentCards.removeAll()
         
-        setupCategories()
+        loadNextPage()
+    }
+    
+    func loadNextPage() {
+        switch payload.screenType {
+        case .categories:
+            setupCategories()
+            setupQuestionsAndActions()
+        case .cup:
+            setupIdeas()
+        }
     }
 }
 
@@ -61,10 +65,6 @@ private extension CategoriesViewModel {
     func setupCategories() {
         let categories = mapCategories(StorageService.shared.categories)
         stateInternal = .categories(categories)
-        
-        setupQuestionsAndActions()
-        
-        stateInternal = .cards(currentCards)
     }
     
     func setupQuestionsAndActions() {
@@ -85,10 +85,13 @@ private extension CategoriesViewModel {
             
             currentCards.append(question)
         }
+        
+        stateInternal = .cards(currentCards)
     }
     
     func setupIdeas() {
-        currentCards = mapCard(with: .idea, texts: StorageService.shared.ideas)
+        currentCards.append(contentsOf: mapCard(with: .idea, texts: StorageService.shared.ideas))
+        stateInternal = .cards(currentCards)
     }
     
     func mapCategories(_ categories: [CategoryModel]) -> [CategoryViewModel] {
