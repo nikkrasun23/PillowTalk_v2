@@ -22,6 +22,7 @@ final class QuestionCollectionViewCell: UICollectionViewCell {
         label.font = UIFont(name: "Commissioner-Regular", size: 24)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor(hex: "#33363F")
         return label
     }()
     

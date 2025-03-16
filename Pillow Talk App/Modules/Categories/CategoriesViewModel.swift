@@ -73,8 +73,8 @@ private extension CategoriesViewModel {
             return
         }
         
-        let questions = mapCard(with: .question, texts: category.questions)
-        let actions = mapCard(with: .action, texts: category.actions)
+        let questions = mapCard(with: .question, texts: category.questions.shuffled())
+        let actions = mapCard(with: .action, texts: category.actions.shuffled())
         
         var actionIndex = 0
         for (index, question) in questions.enumerated() {
