@@ -36,6 +36,11 @@
 		9D0E492B2D82025D000D3F17 /* QuestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0E492A2D82025D000D3F17 /* QuestionCollectionViewCell.swift */; };
 		9D2E054F2D7A44A200C1F9E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E054C2D7A44A200C1F9E7 /* TabBarViewController.swift */; };
 		9D2E05512D7A487D00C1F9E7 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E05502D7A487D00C1F9E7 /* TabView.swift */; };
+		9D38F3122D86E086007B6790 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 9D38F3112D86E086007B6790 /* RevenueCat */; };
+		9D38F3142D86E086007B6790 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 9D38F3132D86E086007B6790 /* RevenueCatUI */; };
+		9D38F3182D8A0E8A007B6790 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D38F3162D8A0E8A007B6790 /* UserDefaultsService.swift */; };
+		9D38F3192D8A0E8A007B6790 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D38F3152D8A0E8A007B6790 /* UserDefaultWrapper.swift */; };
+		9D38F31B2D8A0E8F007B6790 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D38F31A2D8A0E8F007B6790 /* IAPManager.swift */; };
 		9DA31AA62D7F327300A8CDCA /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA52D7F327300A8CDCA /* CategoriesViewController.swift */; };
 		9DA31AA82D7F32AB00A8CDCA /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA72D7F32A300A8CDCA /* CategoriesViewModel.swift */; };
 		9DA31AAA2D7F32D000A8CDCA /* CategoriesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA92D7F32C700A8CDCA /* CategoriesAssembler.swift */; };
@@ -70,6 +75,9 @@
 		9D0E492A2D82025D000D3F17 /* QuestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D2E054C2D7A44A200C1F9E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		9D2E05502D7A487D00C1F9E7 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		9D38F3152D8A0E8A007B6790 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
+		9D38F3162D8A0E8A007B6790 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		9D38F31A2D8A0E8F007B6790 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
 		9DA31AA52D7F327300A8CDCA /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		9DA31AA72D7F32A300A8CDCA /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		9DA31AA92D7F32C700A8CDCA /* CategoriesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAssembler.swift; sourceTree = "<group>"; };
@@ -90,8 +98,10 @@
 				9D0ADDF62D831B5D0030FDBA /* FirebaseMessaging in Frameworks */,
 				9D0ADDF02D831B5D0030FDBA /* FirebaseDatabase in Frameworks */,
 				9D0ADDF22D831B5D0030FDBA /* FirebaseFirestore in Frameworks */,
+				9D38F3122D86E086007B6790 /* RevenueCat in Frameworks */,
 				9D0ADDF82D831B5D0030FDBA /* FirebaseStorage in Frameworks */,
 				9D0ADDEA2D831B5D0030FDBA /* FirebaseAnalytics in Frameworks */,
+				9D38F3142D86E086007B6790 /* RevenueCatUI in Frameworks */,
 				9D0ADDF42D831B5D0030FDBA /* FirebaseInAppMessaging-Beta in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,6 +208,15 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		9D38F3172D8A0E8A007B6790 /* UserDefaultsService */ = {
+			isa = PBXGroup;
+			children = (
+				9D38F3152D8A0E8A007B6790 /* UserDefaultWrapper.swift */,
+				9D38F3162D8A0E8A007B6790 /* UserDefaultsService.swift */,
+			);
+			path = UserDefaultsService;
+			sourceTree = "<group>";
+		};
 		9DA31AB12D7F5F1D00A8CDCA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +231,8 @@
 			children = (
 				9DA31AB62D7F948F00A8CDCA /* StorageService.swift */,
 				197624292D20C3AF00CAC3D7 /* FirebaseServise.swift */,
+				9D38F3172D8A0E8A007B6790 /* UserDefaultsService */,
+				9D38F31A2D8A0E8F007B6790 /* IAPManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -273,6 +294,8 @@
 				9D0ADDF32D831B5D0030FDBA /* FirebaseInAppMessaging-Beta */,
 				9D0ADDF52D831B5D0030FDBA /* FirebaseMessaging */,
 				9D0ADDF72D831B5D0030FDBA /* FirebaseStorage */,
+				9D38F3112D86E086007B6790 /* RevenueCat */,
+				9D38F3132D86E086007B6790 /* RevenueCatUI */,
 			);
 			productName = "Pillow Talk App";
 			productReference = 19E7388A2D048E7700E30945 /* Pillow Talk App.app */;
@@ -304,6 +327,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				9D0ADDE82D831B5D0030FDBA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				9D38F3102D86E086007B6790 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 19E7388B2D048E7700E30945 /* Products */;
@@ -336,8 +360,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D38F31B2D8A0E8F007B6790 /* IAPManager.swift in Sources */,
+				199BA3942D733D4400C7F751 /* ProfileView.swift in Sources */,
 				199BA3942D733D4400C7F751 /* ProfileView.swift in Sources */,
 				19E738C62D04937000E30945 /* AppDelegate.swift in Sources */,
+				9D38F3182D8A0E8A007B6790 /* UserDefaultsService.swift in Sources */,
+				9D38F3192D8A0E8A007B6790 /* UserDefaultWrapper.swift in Sources */,
 				194A88382D8A0C6000247D27 /* ProfileTableViewCell.swift in Sources */,
 				19E738D22D04944D00E30945 /* Extension UIColor.swift in Sources */,
 				9D0E492B2D82025D000D3F17 /* QuestionCollectionViewCell.swift in Sources */,
@@ -395,7 +423,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -427,7 +455,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -591,6 +619,14 @@
 				minimumVersion = 11.9.0;
 			};
 		};
+		9D38F3102D86E086007B6790 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.19.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -633,6 +669,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9D0ADDE82D831B5D0030FDBA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		9D38F3112D86E086007B6790 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9D38F3102D86E086007B6790 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
+		};
+		9D38F3132D86E086007B6790 /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9D38F3102D86E086007B6790 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCatUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

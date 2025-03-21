@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 final class CategoriesViewController: UIViewController {
     var presenter: CategoriesPresenterProtocol!
@@ -41,6 +42,9 @@ final class CategoriesViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(QuestionCollectionViewCell.self, forCellWithReuseIdentifier: QuestionCollectionViewCell.reuseIdentifier)
         collectionView.delegate = self
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.alwaysBounceVertical = false
         return collectionView
     }()
     
@@ -85,6 +89,16 @@ final class CategoriesViewController: UIViewController {
             categoriesCollectionView.isHidden = false
         case .cup:
             categoriesCollectionView.isHidden = true
+        }
+    }
+    
+    func requestReviewPopup() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if #available(iOS 18.0, *) {
+                AppStore.requestReview(in: windowScene)
+            } else {
+                SKStoreReviewController.requestReview(in: windowScene)
+            }
         }
     }
 }
@@ -230,13 +244,17 @@ private extension CategoriesViewController {
 
 extension CategoriesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let item = categoriesDataSource.itemIdentifier(for: indexPath) else { return }
-        
-        presenter.select(categoryId: item.id)
+        if collectionView == categoriesCollectionView {
+            guard let item = categoriesDataSource.itemIdentifier(for: indexPath) else { return }
+            
+            presenter.select(categoryId: item.id)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if collectionView == questionsCollectionView {
+            presenter.incrementShownCardCount()
+            
             let totalItems = questionsDataSource.snapshot().itemIdentifiers.count
             
             if indexPath.item == totalItems - 1 {

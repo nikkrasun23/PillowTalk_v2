@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAnalytics
 import FirebaseCore
+import RevenueCat
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,6 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Логирование страны пользователя
         logUserCountry()
+        
+        // revenue cat
+        Purchases.logLevel = .debug
+        Purchases.configure(withAPIKey: "appl_czbNyLwVCHFvXDwaoXvjCiKgQBQ")
+        
+        UserDefaultsService.isRated = false
         
         return true
     }

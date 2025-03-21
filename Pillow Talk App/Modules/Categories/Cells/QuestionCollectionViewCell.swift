@@ -62,6 +62,14 @@ final class QuestionCollectionViewCell: UICollectionViewCell {
         updateShadowPath()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        textLabel.text = nil
+        titleLabel.text = nil
+        imageView.image = nil
+    }
+   
     func set(model: CardViewModel) {
         textLabel.text = model.title
         imageView.image = UIImage(named: "character\(Int.random(in: 1...14))")
