@@ -40,7 +40,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         tableView.separatorStyle = .none
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-        tableView.tableFooterView = UIView() // убирает лишние разделители внизу
+        tableView.tableFooterView = UIView()
+        tableView.backgroundColor = UIColor(hex: "#FFFFFF")
 //        tableView.delegate = self
 //        tableView.dataSource = self
         return tableView

@@ -29,10 +29,10 @@ class ProfileTableViewCell: UITableViewCell {
     // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-            super.init(style: style, reuseIdentifier: reuseIdentifier)
-            setupViews()
-            setupConstraints()
-        }
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+        setupConstraints()
+    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -41,6 +41,7 @@ class ProfileTableViewCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(iconImageView)
         contentView.addSubview(titleLabel)
+        contentView.backgroundColor = UIColor(hex: "#FFFFFF")
     }
     
     // MARK: - Constraints
@@ -62,16 +63,4 @@ class ProfileTableViewCell: UITableViewCell {
         iconImageView.image = icon
         titleLabel.text = title
     }
-
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-
 }
