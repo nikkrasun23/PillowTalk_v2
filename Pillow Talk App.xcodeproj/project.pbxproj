@@ -10,8 +10,10 @@
 		191056372D5E866D00B7AA59 /* Commissioner-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 191056362D5E866D00B7AA59 /* Commissioner-SemiBold.ttf */; };
 		1948DAF52D1C747F0082F8DC /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1948DAF42D1C747F0082F8DC /* SplashScreenViewController.swift */; };
 		1948DAF72D1C753B0082F8DC /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1948DAF62D1C753B0082F8DC /* SplashScreenView.swift */; };
+		194A88362D8A097900247D27 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194A88352D8A097900247D27 /* ProfileTableViewController.swift */; };
+		194A88382D8A0C6000247D27 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194A88372D8A0C6000247D27 /* ProfileTableViewCell.swift */; };
 		1976242A2D20C3AF00CAC3D7 /* FirebaseServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197624292D20C3AF00CAC3D7 /* FirebaseServise.swift */; };
-		199BA3942D733D4400C7F751 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199BA3932D733D4400C7F751 /* SettingsView.swift */; };
+		199BA3942D733D4400C7F751 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199BA3932D733D4400C7F751 /* ProfileView.swift */; };
 		19A7F2362D234404005ED9C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19A7F2342D234404005ED9C4 /* GoogleService-Info.plist */; };
 		19C4FCDE2D07A606007A5E25 /* Commissioner-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19C4FCDD2D07A606007A5E25 /* Commissioner-Regular.ttf */; };
 		19E738C62D04937000E30945 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738BE2D04937000E30945 /* AppDelegate.swift */; };
@@ -48,8 +50,10 @@
 		191056362D5E866D00B7AA59 /* Commissioner-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Commissioner-SemiBold.ttf"; sourceTree = "<group>"; };
 		1948DAF42D1C747F0082F8DC /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		1948DAF62D1C753B0082F8DC /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		194A88352D8A097900247D27 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		194A88372D8A0C6000247D27 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		197624292D20C3AF00CAC3D7 /* FirebaseServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServise.swift; sourceTree = "<group>"; };
-		199BA3932D733D4400C7F751 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		199BA3932D733D4400C7F751 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		19A7F2342D234404005ED9C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		19C4FCDD2D07A606007A5E25 /* Commissioner-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Commissioner-Regular.ttf"; sourceTree = "<group>"; };
 		19E7388A2D048E7700E30945 /* Pillow Talk App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pillow Talk App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +142,7 @@
 				1948DAF62D1C753B0082F8DC /* SplashScreenView.swift */,
 				19E738D32D04950200E30945 /* FirstScreenView.swift */,
 				19F96B432D0A3702004E64A6 /* PaymentScreenView.swift */,
-				199BA3932D733D4400C7F751 /* SettingsView.swift */,
+				199BA3932D733D4400C7F751 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -155,6 +159,8 @@
 		9D0E492C2D820CD2000D3F17 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				194A88352D8A097900247D27 /* ProfileTableViewController.swift */,
+				194A88372D8A0C6000247D27 /* ProfileTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -330,8 +336,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				199BA3942D733D4400C7F751 /* SettingsView.swift in Sources */,
+				199BA3942D733D4400C7F751 /* ProfileView.swift in Sources */,
 				19E738C62D04937000E30945 /* AppDelegate.swift in Sources */,
+				194A88382D8A0C6000247D27 /* ProfileTableViewCell.swift in Sources */,
 				19E738D22D04944D00E30945 /* Extension UIColor.swift in Sources */,
 				9D0E492B2D82025D000D3F17 /* QuestionCollectionViewCell.swift in Sources */,
 				19E738CE2D04938B00E30945 /* FirstScreenViewController.swift in Sources */,
@@ -350,6 +357,7 @@
 				1948DAF72D1C753B0082F8DC /* SplashScreenView.swift in Sources */,
 				9D2E05512D7A487D00C1F9E7 /* TabView.swift in Sources */,
 				9DA31AA62D7F327300A8CDCA /* CategoriesViewController.swift in Sources */,
+				194A88362D8A097900247D27 /* ProfileTableViewController.swift in Sources */,
 				1976242A2D20C3AF00CAC3D7 /* FirebaseServise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
