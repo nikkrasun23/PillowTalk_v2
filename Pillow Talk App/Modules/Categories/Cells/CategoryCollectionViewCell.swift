@@ -51,6 +51,13 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        textLabel.text = nil
+        iconImageView.image = nil
+    }
+    
     func set(model: CategoryViewModel) {
         self.model = model
         

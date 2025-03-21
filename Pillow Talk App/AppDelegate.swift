@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Purchases.logLevel = .debug
         Purchases.configure(withAPIKey: "appl_czbNyLwVCHFvXDwaoXvjCiKgQBQ")
         
+        UserDefaultsService.isRated = false
+        
         return true
     }
 

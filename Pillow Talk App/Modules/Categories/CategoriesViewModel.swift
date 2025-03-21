@@ -15,6 +15,7 @@ protocol CategoriesViewModelProtocol {
     func viewDidLoad()
     func selectCategory(with id: Int)
     func loadNextPage()
+    func incrementShownCardCount()
 }
 
 enum CategoriesViewModelState {

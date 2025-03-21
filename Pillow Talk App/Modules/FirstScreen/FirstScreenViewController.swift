@@ -27,7 +27,7 @@ class FirstScreenViewController: UIViewController {
         setupStartGameButtonAction()
         fetchData()
         
-        IAPManager.shared.fetchSubscribtionStatus()
+//        IAPManager.shared.fetchSubscribtionStatus()
     }
 
     private func setupStartGameButtonAction() {
@@ -37,17 +37,15 @@ class FirstScreenViewController: UIViewController {
     }
 
     @objc private func startGameButtonTapped() {
-//        let tabBar = TabBarViewController()
-//        tabBar.modalPresentationStyle = .fullScreen
-//        tabBar.modalTransitionStyle = .crossDissolve
-//        present(tabBar, animated: true, completion: nil)
+        let tabBar = TabBarViewController()
+        tabBar.modalPresentationStyle = .fullScreen
+        tabBar.modalTransitionStyle = .crossDissolve
+        present(tabBar, animated: true, completion: nil)
         
-        
-        
-        let controller = PaywallViewController()
-        controller.delegate = self
-
-        present(controller, animated: true, completion: nil)
+//        let controller = PaywallViewController()
+//        controller.delegate = self
+//
+//        present(controller, animated: true, completion: nil)
     }
     
     func fetchData() {
