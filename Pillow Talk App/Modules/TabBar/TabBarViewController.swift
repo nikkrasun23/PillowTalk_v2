@@ -94,8 +94,7 @@ private extension TabBarViewController {
         let firstVC = CategoriesAssembler.configure(payload: .init(screenType: .categories))
         let secondVC = CategoriesAssembler.configure(payload: .init(screenType: .cup))
         
-        let thirdVC = UIViewController()
-        thirdVC.view.backgroundColor = .blue
+        let thirdVC = ProfileTableViewController()
         
         controllers = [firstVC, secondVC, thirdVC]
     }

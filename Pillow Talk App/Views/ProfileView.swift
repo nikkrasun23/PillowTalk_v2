@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SettingsView: UIView {
+class ProfileView: UIView {
     
     // MARK: BG
     
