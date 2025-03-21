@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 final class CategoriesViewController: UIViewController {
     var presenter: CategoriesPresenterProtocol!
@@ -225,6 +226,26 @@ private extension CategoriesViewController {
         snapshot.appendItems(items, toSection: section)
         
         questionsDataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    private func requestReviewIfNeeded() {
+        if shouldShowReviewPopup() { // Условие показа (например, после 2 вопросов)
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                SKStoreReviewController.requestReview(in: windowScene)
+            }
+        }
+    }
+
+    func shouldShowReviewPopup() -> Bool {
+        let key = "reviewRequestCount"
+        let count = UserDefaults.standard.integer(forKey: key)
+
+        if count >= 2 { // Показываем после 2 вопросов
+            return true
+        }
+
+        UserDefaults.standard.set(count + 1, forKey: key)
+        return false
     }
 }
 
