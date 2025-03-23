@@ -29,9 +29,11 @@ class ProfileTableViewCell: UITableViewCell {
     // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-            super.init(style: style, reuseIdentifier: reuseIdentifier)
-            setupViews()
-            setupConstraints()
+         super.init(style: style, reuseIdentifier: reuseIdentifier)
+         setupViews()
+         setupConstraints()
+         self.backgroundColor = UIColor(hex: "#FFFFFF")
+         self.contentView.backgroundColor = UIColor(hex: "#FFFFFF")
         }
 
     required init?(coder: NSCoder) {
