@@ -74,11 +74,14 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Методы нажатий
     
     private func shareApp() {
-        
+        let textToShare = "Спробуй цей класний додаток! 💕 https://apps.apple.com/ua/app/pillowtalk/id6740539774"
+        let activityViewController = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     private func rateApp() {
-        
+        guard let url = URL(string: "https://apps.apple.com/app/id6740539774?action=write-review") else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     private func manageSubscription() {
@@ -125,7 +128,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         return 56
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let selectedOption = settings[indexPath.row].1 
@@ -143,6 +146,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     private func setupProfileUI() {
+        tableView.backgroundColor = UIColor(hex: "#FFFFFF")
         view.backgroundColor = UIColor(hex: "#F7EEE4")
         view.addSubview(rightTopImageView)
         view.addSubview(leftBottomImageView)
