@@ -128,7 +128,9 @@ private extension CategoriesViewController {
             categoriesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             categoriesCollectionView.heightAnchor.constraint(equalToConstant: 40),
             
-            questionsCollectionView.bottomAnchor.constraint(equalTo: categoriesCollectionView.topAnchor,constant: -120),
+//            questionsCollectionView.bottomAnchor.constraint(equalTo: categoriesCollectionView.topAnchor,constant: -120),
+            questionsCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            questionsCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             questionsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             questionsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             questionsCollectionView.heightAnchor.constraint(equalToConstant: 420)
