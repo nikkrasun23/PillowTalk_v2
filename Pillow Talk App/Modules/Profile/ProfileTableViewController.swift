@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RevenueCatUI
+import RevenueCat
 
 class ProfileTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -68,9 +70,6 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
 
-    
-    
-    
     // MARK: - Методы нажатий
     
     private func shareApp() {
@@ -85,11 +84,12 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     private func manageSubscription() {
-        
+        let controller = PaywallViewController()
+        controller.delegate = self
+
+        present(controller, animated: true, completion: nil)
     }
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupProfileUI()
@@ -178,4 +178,13 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             
         ])
     }
+}
+
+
+extension ProfileTableViewController: PaywallViewControllerDelegate {
+    func paywallViewController(_ controller: PaywallViewController,
+                               didFinishPurchasingWith customerInfo: CustomerInfo) {
+
+    }
+
 }

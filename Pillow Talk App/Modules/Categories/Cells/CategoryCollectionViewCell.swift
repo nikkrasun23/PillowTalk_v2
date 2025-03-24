@@ -27,7 +27,7 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
     
     private let textLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Commissioner-Regular", size: 14)
+        label.font = UIFont(name: "Commissioner-SemiBold", size: 14)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import RevenueCat
-import RevenueCatUI
 
 class FirstScreenViewController: UIViewController {
     
@@ -26,8 +24,6 @@ class FirstScreenViewController: UIViewController {
         view.backgroundColor = UIColor(hex: "#F7EEE4")
         setupStartGameButtonAction()
         fetchData()
-        
-//        IAPManager.shared.fetchSubscribtionStatus()
     }
 
     private func setupStartGameButtonAction() {
@@ -41,11 +37,6 @@ class FirstScreenViewController: UIViewController {
         tabBar.modalPresentationStyle = .fullScreen
         tabBar.modalTransitionStyle = .crossDissolve
         present(tabBar, animated: true, completion: nil)
-        
-//        let controller = PaywallViewController()
-//        controller.delegate = self
-//
-//        present(controller, animated: true, completion: nil)
     }
     
     func fetchData() {
@@ -69,13 +60,4 @@ class FirstScreenViewController: UIViewController {
             }
         }
     }
-}
-
-extension FirstScreenViewController: PaywallViewControllerDelegate {
-
-    func paywallViewController(_ controller: PaywallViewController,
-                               didFinishPurchasingWith customerInfo: CustomerInfo) {
-
-    }
-
 }
