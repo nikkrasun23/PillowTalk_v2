@@ -123,8 +123,14 @@ private extension TabBarViewController {
             newViewController.didMove(toParent: self)
         })
     }
-    
+
     func selectTab(_ tab: TabViewModel.TabType) {
+        if tab == .cup && !UserDefaultsService.isSubscribed {
+            IAPManager.shared.presentPaywall(self)
+            
+            return
+        }
+        
         self.currentTab = tab
         
         tabs.forEach { tabView in

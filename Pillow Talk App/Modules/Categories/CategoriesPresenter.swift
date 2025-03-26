@@ -10,6 +10,8 @@ import Combine
 import UIKit
 
 protocol CategoriesPresenterProtocol {
+    var shownCardsCount: Int { get }
+    
     func viewDidLoad()
     func select(categoryId: Int)
     func loadNextPage()
@@ -21,7 +23,7 @@ final class CategoriesPresenter: CategoriesPresenterProtocol {
     private let model: CategoriesViewModel
     private var cancellables = Set<AnyCancellable>()
     
-    private var shownCardsCount: Int = .zero
+    var shownCardsCount: Int = .zero
 
     init(view: CategoriesViewController, model: CategoriesViewModel) {
         self.model = model
@@ -35,7 +37,12 @@ final class CategoriesPresenter: CategoriesPresenterProtocol {
     }
     
     func select(categoryId: Int) {
-        model.selectCategory(with: categoryId)
+        if categoryId == 0 || UserDefaultsService.isSubscribed {
+            view?.resetQuestions()
+            model.selectCategory(with: categoryId)
+        } else {
+            view?.showPayWall()
+        }
     }
     
     func loadNextPage() {

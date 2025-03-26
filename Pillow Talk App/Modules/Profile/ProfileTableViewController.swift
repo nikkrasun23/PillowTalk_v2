@@ -84,10 +84,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     private func manageSubscription() {
-        let controller = PaywallViewController()
-        controller.delegate = self
-
-        present(controller, animated: true, completion: nil)
+        IAPManager.shared.presentPaywall(self)
     }
     
     override func viewDidLoad() {
@@ -178,13 +175,4 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             
         ])
     }
-}
-
-
-extension ProfileTableViewController: PaywallViewControllerDelegate {
-    func paywallViewController(_ controller: PaywallViewController,
-                               didFinishPurchasingWith customerInfo: CustomerInfo) {
-
-    }
-
 }

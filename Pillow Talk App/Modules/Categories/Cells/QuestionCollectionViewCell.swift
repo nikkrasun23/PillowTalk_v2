@@ -42,6 +42,9 @@ final class QuestionCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    private var iconHeightConstraint: NSLayoutConstraint?
+    private var iconWidthConstraint: NSLayoutConstraint?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -72,7 +75,16 @@ final class QuestionCollectionViewCell: UICollectionViewCell {
    
     func set(model: CardViewModel) {
         textLabel.text = model.title
-        imageView.image = UIImage(named: "character\(Int.random(in: 1...14))")
+        
+        if model.title.count > 117 {
+            imageView.image = UIImage(named: "character_small_\(Int.random(in: 1...14))")
+            iconHeightConstraint?.constant = 157
+            iconWidthConstraint?.constant = 100
+        } else {
+            imageView.image =  UIImage(named: "character\(Int.random(in: 1...14))")
+            iconHeightConstraint?.constant = 220
+            iconWidthConstraint?.constant = 140
+        }
         
         switch model.type {
         case .question:
@@ -95,6 +107,9 @@ private extension QuestionCollectionViewCell {
         containerView.addSubview(titleLabel)
         containerView.addSubview(textLabel)
         
+        iconHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: 220)
+        iconWidthConstraint = imageView.widthAnchor.constraint(equalToConstant: 140)
+        
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: topAnchor),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -110,8 +125,8 @@ private extension QuestionCollectionViewCell {
             
             imageView.rightAnchor.constraint(equalTo: containerView.rightAnchor),
             imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 220),
-            imageView.widthAnchor.constraint(equalToConstant: 140),
+            iconHeightConstraint!,
+            iconWidthConstraint!,
         ])
         
         backgroundColor = .clear

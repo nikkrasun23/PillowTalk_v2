@@ -13,6 +13,7 @@ struct CategoryViewModel: Hashable {
     let selectedIconName: String?
     let text: String
     let isSelected: Bool
+    let isSelectable: Bool
 }
 
 final class CategoryCollectionViewCell: UICollectionViewCell {
@@ -62,6 +63,7 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
         self.model = model
         
         textLabel.text = model.text
+        iconImageView.image = UIImage(named: model.iconName ?? "")
         
         setSelected(model.isSelected)
     }
@@ -89,6 +91,8 @@ private extension CategoryCollectionViewCell {
     }
     
     func setSelected(_ isSelected: Bool) {
+        guard model?.isSelectable ?? true else { return }
+        
         iconImageView.image = isSelected ? UIImage(named: model?.selectedIconName ?? "") : UIImage(named: model?.iconName ?? "")
         textLabel.textColor = isSelected ? UIColor(hex: "#DB5A3D") : .black
     }

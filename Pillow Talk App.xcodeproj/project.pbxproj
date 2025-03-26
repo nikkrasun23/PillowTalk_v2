@@ -24,7 +24,6 @@
 		19E738D22D04944D00E30945 /* Extension UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738D12D04944D00E30945 /* Extension UIColor.swift */; };
 		19E738D42D04950200E30945 /* FirstScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738D32D04950200E30945 /* FirstScreenView.swift */; };
 		19E738D82D04DDFE00E30945 /* RussoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19E738D72D04DDFE00E30945 /* RussoOne-Regular.ttf */; };
-		19F96B442D0A3702004E64A6 /* PaymentScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F96B432D0A3702004E64A6 /* PaymentScreenView.swift */; };
 		9D0ADDEA2D831B5D0030FDBA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9D0ADDE92D831B5D0030FDBA /* FirebaseAnalytics */; };
 		9D0ADDEC2D831B5D0030FDBA /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9D0ADDEB2D831B5D0030FDBA /* FirebaseCore */; };
 		9D0ADDEE2D831B5D0030FDBA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9D0ADDED2D831B5D0030FDBA /* FirebaseCrashlytics */; };
@@ -41,6 +40,7 @@
 		9D38F3182D8A0E8A007B6790 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D38F3162D8A0E8A007B6790 /* UserDefaultsService.swift */; };
 		9D38F3192D8A0E8A007B6790 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D38F3152D8A0E8A007B6790 /* UserDefaultWrapper.swift */; };
 		9D38F31B2D8A0E8F007B6790 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D38F31A2D8A0E8F007B6790 /* IAPManager.swift */; };
+		9D4A143B2D91DA9B0007C292 /* StoreKitConfig.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A143A2D91DA9B0007C292 /* StoreKitConfig.storekit */; };
 		9DA31AA62D7F327300A8CDCA /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA52D7F327300A8CDCA /* CategoriesViewController.swift */; };
 		9DA31AA82D7F32AB00A8CDCA /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA72D7F32A300A8CDCA /* CategoriesViewModel.swift */; };
 		9DA31AAA2D7F32D000A8CDCA /* CategoriesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA92D7F32C700A8CDCA /* CategoriesAssembler.swift */; };
@@ -71,13 +71,13 @@
 		19E738D12D04944D00E30945 /* Extension UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension UIColor.swift"; sourceTree = "<group>"; };
 		19E738D32D04950200E30945 /* FirstScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
 		19E738D72D04DDFE00E30945 /* RussoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RussoOne-Regular.ttf"; sourceTree = "<group>"; };
-		19F96B432D0A3702004E64A6 /* PaymentScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentScreenView.swift; sourceTree = "<group>"; };
 		9D0E492A2D82025D000D3F17 /* QuestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D2E054C2D7A44A200C1F9E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		9D2E05502D7A487D00C1F9E7 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		9D38F3152D8A0E8A007B6790 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 		9D38F3162D8A0E8A007B6790 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		9D38F31A2D8A0E8F007B6790 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
+		9D4A143A2D91DA9B0007C292 /* StoreKitConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreKitConfig.storekit; sourceTree = "<group>"; };
 		9DA31AA52D7F327300A8CDCA /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		9DA31AA72D7F32A300A8CDCA /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		9DA31AA92D7F32C700A8CDCA /* CategoriesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAssembler.swift; sourceTree = "<group>"; };
@@ -142,6 +142,7 @@
 				191056362D5E866D00B7AA59 /* Commissioner-SemiBold.ttf */,
 				19C4FCDD2D07A606007A5E25 /* Commissioner-Regular.ttf */,
 				19E738D72D04DDFE00E30945 /* RussoOne-Regular.ttf */,
+				9D4A143A2D91DA9B0007C292 /* StoreKitConfig.storekit */,
 			);
 			path = "Pillow Talk App";
 			sourceTree = "<group>";
@@ -151,7 +152,6 @@
 			children = (
 				1948DAF62D1C753B0082F8DC /* SplashScreenView.swift */,
 				19E738D32D04950200E30945 /* FirstScreenView.swift */,
-				19F96B432D0A3702004E64A6 /* PaymentScreenView.swift */,
 				199BA3932D733D4400C7F751 /* ProfileView.swift */,
 			);
 			path = Views;
@@ -344,6 +344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D4A143B2D91DA9B0007C292 /* StoreKitConfig.storekit in Resources */,
 				19E738C92D04937000E30945 /* Assets.xcassets in Resources */,
 				19E738D82D04DDFE00E30945 /* RussoOne-Regular.ttf in Resources */,
 				19A7F2362D234404005ED9C4 /* GoogleService-Info.plist in Resources */,
@@ -380,7 +381,6 @@
 				9DD69B122D808FC800A715DF /* CardViewModel.swift in Sources */,
 				9DA31AA82D7F32AB00A8CDCA /* CategoriesViewModel.swift in Sources */,
 				9DA31AAA2D7F32D000A8CDCA /* CategoriesAssembler.swift in Sources */,
-				19F96B442D0A3702004E64A6 /* PaymentScreenView.swift in Sources */,
 				9DA31AB02D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift in Sources */,
 				1948DAF72D1C753B0082F8DC /* SplashScreenView.swift in Sources */,
 				9D2E05512D7A487D00C1F9E7 /* TabView.swift in Sources */,
@@ -410,7 +410,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = U6BKV755T9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pillow Talk App/Info.plist";
@@ -442,7 +442,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = U6BKV755T9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pillow Talk App/Info.plist";

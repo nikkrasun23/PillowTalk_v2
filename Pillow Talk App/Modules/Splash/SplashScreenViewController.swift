@@ -26,6 +26,8 @@ class SplashScreenViewController: UIViewController {
     }
 
     private func navigateToFirstScreen() {
+        IAPManager.shared.fetchSubscribtionStatus()
+        
         let firstScreenVC = FirstScreenViewController()
         firstScreenVC.modalPresentationStyle = .fullScreen
         firstScreenVC.modalTransitionStyle = .crossDissolve

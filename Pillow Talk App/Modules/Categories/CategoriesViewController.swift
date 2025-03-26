@@ -7,6 +7,8 @@
 
 import UIKit
 import StoreKit
+import RevenueCatUI
+import RevenueCat
 
 final class CategoriesViewController: UIViewController {
     var presenter: CategoriesPresenterProtocol!
@@ -101,6 +103,16 @@ final class CategoriesViewController: UIViewController {
             }
         }
     }
+    
+    func showPayWall() {
+        IAPManager.shared.presentPaywall(self)
+    }
+    
+    func resetQuestions() {
+        var snapshot = QuestionsSnapshot()
+        snapshot.appendSections([.question])
+        questionsDataSource.apply(snapshot, animatingDifferences: false)
+    }
 }
 
 private extension CategoriesViewController {
@@ -128,7 +140,6 @@ private extension CategoriesViewController {
             categoriesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             categoriesCollectionView.heightAnchor.constraint(equalToConstant: 40),
             
-//            questionsCollectionView.bottomAnchor.constraint(equalTo: categoriesCollectionView.topAnchor,constant: -120),
             questionsCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             questionsCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             questionsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -255,7 +266,19 @@ extension CategoriesViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if collectionView == questionsCollectionView {
-            presenter.incrementShownCardCount()
+            
+            if indexPath.item >= 5 && !UserDefaultsService.isSubscribed {
+                DispatchQueue.main.async {
+                    self.questionsCollectionView.scrollToItem(at: IndexPath(item: 4, section: 0), at: .centeredHorizontally, animated: true)
+                }
+
+                showPayWall()
+                return
+            }
+            
+            if indexPath.item >= presenter.shownCardsCount {
+                presenter.incrementShownCardCount()
+            }
             
             let totalItems = questionsDataSource.snapshot().itemIdentifiers.count
             

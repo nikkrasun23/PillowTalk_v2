@@ -118,7 +118,8 @@ private extension CategoriesViewModel {
                 iconName: iconName,
                 selectedIconName: selectedIconName,
                 text: model.title,
-                isSelected: model.id == currentCategoryId
+                isSelected: model.id == currentCategoryId,
+                isSelectable: model.id == 0 ? true : UserDefaultsService.isSubscribed
             )
         }
     }
