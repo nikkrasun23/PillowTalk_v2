@@ -32,20 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         logUserCountry()
         
         // revenue cat
-        Purchases.logLevel = .debug
+        Purchases.logLevel = .error
         Purchases.configure(withAPIKey: "appl_czbNyLwVCHFvXDwaoXvjCiKgQBQ")
         
         UserDefaultsService.isRated = false
         
         Messaging.messaging().delegate = self
-        Messaging.messaging().autoInitEnabled = true
         UNUserNotificationCenter.current().delegate = self
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-            print("Разрешение на уведомления получено: \(granted)")
-        }
-        
-        application.registerForRemoteNotifications()
+        requestNotificationPermissions(application)
         
         return true
     }
@@ -80,27 +75,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "country": country
         ])
     }
-
-    // MARK: UISceneSession Lifecycle
-
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    
+    private func requestNotificationPermissions(_ application: UIApplication) {
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { granted, error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+        application.registerForRemoteNotifications()
     }
+}
 
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {}
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .sound, .badge])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken
     }
 }
 
-extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
-        return [.badge, .sound]
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse) async {
-        print("Пользователь нажал на уведомление: \(response.notification.request.content.userInfo)")
+extension AppDelegate: MessagingDelegate {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        print("Firebase FCM Token: \(fcmToken ?? "")")
+        guard let fcmToken = fcmToken else { return }
+        
+        FirebaseService().saveFCMTokenToFirestore(fcmToken)
     }
 }
