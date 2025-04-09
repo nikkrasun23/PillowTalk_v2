@@ -53,4 +53,9 @@ final public class FirebaseService {
             completion(.success(ideas))
         }
     }
+    
+    func saveFCMTokenToFirestore(_ token: String) {
+        let userID = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
+        firestore.collection("PushTokens").document(userID).setData(["token": token])
+    }
 }
