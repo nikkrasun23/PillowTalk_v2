@@ -9,6 +9,7 @@ import UIKit
 import StoreKit
 import RevenueCatUI
 import RevenueCat
+import FirebaseAnalytics
 
 final class CategoriesViewController: UIViewController {
     var presenter: CategoriesPresenterProtocol!
@@ -48,6 +49,17 @@ final class CategoriesViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.alwaysBounceVertical = false
         return collectionView
+    }()
+    
+    private let onboardingTitle: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Commissioner-Regular", size: 16)
+        label.textColor = UIColor(hex: "#B3B8C6")
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.text = "Хочеш ще одне питання? \nПросто змахни картку!"
+        return label
     }()
     
     private typealias CategoriesDataSource = UICollectionViewDiffableDataSource<CategoriesSection, CategoryViewModel>
@@ -96,6 +108,8 @@ final class CategoriesViewController: UIViewController {
     
     func requestReviewPopup() {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            Analytics.logEvent("popup_review_shown", parameters: nil)
+            
             if #available(iOS 18.0, *) {
                 AppStore.requestReview(in: windowScene)
             } else {
@@ -113,6 +127,10 @@ final class CategoriesViewController: UIViewController {
         snapshot.appendSections([.question])
         questionsDataSource.apply(snapshot, animatingDifferences: false)
     }
+    
+    func showOnboarding(_ isShown: Bool) {
+        onboardingTitle.isHidden = isShown
+    }
 }
 
 private extension CategoriesViewController {
@@ -123,6 +141,7 @@ private extension CategoriesViewController {
         view.addSubview(leftBottomImageView)
         view.addSubview(categoriesCollectionView)
         view.addSubview(questionsCollectionView)
+        view.addSubview(onboardingTitle)
         
         NSLayoutConstraint.activate([
             rightTopImageView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -144,7 +163,11 @@ private extension CategoriesViewController {
             questionsCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             questionsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             questionsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            questionsCollectionView.heightAnchor.constraint(equalToConstant: 420)
+            questionsCollectionView.heightAnchor.constraint(equalToConstant: 420),
+            
+            onboardingTitle.topAnchor.constraint(equalTo: questionsCollectionView.bottomAnchor, constant: 22),
+            onboardingTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 80),
+            onboardingTitle.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -80),
         ])
     }
 
@@ -267,16 +290,27 @@ extension CategoriesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if collectionView == questionsCollectionView {
             
-            if indexPath.item >= 5 && !UserDefaultsService.isSubscribed {
-                DispatchQueue.main.async {
-                    self.questionsCollectionView.scrollToItem(at: IndexPath(item: 4, section: 0), at: .centeredHorizontally, animated: true)
+            if !UserDefaultsService.isSubscribed {
+                if UserDefaultsService.hasReachedDailyLimit {
+                    DispatchQueue.main.async {
+                        self.questionsCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+                    }
+                    showPayWall()
+                    return
                 }
 
-                showPayWall()
-                return
+                if indexPath.item >= 5 {
+                    DispatchQueue.main.async {
+                        self.questionsCollectionView.scrollToItem(at: IndexPath(item: 4, section: 0), at: .centeredHorizontally, animated: true)
+                    }
+                    showPayWall()
+                    return
+                }
+
+                UserDefaultsService.incrementViewedCards()
             }
             
-            if indexPath.item >= presenter.shownCardsCount {
+            if indexPath.item > presenter.shownCardsCount {
                 presenter.incrementShownCardCount()
             }
             

@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import UIKit
+import FirebaseAnalytics
 
 protocol CategoriesViewModelProtocol {
     var state: Published<CategoriesViewModelState>.Publisher { get }
@@ -49,6 +50,7 @@ final class CategoriesViewModel {
         currentCards.removeAll()
         
         loadNextPage()
+        logCategorySelection()
     }
     
     func loadNextPage() {
@@ -131,5 +133,13 @@ private extension CategoriesViewModel {
                 title: text
             )
         }
+    }
+    
+    func logCategorySelection() {
+        guard let analyticsParam = StorageService.shared.categories.first(where: { $0.id == currentCategoryId })?.analyticsParam else { return }
+        
+        Analytics.logEvent("select_question_category", parameters: [
+            "category_name": analyticsParam
+        ])
     }
 }

@@ -10,6 +10,7 @@ struct CategoryModel {
     let title: String
     let actions: [String]
     let questions: [String]
+    let analyticsParam: String
 }
 
 extension CategoryModel {
@@ -24,6 +25,11 @@ extension CategoryModel {
             return nil
         }
         
+        guard let analyticsParam = document["analytics_param"] as? String else {
+            print("Failed to parse title")
+            return nil
+        }
+        
         let actionsArray = document["actions"] as? [String] ?? []
         let questionsArray = document["questions"] as? [String] ?? []
         
@@ -31,5 +37,6 @@ extension CategoryModel {
         self.title = title
         self.actions = actionsArray
         self.questions = questionsArray
+        self.analyticsParam = analyticsParam
     }
 }
