@@ -55,6 +55,14 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         ("bill", "Керувати підпискою")
     ]
     
+    private lazy var easterEggService: EasterEggService = {
+        let service = EasterEggService {
+            UserDefaultsService.isSubscribed = true
+        }
+        
+        return service
+    }()
+    
     // MARK: - Добавил нажатие на пустое место экрана, чтоб убрать выделение строки
     
     func tapOnTheScreen() {
@@ -94,6 +102,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        configureEasterEgg()
     }
 
     // MARK: - Table view data source
@@ -174,5 +184,23 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             tableView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8)
             
         ])
+    }
+    
+    private func configureEasterEgg() {
+        let rightToptapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapRightTopImageView))
+        rightTopImageView.addGestureRecognizer(rightToptapGestureRecognizer)
+        rightTopImageView.isUserInteractionEnabled = true
+        
+        let leftBottomtapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didLeftBottomTopImageView))
+        leftBottomImageView.addGestureRecognizer(leftBottomtapGestureRecognizer)
+        leftBottomImageView.isUserInteractionEnabled = true
+    }
+    
+    @objc private func didTapRightTopImageView() {
+        easterEggService.registerTap(on: .viewA)
+    }
+    
+    @objc private func didLeftBottomTopImageView() {
+        easterEggService.registerTap(on: .viewB)
     }
 }
