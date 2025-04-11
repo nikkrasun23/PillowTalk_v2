@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 final class TabBarViewController: UIViewController {
     private var tabs: [TabView] = []
@@ -138,5 +139,16 @@ private extension TabBarViewController {
         }
         
         switchTo(index: tab.rawValue)
+        
+        
+        let screenName = switch tab {
+        case .category: "main_screen"
+        case .cup: "date_ideas_screen"
+        case .profile: "profile_screen"
+        }
+        
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+            AnalyticsParameterScreenName: screenName
+        ])
     }
 }
