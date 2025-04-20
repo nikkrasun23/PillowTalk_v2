@@ -14,7 +14,7 @@ class FirstScreenView: UIView {
     let labelForStartGameButton: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Почати"
+        label.text = /*"Почати"*/ NSLocalizedString("startButton", comment: "")
         label.font = UIFont(name: "RussoOne-Regular", size: 20)
         label.textColor = .white
         label.textAlignment = .center
@@ -36,7 +36,7 @@ class FirstScreenView: UIView {
         label.textColor = UIColor(hex: "#33363F")
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.text = "Відкривайтеся, спілкуйтеся та зближуйтеся ще більше!"
+        label.text = /*"Відкривайтеся, спілкуйтеся та зближуйтеся ще більше!"*/ NSLocalizedString("onboardingSubtitle", comment: "")
         return label
     }()
     
@@ -46,7 +46,7 @@ class FirstScreenView: UIView {
         label.font = UIFont(name: "RussoOne-Regular", size: 28)
         label.textColor = UIColor(hex: "#33363F")
         label.numberOfLines = 0
-        label.text = "Готові до теплого спілкування?"
+        label.text = /*"Готові до теплого спілкування?"*/ NSLocalizedString("onboardingTitle", comment: "")
         label.textAlignment = .center
         return label
     }()

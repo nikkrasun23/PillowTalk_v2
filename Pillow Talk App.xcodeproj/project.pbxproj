@@ -14,6 +14,7 @@
 		194A88382D8A0C6000247D27 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194A88372D8A0C6000247D27 /* ProfileTableViewCell.swift */; };
 		1976242A2D20C3AF00CAC3D7 /* FirebaseServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197624292D20C3AF00CAC3D7 /* FirebaseServise.swift */; };
 		199BA3942D733D4400C7F751 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199BA3932D733D4400C7F751 /* ProfileView.swift */; };
+		19A6AFE32DAC2A2C00B9723E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 19A6AFE22DAC2A2C00B9723E /* Localizable.xcstrings */; };
 		19A7F2362D234404005ED9C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19A7F2342D234404005ED9C4 /* GoogleService-Info.plist */; };
 		19C4FCDE2D07A606007A5E25 /* Commissioner-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19C4FCDD2D07A606007A5E25 /* Commissioner-Regular.ttf */; };
 		19E738C62D04937000E30945 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738BE2D04937000E30945 /* AppDelegate.swift */; };
@@ -59,6 +60,7 @@
 		194A88372D8A0C6000247D27 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		197624292D20C3AF00CAC3D7 /* FirebaseServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServise.swift; sourceTree = "<group>"; };
 		199BA3932D733D4400C7F751 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		19A6AFE22DAC2A2C00B9723E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		19A7F2342D234404005ED9C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		19C4FCDD2D07A606007A5E25 /* Commissioner-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Commissioner-Regular.ttf"; sourceTree = "<group>"; };
 		19E7388A2D048E7700E30945 /* Pillow Talk App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pillow Talk App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +111,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19A6AFD92DAC204900B9723E /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				19A6AFE22DAC2A2C00B9723E /* Localizable.xcstrings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		19E738812D048E7700E30945 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +138,7 @@
 		19E738C52D04937000E30945 /* Pillow Talk App */ = {
 			isa = PBXGroup;
 			children = (
+				19A6AFD92DAC204900B9723E /* Localization */,
 				9DD69B152D80944900A715DF /* Common */,
 				9D2E054E2D7A44A200C1F9E7 /* Modules */,
 				9DD096362D78EDBE000F02FC /* Services */,
@@ -322,6 +333,9 @@
 			knownRegions = (
 				en,
 				Base,
+				uk,
+				es,
+				pl,
 			);
 			mainGroup = 19E738812D048E7700E30945;
 			minimizedProjectReferenceProxies = 1;
@@ -346,6 +360,7 @@
 			files = (
 				9D4A143B2D91DA9B0007C292 /* StoreKitConfig.storekit in Resources */,
 				19E738C92D04937000E30945 /* Assets.xcassets in Resources */,
+				19A6AFE32DAC2A2C00B9723E /* Localizable.xcstrings in Resources */,
 				19E738D82D04DDFE00E30945 /* RussoOne-Regular.ttf in Resources */,
 				19A7F2362D234404005ED9C4 /* GoogleService-Info.plist in Resources */,
 				19E738CB2D04937000E30945 /* LaunchScreen.storyboard in Resources */,
@@ -527,6 +542,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -583,6 +599,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

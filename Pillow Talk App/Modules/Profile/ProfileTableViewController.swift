@@ -50,9 +50,9 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }()
     
     private let settings = [
-        ("share", "Поділитися"),
-        ("rate", "Оцінити"),
-        ("bill", "Керувати підпискою")
+        ("share", NSLocalizedString("menuShare", comment: "")/*"Поділитися"*/),
+        ("rate", NSLocalizedString("menuRate", comment: "")/*"Оцінити"*/),
+        ("bill", NSLocalizedString("menuManageSubscription", comment: "")/*"Керувати підпискою"*/)
     ]
     
     // MARK: - Добавил нажатие на пустое место экрана, чтоб убрать выделение строки
