@@ -40,7 +40,11 @@ class FirstScreenViewController: UIViewController {
     }
     
     func fetchData() {
-        guard let currentLanguage = Locale.current.language.languageCode?.identifier.uppercased() else { return }
+        guard var currentLanguage = Locale.current.language.languageCode?.identifier.uppercased() else { return }
+        
+        if currentLanguage == "UK" {
+            currentLanguage = "UA"
+        }
         
         firebaseService.getCategories(with: currentLanguage) { result in
             switch result {

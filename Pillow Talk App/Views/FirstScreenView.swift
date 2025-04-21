@@ -174,10 +174,9 @@ class FirstScreenView: UIView {
             lineImage.topAnchor.constraint(equalTo: titleForStartScreen.bottomAnchor, constant: 27),
             lineImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
             
-            bubbles.widthAnchor.constraint(equalToConstant: 210),
+            bubbles.centerXAnchor.constraint(equalTo: centerXAnchor),
             bubbles.heightAnchor.constraint(equalToConstant: 200),
             bubbles.topAnchor.constraint(equalTo: titleForStartScreen.bottomAnchor, constant: 94),
-            bubbles.leftAnchor.constraint(equalTo: leftAnchor, constant: 92)
         ])
         
         let currentLanguage = Locale.current.language.languageCode?.identifier

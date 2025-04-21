@@ -378,6 +378,35 @@
         }
       }
     },
+    "swipeOnboardingText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Want another question? Just swipe the card!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Quieres otra pregunta? ¡Solo desliza la tarjeta!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chcesz jeszcze jedno pytanie? Po prostu przesuń kartę!"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хочеш ще одне питання? Просто змахни картку!"
+          }
+        }
+      }
+    },
     "tabDateJar" : {
       "extractionState" : "manual",
       "localizations" : {
