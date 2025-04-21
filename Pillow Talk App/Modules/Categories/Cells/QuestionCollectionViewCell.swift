@@ -89,13 +89,13 @@ final class QuestionCollectionViewCell: UICollectionViewCell {
         switch model.type {
         case .question:
             titleLabel.textColor = UIColor(hex: "#F99F4F")
-            titleLabel.text = "Питання"
+            titleLabel.text = NSLocalizedString("cardTitleIdeas", comment: "") //"Питання"
         case .idea:
             titleLabel.textColor = UIColor(hex: "#DB5A3D")
-            titleLabel.text = "Ідеї"
+            titleLabel.text = NSLocalizedString("cardTitleIdeas", comment: "") //"Ідеї"
         case .action:
             titleLabel.textColor = UIColor(hex: "#80B6BC")
-            titleLabel.text = "Дія"
+            titleLabel.text = NSLocalizedString("cardTitleAction", comment: "") //"Дія"
         }
     }
 }

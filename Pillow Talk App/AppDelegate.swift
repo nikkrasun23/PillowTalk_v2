@@ -35,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UserDefaultsService.isRated = false
         
+        UNUserNotificationCenter.current().setBadgeCount(.zero)
+        
         return true
     }
 

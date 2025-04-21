@@ -52,7 +52,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     private let settings = [
         ("share", NSLocalizedString("menuShare", comment: "")/*"Поділитися"*/),
         ("rate", NSLocalizedString("menuRate", comment: "")/*"Оцінити"*/),
-        ("bill", NSLocalizedString("menuManageSubscription", comment: "")/*"Керувати підпискою"*/)
+        ("bill", NSLocalizedString("menuManageSubscription", comment: "")/*"Керувати підпискою"*/),
+        ("language", NSLocalizedString("menuManageLanguage", comment: "")/*"Змінити мову додатку"*/)
     ]
     
     // MARK: - Добавил нажатие на пустое место экрана, чтоб убрать выделение строки
@@ -73,7 +74,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Методы нажатий
     
     private func shareApp() {
-        let textToShare = "Спробуй цей класний додаток! 💕 https://apps.apple.com/ua/app/pillowtalk/id6740539774"
+        let textToShare = NSLocalizedString("shareDescription", comment: "") + " 💕 https://apps.apple.com/ua/app/pillowtalk/id6740539774"
         let activityViewController = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }
@@ -85,6 +86,14 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     
     private func manageSubscription() {
         IAPManager.shared.presentPaywall(self)
+    }
+    
+    private func manageLanguage() {
+        if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+            if UIApplication.shared.canOpenURL(settingsURL) {
+                UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -128,15 +137,17 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let selectedOption = settings[indexPath.row].1 
+        let selectedOption = settings[indexPath.row].0
             
             switch selectedOption {
-            case "Поділитися":
+            case "share":
                 shareApp()
-            case "Оцінити":
+            case "rate":
                 rateApp()
-            case "Керувати підпискою":
+            case "bill":
                 manageSubscription()
+            case "language":
+                manageLanguage()
             default:
                 break
             }
@@ -164,7 +175,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             
             contentView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24),
             contentView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24),
-            contentView.heightAnchor.constraint(equalToConstant: 200),
+            contentView.heightAnchor.constraint(equalToConstant: 256),
             contentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 

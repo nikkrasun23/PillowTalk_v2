@@ -93,7 +93,6 @@ class FirstScreenView: UIView {
     let bubbles: UIImageView = {
         let bubble1 = UIImageView()
         bubble1.translatesAutoresizingMaskIntoConstraints = false
-        bubble1.image = .bubbles
         return bubble1
     }()
     
@@ -180,6 +179,9 @@ class FirstScreenView: UIView {
             bubbles.topAnchor.constraint(equalTo: titleForStartScreen.bottomAnchor, constant: 94),
             bubbles.leftAnchor.constraint(equalTo: leftAnchor, constant: 92)
         ])
+        
+        let currentLanguage = Locale.current.language.languageCode?.identifier
+        bubbles.image = UIImage(named: "bubbles_\(currentLanguage ?? "en")")
     }
     
     private func setupTitleForStartScreen() {

@@ -13,7 +13,6 @@
 		194A88362D8A097900247D27 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194A88352D8A097900247D27 /* ProfileTableViewController.swift */; };
 		194A88382D8A0C6000247D27 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194A88372D8A0C6000247D27 /* ProfileTableViewCell.swift */; };
 		1976242A2D20C3AF00CAC3D7 /* FirebaseServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197624292D20C3AF00CAC3D7 /* FirebaseServise.swift */; };
-		199BA3942D733D4400C7F751 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199BA3932D733D4400C7F751 /* ProfileView.swift */; };
 		19A6AFE32DAC2A2C00B9723E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 19A6AFE22DAC2A2C00B9723E /* Localizable.xcstrings */; };
 		19A7F2362D234404005ED9C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19A7F2342D234404005ED9C4 /* GoogleService-Info.plist */; };
 		19C4FCDE2D07A606007A5E25 /* Commissioner-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19C4FCDD2D07A606007A5E25 /* Commissioner-Regular.ttf */; };
@@ -59,7 +58,6 @@
 		194A88352D8A097900247D27 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		194A88372D8A0C6000247D27 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		197624292D20C3AF00CAC3D7 /* FirebaseServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServise.swift; sourceTree = "<group>"; };
-		199BA3932D733D4400C7F751 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		19A6AFE22DAC2A2C00B9723E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		19A7F2342D234404005ED9C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		19C4FCDD2D07A606007A5E25 /* Commissioner-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Commissioner-Regular.ttf"; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 			children = (
 				1948DAF62D1C753B0082F8DC /* SplashScreenView.swift */,
 				19E738D32D04950200E30945 /* FirstScreenView.swift */,
-				199BA3932D733D4400C7F751 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -377,8 +374,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D38F31B2D8A0E8F007B6790 /* IAPManager.swift in Sources */,
-				199BA3942D733D4400C7F751 /* ProfileView.swift in Sources */,
-				199BA3942D733D4400C7F751 /* ProfileView.swift in Sources */,
 				19E738C62D04937000E30945 /* AppDelegate.swift in Sources */,
 				9D38F3182D8A0E8A007B6790 /* UserDefaultsService.swift in Sources */,
 				9D38F3192D8A0E8A007B6790 /* UserDefaultWrapper.swift in Sources */,
@@ -425,7 +420,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U6BKV755T9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pillow Talk App/Info.plist";
@@ -438,7 +433,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -457,7 +452,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U6BKV755T9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pillow Talk App/Info.plist";
@@ -470,7 +465,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
