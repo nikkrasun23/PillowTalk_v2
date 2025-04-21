@@ -56,6 +56,9 @@ final class CategoriesPresenter: CategoriesPresenterProtocol {
             view?.requestReviewPopup()
             UserDefaultsService.isRated = true
         }
+        
+        view?.showOnboarding(UserDefaultsService.isOnboardingShown)
+        UserDefaultsService.isOnboardingShown = true
     }
 
     deinit {

@@ -8,6 +8,8 @@
 		<string>Commissioner-Regular.ttf</string>
 		<string>RussoOne-Regular.ttf</string>
 	</array>
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
