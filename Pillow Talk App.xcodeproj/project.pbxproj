@@ -48,6 +48,7 @@
 		9DA31AB02D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AAF2D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift */; };
 		9DA31AB32D7F683600A8CDCA /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AB22D7F682F00A8CDCA /* CategoryModel.swift */; };
 		9DA31AB72D7F949800A8CDCA /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AB62D7F948F00A8CDCA /* StorageService.swift */; };
+		9DCC3BD92DA976C700DDDD85 /* EasterEggService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC3BD82DA976C700DDDD85 /* EasterEggService.swift */; };
 		9DD69B122D808FC800A715DF /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD69B112D808FBB00A715DF /* CardViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		9DA31AAF2D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DA31AB22D7F682F00A8CDCA /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		9DA31AB62D7F948F00A8CDCA /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		9DCC3BD82DA976C700DDDD85 /* EasterEggService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggService.swift; sourceTree = "<group>"; };
 		9DD69B112D808FBB00A715DF /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		9DEFD1272DA308EB0022F8BC /* Pillow Talk App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Pillow Talk App.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,6 +233,7 @@
 		9DD096362D78EDBE000F02FC /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9DCC3BD82DA976C700DDDD85 /* EasterEggService.swift */,
 				9DA31AB62D7F948F00A8CDCA /* StorageService.swift */,
 				197624292D20C3AF00CAC3D7 /* FirebaseServise.swift */,
 				9D38F3172D8A0E8A007B6790 /* UserDefaultsService */,
@@ -386,6 +389,7 @@
 				9DA31AB02D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift in Sources */,
 				1948DAF72D1C753B0082F8DC /* SplashScreenView.swift in Sources */,
 				9D2E05512D7A487D00C1F9E7 /* TabView.swift in Sources */,
+				9DCC3BD92DA976C700DDDD85 /* EasterEggService.swift in Sources */,
 				9DA31AA62D7F327300A8CDCA /* CategoriesViewController.swift in Sources */,
 				194A88362D8A097900247D27 /* ProfileTableViewController.swift in Sources */,
 				1976242A2D20C3AF00CAC3D7 /* FirebaseServise.swift in Sources */,
@@ -426,7 +430,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -459,7 +463,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
