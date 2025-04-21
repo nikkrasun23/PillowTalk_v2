@@ -89,7 +89,7 @@ final class QuestionCollectionViewCell: UICollectionViewCell {
         switch model.type {
         case .question:
             titleLabel.textColor = UIColor(hex: "#F99F4F")
-            titleLabel.text = NSLocalizedString("cardTitleIdeas", comment: "") //"Питання"
+            titleLabel.text = NSLocalizedString("cardTitleQuestion", comment: "") //"Питання"
         case .idea:
             titleLabel.textColor = UIColor(hex: "#DB5A3D")
             titleLabel.text = NSLocalizedString("cardTitleIdeas", comment: "") //"Ідеї"
