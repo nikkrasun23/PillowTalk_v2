@@ -58,7 +58,7 @@ final class CategoriesViewController: UIViewController {
         label.textColor = UIColor(hex: "#B3B8C6")
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.text = "Хочеш ще одне питання? \nПросто змахни картку!"
+        label.text = NSLocalizedString("swipeOnboardingText", comment: "") //"Хочеш ще одне питання? \nПросто змахни картку!"
         return label
     }()
     
@@ -165,7 +165,7 @@ private extension CategoriesViewController {
             questionsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             questionsCollectionView.heightAnchor.constraint(equalToConstant: 420),
             
-            onboardingTitle.topAnchor.constraint(equalTo: questionsCollectionView.bottomAnchor, constant: 22),
+            onboardingTitle.topAnchor.constraint(equalTo: questionsCollectionView.bottomAnchor, constant: 12),
             onboardingTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 80),
             onboardingTitle.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -80),
         ])

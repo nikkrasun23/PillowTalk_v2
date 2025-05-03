@@ -37,6 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UserDefaultsService.isRated = false
         
+        UNUserNotificationCenter.current().setBadgeCount(.zero)
+        
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
         

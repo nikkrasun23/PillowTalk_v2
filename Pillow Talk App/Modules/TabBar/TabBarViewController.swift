@@ -60,7 +60,7 @@ private extension TabBarViewController {
     func setupTabs() {
         tabs = [
             .init(viewModel: .init(
-                title: "Категорії питань",
+                title: NSLocalizedString("tabQuestions", comment: "")/*"Категорії питань"*/ ,
                 image: UIImage(named: "categoryIconBlue")!,
                 selectedImage: UIImage(named: "categoryIconRed")!,
                 tabType: .category,
@@ -69,7 +69,7 @@ private extension TabBarViewController {
                 }
             )),
             .init(viewModel: .init(
-                title: "Банка побачень",
+                title: NSLocalizedString("tabDateJar", comment: "")/*"Банка побачень"*/,
                 image: UIImage(named: "cupBlue")!,
                 selectedImage: UIImage(named: "cupRed")!,
                 tabType: .cup,
@@ -78,7 +78,7 @@ private extension TabBarViewController {
                 }
             )),
             .init(viewModel: .init(
-                title: "Профіль",
+                title: NSLocalizedString("tabProfile", comment: "")/*"Профіль"*/,
                 image: UIImage(named: "settingsBlue")!,
                 selectedImage: UIImage(named: "settingsRed")!,
                 tabType: .profile,

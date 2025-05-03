@@ -63,7 +63,7 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
         self.model = model
         
         textLabel.text = model.text
-        iconImageView.image = UIImage(named: model.iconName ?? "")
+        iconImageView.image = UIImage(named: model.iconName)
         
         setSelected(model.isSelected)
     }
