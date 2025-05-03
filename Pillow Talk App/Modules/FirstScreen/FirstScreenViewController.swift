@@ -40,13 +40,10 @@ class FirstScreenViewController: UIViewController {
     }
     
     func fetchData() {
-        guard var currentLanguage = Locale.current.language.languageCode?.identifier.uppercased() else { return }
+        guard let currentLanguage = Locale.current.language.languageCode?.identifier,
+              let dataLanguage = DataLanguage(rawValue: currentLanguage) else { return }
         
-        if currentLanguage == "UK" {
-            currentLanguage = "UA"
-        }
-        
-        firebaseService.getCategories(with: currentLanguage) { result in
+        firebaseService.getCategories(with: dataLanguage) { result in
             switch result {
             case .success(let categories):
                 StorageService.shared.categories = categories
@@ -55,7 +52,7 @@ class FirstScreenViewController: UIViewController {
             }
         }
         
-        firebaseService.getIdeas(with: currentLanguage) { result in
+        firebaseService.getIdeas(with: dataLanguage) { result in
             switch result {
             case .success(let ideas):
                 StorageService.shared.ideas = ideas
