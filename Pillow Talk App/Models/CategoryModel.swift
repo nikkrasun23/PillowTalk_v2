@@ -11,6 +11,7 @@ struct CategoryModel {
     let actions: [String]
     let questions: [String]
     let analyticsParam: String
+    let overlayTitle: String
 }
 
 extension CategoryModel {
@@ -30,6 +31,11 @@ extension CategoryModel {
             return nil
         }
         
+        guard let overlayTitle = document["overlay_title"] as? String else {
+            print("Failed to parse title")
+            return nil
+        }
+        
         let actionsArray = document["actions"] as? [String] ?? []
         let questionsArray = document["questions"] as? [String] ?? []
         
@@ -38,5 +44,6 @@ extension CategoryModel {
         self.actions = actionsArray
         self.questions = questionsArray
         self.analyticsParam = analyticsParam
+        self.overlayTitle = overlayTitle
     }
 }

@@ -41,6 +41,11 @@
 		9D38F3192D8A0E8A007B6790 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D38F3152D8A0E8A007B6790 /* UserDefaultWrapper.swift */; };
 		9D38F31B2D8A0E8F007B6790 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D38F31A2D8A0E8F007B6790 /* IAPManager.swift */; };
 		9D4A143B2D91DA9B0007C292 /* StoreKitConfig.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A143A2D91DA9B0007C292 /* StoreKitConfig.storekit */; };
+		9D4CE60E2E09AFAE00CE5897 /* CategoryOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4CE60D2E09AFAE00CE5897 /* CategoryOverlayViewController.swift */; };
+		9D4CE6102E09AFD800CE5897 /* CategoryOverlayAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4CE60F2E09AFD200CE5897 /* CategoryOverlayAssembler.swift */; };
+		9D4CE6152E09B00200CE5897 /* CategoryOverlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4CE6142E09AFF800CE5897 /* CategoryOverlayPresenter.swift */; };
+		9D4CE6162E09B14F00CE5897 /* CategoryOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4CE6112E09AFDF00CE5897 /* CategoryOverlayViewModel.swift */; };
+		9D4CE6192E09C45600CE5897 /* CategoryOverlayItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4CE6182E09C45600CE5897 /* CategoryOverlayItemView.swift */; };
 		9DA31AA62D7F327300A8CDCA /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA52D7F327300A8CDCA /* CategoriesViewController.swift */; };
 		9DA31AA82D7F32AB00A8CDCA /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA72D7F32A300A8CDCA /* CategoriesViewModel.swift */; };
 		9DA31AAA2D7F32D000A8CDCA /* CategoriesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA92D7F32C700A8CDCA /* CategoriesAssembler.swift */; };
@@ -79,6 +84,11 @@
 		9D38F3162D8A0E8A007B6790 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		9D38F31A2D8A0E8F007B6790 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
 		9D4A143A2D91DA9B0007C292 /* StoreKitConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreKitConfig.storekit; sourceTree = "<group>"; };
+		9D4CE60D2E09AFAE00CE5897 /* CategoryOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryOverlayViewController.swift; sourceTree = "<group>"; };
+		9D4CE60F2E09AFD200CE5897 /* CategoryOverlayAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryOverlayAssembler.swift; sourceTree = "<group>"; };
+		9D4CE6112E09AFDF00CE5897 /* CategoryOverlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryOverlayViewModel.swift; sourceTree = "<group>"; };
+		9D4CE6142E09AFF800CE5897 /* CategoryOverlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryOverlayPresenter.swift; sourceTree = "<group>"; };
+		9D4CE6182E09C45600CE5897 /* CategoryOverlayItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryOverlayItemView.swift; sourceTree = "<group>"; };
 		9DA31AA52D7F327300A8CDCA /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		9DA31AA72D7F32A300A8CDCA /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		9DA31AA92D7F32C700A8CDCA /* CategoriesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAssembler.swift; sourceTree = "<group>"; };
@@ -199,6 +209,7 @@
 		9D2E054E2D7A44A200C1F9E7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9D4CE60A2E09AF8400CE5897 /* CategoryOverlay */,
 				9D0E492C2D820CD2000D3F17 /* Profile */,
 				9DD69B142D80941300A715DF /* FirstScreen */,
 				9DD69B132D80940100A715DF /* Splash */,
@@ -227,6 +238,26 @@
 				9D38F3162D8A0E8A007B6790 /* UserDefaultsService.swift */,
 			);
 			path = UserDefaultsService;
+			sourceTree = "<group>";
+		};
+		9D4CE60A2E09AF8400CE5897 /* CategoryOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				9D4CE6172E09C42F00CE5897 /* Views */,
+				9D4CE6142E09AFF800CE5897 /* CategoryOverlayPresenter.swift */,
+				9D4CE6112E09AFDF00CE5897 /* CategoryOverlayViewModel.swift */,
+				9D4CE60F2E09AFD200CE5897 /* CategoryOverlayAssembler.swift */,
+				9D4CE60D2E09AFAE00CE5897 /* CategoryOverlayViewController.swift */,
+			);
+			path = CategoryOverlay;
+			sourceTree = "<group>";
+		};
+		9D4CE6172E09C42F00CE5897 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9D4CE6182E09C45600CE5897 /* CategoryOverlayItemView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		9DA31AB12D7F5F1D00A8CDCA /* Cells */ = {
@@ -384,6 +415,7 @@
 				9D38F3192D8A0E8A007B6790 /* UserDefaultWrapper.swift in Sources */,
 				194A88382D8A0C6000247D27 /* ProfileTableViewCell.swift in Sources */,
 				19E738D22D04944D00E30945 /* Extension UIColor.swift in Sources */,
+				9D4CE6192E09C45600CE5897 /* CategoryOverlayItemView.swift in Sources */,
 				9D0E492B2D82025D000D3F17 /* QuestionCollectionViewCell.swift in Sources */,
 				19E738CE2D04938B00E30945 /* FirstScreenViewController.swift in Sources */,
 				19E738D42D04950200E30945 /* FirstScreenView.swift in Sources */,
@@ -391,14 +423,18 @@
 				9DA31AB32D7F683600A8CDCA /* CategoryModel.swift in Sources */,
 				1948DAF52D1C747F0082F8DC /* SplashScreenViewController.swift in Sources */,
 				9DA31AB72D7F949800A8CDCA /* StorageService.swift in Sources */,
+				9D4CE60E2E09AFAE00CE5897 /* CategoryOverlayViewController.swift in Sources */,
 				9D2E054F2D7A44A200C1F9E7 /* TabBarViewController.swift in Sources */,
 				19E738C72D04937000E30945 /* SceneDelegate.swift in Sources */,
 				9DD69B122D808FC800A715DF /* CardViewModel.swift in Sources */,
+				9D4CE6152E09B00200CE5897 /* CategoryOverlayPresenter.swift in Sources */,
 				9DA31AA82D7F32AB00A8CDCA /* CategoriesViewModel.swift in Sources */,
 				9DA31AAA2D7F32D000A8CDCA /* CategoriesAssembler.swift in Sources */,
+				9D4CE6162E09B14F00CE5897 /* CategoryOverlayViewModel.swift in Sources */,
 				9DA31AB02D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift in Sources */,
 				1948DAF72D1C753B0082F8DC /* SplashScreenView.swift in Sources */,
 				9D2E05512D7A487D00C1F9E7 /* TabView.swift in Sources */,
+				9D4CE6102E09AFD800CE5897 /* CategoryOverlayAssembler.swift in Sources */,
 				9DCC3BD92DA976C700DDDD85 /* EasterEggService.swift in Sources */,
 				9DA31AA62D7F327300A8CDCA /* CategoriesViewController.swift in Sources */,
 				194A88362D8A097900247D27 /* ProfileTableViewController.swift in Sources */,
@@ -427,7 +463,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Pillow Talk App/Pillow Talk App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U6BKV755T9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pillow Talk App/Info.plist";
@@ -440,7 +476,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -460,7 +496,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Pillow Talk App/Pillow Talk App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U6BKV755T9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pillow Talk App/Info.plist";
@@ -473,7 +509,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

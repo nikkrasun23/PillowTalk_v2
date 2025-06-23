@@ -146,6 +146,64 @@
         }
       }
     },
+    "category-overlay-subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We will select the questions that are best suited for you."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Seleccionaremos las preguntas que mejor se adapten a usted.\n"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierzemy pytania, które będą dla Ciebie najbardziej odpowiednie.\n"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ми підберемо питання, які найкраще підійдуть саме вам."
+          }
+        }
+      }
+    },
+    "category-overlay-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What are you looking for now?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué estás buscando ahora?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czego teraz szukasz?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Що ви шукаєте зараз?"
+          }
+        }
+      }
+    },
     "menuManageLanguage" : {
       "extractionState" : "manual",
       "localizations" : {

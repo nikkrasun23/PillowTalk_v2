@@ -13,6 +13,7 @@ import FirebaseAnalytics
 protocol CategoriesViewModelProtocol {
     var state: Published<CategoriesViewModelState>.Publisher { get }
     
+    
     func viewDidLoad()
     func selectCategory(with id: Int)
     func loadNextPage()
@@ -33,24 +34,32 @@ final class CategoriesViewModel {
     
     private let payload: CategoriesPayload
     private var currentCards: [CardViewModel] = []
-    private var currentCategoryId: Int = .zero
+    private(set) var currentCategoryId: Int = .zero
     
     init(with payload: CategoriesPayload) {
         self.payload = payload
     }
     
     func viewDidLoad() {
+        if let categoryId = UserDefaultsService.selectedCategoryFromOverlay {
+            currentCategoryId = categoryId
+        }
+        
         stateInternal = .idle(payload.screenType)
         
         loadNextPage()
     }
     
     func selectCategory(with id: Int) {
-        currentCategoryId = id
-        currentCards.removeAll()
-        
-        loadNextPage()
-        logCategorySelection()
+        if currentCategoryId == id {
+            setupCategories()
+        } else {
+            currentCategoryId = id
+            currentCards.removeAll()
+            
+            loadNextPage()
+            logCategorySelection()
+        }
     }
     
     func loadNextPage() {
@@ -98,13 +107,15 @@ private extension CategoriesViewModel {
     }
     
     func mapCategories(_ categories: [CategoryModel]) -> [CategoryViewModel] {
-        categories.compactMap { model in
+        let categoryId = UserDefaultsService.selectedCategoryFromOverlay ?? .zero
+        
+        return categories.compactMap { model in
             let iconName = switch model.id {
             case 0: "shapeOneBlack"
             case 1: "shapeSecondBlack"
             case 2: "shapeThirdBlack"
             case 3: "shapeFourthBlack"
-            default: "shapeOneBlack"
+            default: "shapeDefaulBlack"
             }
             
             let selectedIconName = switch model.id {
@@ -112,7 +123,7 @@ private extension CategoriesViewModel {
             case 1: "shapeSecondRed"
             case 2: "shapeThirdRed"
             case 3: "shapeFourthRed"
-            default: "shapeOneRed"
+            default: "shapeDefaulRed"
             }
             
             return CategoryViewModel(
@@ -121,7 +132,7 @@ private extension CategoriesViewModel {
                 selectedIconName: selectedIconName,
                 text: model.title,
                 isSelected: model.id == currentCategoryId,
-                isSelectable: model.id == 0 ? true : UserDefaultsService.isSubscribed
+                isSelectable: model.id == categoryId ? true : UserDefaultsService.isSubscribed
             )
         }
     }

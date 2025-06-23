@@ -16,6 +16,7 @@ protocol CategoriesPresenterProtocol {
     func select(categoryId: Int)
     func loadNextPage()
     func incrementShownCardCount()
+    func selectCategoryFromOverlay()
 }
 
 final class CategoriesPresenter: CategoriesPresenterProtocol {
@@ -37,7 +38,7 @@ final class CategoriesPresenter: CategoriesPresenterProtocol {
     }
     
     func select(categoryId: Int) {
-        if categoryId == 0 || UserDefaultsService.isSubscribed {
+        if categoryId == UserDefaultsService.selectedCategoryFromOverlay ?? .zero || UserDefaultsService.isSubscribed {
             view?.resetQuestions()
             model.selectCategory(with: categoryId)
         } else {
@@ -59,6 +60,12 @@ final class CategoriesPresenter: CategoriesPresenterProtocol {
         
         view?.showOnboarding(UserDefaultsService.isOnboardingShown)
         UserDefaultsService.isOnboardingShown = true
+    }
+    
+    func selectCategoryFromOverlay() {
+        guard let categoryId = UserDefaultsService.selectedCategoryFromOverlay else { return }
+        
+        model.selectCategory(with: categoryId)
     }
 
     deinit {
