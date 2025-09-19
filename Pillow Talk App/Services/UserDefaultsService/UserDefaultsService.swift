@@ -14,6 +14,7 @@ final class UserDefaultsService: NSObject {
         case viewedCardsCount
         case viewedCardsDate
         case isOnboardingShown
+        case selectedCategoryFromOverlay
     }
 
     @UserDefaultValue(key: Keys.isSubscribed, defaultValue: false)
@@ -30,6 +31,9 @@ final class UserDefaultsService: NSObject {
     
     @UserDefaultValue(key: Keys.isOnboardingShown, defaultValue: false)
     public static var isOnboardingShown: Bool
+    
+    @UserDefaultValue(key: Keys.selectedCategoryFromOverlay, defaultValue: nil)
+    public static var selectedCategoryFromOverlay: Int?
     
     public static func resetViewedCardsIfNeeded() {
         guard let savedDate = viewedCardsDate else { return }
@@ -59,6 +63,9 @@ final class UserDefaultsService: NSObject {
     #if DEBUG
         $isSubscribed.clear()
         $isRated.clear()
+        $selectedCategoryFromOverlay.clear()
+        $viewedCardsCount.clear()
+        $isOnboardingShown.clear()
     #endif
     }
 }

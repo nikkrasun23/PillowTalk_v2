@@ -58,7 +58,7 @@ final class CategoriesViewController: UIViewController {
         label.textColor = UIColor(hex: "#B3B8C6")
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.text = NSLocalizedString("swipeOnboardingText", comment: "") //"Хочеш ще одне питання? \nПросто змахни картку!"
+        label.text = NSLocalizedString("swipeOnboardingText", comment: "")
         return label
     }()
     
@@ -83,6 +83,12 @@ final class CategoriesViewController: UIViewController {
 
         setupUI()
         presenter.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        showSelectCategoryOverlayIfNeeded()
     }
     
     func showCards(_ cards: [CardViewModel]) {
@@ -130,6 +136,16 @@ final class CategoriesViewController: UIViewController {
     
     func showOnboarding(_ isShown: Bool) {
         onboardingTitle.isHidden = isShown
+    }
+    
+    func showSelectCategoryOverlayIfNeeded() {
+        if UserDefaultsService.selectedCategoryFromOverlay == nil {
+            let vc = CategoryOverlayAssembler.configure { [weak self] in
+                self?.presenter.selectCategoryFromOverlay()
+            }
+            vc.modalPresentationStyle = .overFullScreen
+            present(vc, animated: true)
+        }
     }
 }
 
@@ -307,11 +323,12 @@ extension CategoriesViewController: UICollectionViewDelegate {
                     return
                 }
 
-                UserDefaultsService.incrementViewedCards()
+                
             }
             
             if indexPath.item > presenter.shownCardsCount {
                 presenter.incrementShownCardCount()
+                UserDefaultsService.incrementViewedCards()
             }
             
             let totalItems = questionsDataSource.snapshot().itemIdentifiers.count

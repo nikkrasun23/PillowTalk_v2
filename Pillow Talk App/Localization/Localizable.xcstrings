@@ -146,6 +146,64 @@
         }
       }
     },
+    "category-overlay-subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We'll suggest questions \nthat best suit you."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intenta elegir la opción que \nmás se adapta a ti"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spróbuj wybrać opcję, która \njest ci najbliższa"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ми підберемо питання, які найкраще підійдуть саме вам."
+          }
+        }
+      }
+    },
+    "category-overlay-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try choosing the option that feels right for you"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intenta elegir la opción que más se adapta a ti"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spróbuj wybrać opcję, która jest ci najbliższa"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спробуйте обрати варіант, який вам ближче"
+          }
+        }
+      }
+    },
     "menuManageLanguage" : {
       "extractionState" : "manual",
       "localizations" : {

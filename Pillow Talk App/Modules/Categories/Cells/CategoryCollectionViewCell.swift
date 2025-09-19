@@ -38,7 +38,7 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            setSelected(isSelected)
+            setSelected()
         }
     }
     
@@ -65,7 +65,7 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
         textLabel.text = model.text
         iconImageView.image = UIImage(named: model.iconName)
         
-        setSelected(model.isSelected)
+        setSelected()
     }
 }
 
@@ -90,10 +90,15 @@ private extension CategoryCollectionViewCell {
         contentView.backgroundColor = .white
     }
     
-    func setSelected(_ isSelected: Bool) {
-        guard model?.isSelectable ?? true else { return }
+    func setSelected() {
+        guard let model = model else { return }
         
-        iconImageView.image = isSelected ? UIImage(named: model?.selectedIconName ?? "") : UIImage(named: model?.iconName ?? "")
-        textLabel.textColor = isSelected ? UIColor(hex: "#DB5A3D") : .black
+        iconImageView.image = UIImage(named: model.iconName)
+        textLabel.textColor = .black
+        
+        if model.isSelectable {
+            iconImageView.image = model.isSelected ? UIImage(named: model.selectedIconName ?? "") : UIImage(named: model.iconName)
+            textLabel.textColor = model.isSelected ? UIColor(hex: "#DB5A3D") : .black
+        }
     }
 }
