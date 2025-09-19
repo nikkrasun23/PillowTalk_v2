@@ -10,6 +10,7 @@ import UIKit
 struct CategoryOverlayItemModel {
     let categoryId: Int
     let text: String
+    let analyticsParam: String
 }
 
 final class CategoryOverlayItemView: UIView {

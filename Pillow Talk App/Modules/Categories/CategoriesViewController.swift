@@ -144,7 +144,7 @@ final class CategoriesViewController: UIViewController {
                 self?.presenter.selectCategoryFromOverlay()
             }
             vc.modalPresentationStyle = .overFullScreen
-            present(vc, animated: false)
+            present(vc, animated: true)
         }
     }
 }
@@ -323,11 +323,12 @@ extension CategoriesViewController: UICollectionViewDelegate {
                     return
                 }
 
-                UserDefaultsService.incrementViewedCards()
+                
             }
             
             if indexPath.item > presenter.shownCardsCount {
                 presenter.incrementShownCardCount()
+                UserDefaultsService.incrementViewedCards()
             }
             
             let totalItems = questionsDataSource.snapshot().itemIdentifiers.count

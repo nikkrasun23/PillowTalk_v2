@@ -14,7 +14,7 @@ final class CategoryOverlayViewController: UIViewController {
     private let backgroundView: UIVisualEffectView = {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.alpha = 0.7
+        view.alpha = .zero
         return view
     }()
     
@@ -67,6 +67,20 @@ final class CategoryOverlayViewController: UIViewController {
         presenter.viewDidLoad()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        UIView.animate(withDuration: 0.2) {
+            self.backgroundView.alpha = 0.7
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.backgroundView.alpha = .zero
+    }
+
     // MARK: - Public
 
     func setContent(_ items: [CategoryOverlayItemModel]) {
@@ -76,7 +90,7 @@ final class CategoryOverlayViewController: UIViewController {
             view.selectionHandler = { [weak self] categoryId in
                 self?.presenter.select(categoryId: categoryId)
                 
-                self?.dismiss(animated: false)
+                self?.dismiss(animated: true)
             }
             
             contentStack.addArrangedSubview(view)

@@ -25,14 +25,3 @@ final class CategoryOverlayViewModel {
         stateInternal = .categories(StorageService.shared.categories)
     }
 }
-
-private extension CategoryOverlayViewModel {
-    func logCategorySelection() {
-//        guard let analyticsParam = StorageService.shared.categories.first(where: { $0.id == currentCategoryId })?.analyticsParam else { return }
-//        
-//        Analytics.logEvent("select_question_category", parameters: [
-//            "category_name": analyticsParam
-//        ])
-    }
-}
-

@@ -64,6 +64,8 @@ final class UserDefaultsService: NSObject {
         $isSubscribed.clear()
         $isRated.clear()
         $selectedCategoryFromOverlay.clear()
+        $viewedCardsCount.clear()
+        $isOnboardingShown.clear()
     #endif
     }
 }

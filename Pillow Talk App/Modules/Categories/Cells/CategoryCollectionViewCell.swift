@@ -91,12 +91,14 @@ private extension CategoryCollectionViewCell {
     }
     
     func setSelected() {
-        guard let model = model,
-              model.isSelectable else {
-            return
-        }
+        guard let model = model else { return }
         
-        iconImageView.image = model.isSelected ? UIImage(named: model.selectedIconName ?? "") : UIImage(named: model.iconName)
-        textLabel.textColor = model.isSelected ? UIColor(hex: "#DB5A3D") : .black
+        iconImageView.image = UIImage(named: model.iconName)
+        textLabel.textColor = .black
+        
+        if model.isSelectable {
+            iconImageView.image = model.isSelected ? UIImage(named: model.selectedIconName ?? "") : UIImage(named: model.iconName)
+            textLabel.textColor = model.isSelected ? UIColor(hex: "#DB5A3D") : .black
+        }
     }
 }

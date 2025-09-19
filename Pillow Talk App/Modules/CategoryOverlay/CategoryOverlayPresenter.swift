@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import UIKit
+import FirebaseAnalytics
 
 protocol CategoryOverlayPresenterProtocol {
     func viewDidLoad()
@@ -19,6 +20,7 @@ final class CategoryOverlayPresenter: CategoryOverlayPresenterProtocol {
     private let model: CategoryOverlayViewModel
     private var cancellables = Set<AnyCancellable>()
     private var selectedCategoryCompletion: (() -> Void)?
+    private var categories: [CategoryOverlayItemModel] = []
 
     init(view: CategoryOverlayViewController, model: CategoryOverlayViewModel, selectedCategoryCompletion: (() -> Void)? = nil) {
         self.model = model
@@ -36,6 +38,12 @@ final class CategoryOverlayPresenter: CategoryOverlayPresenterProtocol {
         UserDefaultsService.selectedCategoryFromOverlay = categoryId
         
         selectedCategoryCompletion?()
+        
+        guard let analyticsParam = categories.first(where: {$0.categoryId == categoryId})?.analyticsParam else { return }
+        
+        Analytics.logEvent("select_question_category", parameters: [
+            "category": analyticsParam
+        ])
     }
 
     deinit {
@@ -55,7 +63,8 @@ private extension CategoryOverlayPresenter {
                     let models = categories.compactMap { category in
                         return CategoryOverlayItemModel(
                             categoryId: category.id,
-                            text: category.overlayTitle
+                            text: category.overlayTitle,
+                            analyticsParam: category.analyticsParam
                         )
                     }
                     

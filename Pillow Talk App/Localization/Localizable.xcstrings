@@ -152,19 +152,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "We will select the questions that are best suited for you."
+            "value" : "We'll suggest questions \nthat best suit you."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Seleccionaremos las preguntas que mejor se adapten a usted.\n"
+            "state" : "translated",
+            "value" : "Intenta elegir la opción que \nmás se adapta a ti"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wybierzemy pytania, które będą dla Ciebie najbardziej odpowiednie.\n"
+            "value" : "Spróbuj wybrać opcję, która \njest ci najbliższa"
           }
         },
         "uk" : {
@@ -181,25 +181,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "What are you looking for now?"
+            "value" : "Try choosing the option that feels right for you"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¿Qué estás buscando ahora?"
+            "value" : "Intenta elegir la opción que más se adapta a ti"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Czego teraz szukasz?"
+            "value" : "Spróbuj wybrać opcję, która jest ci najbliższa"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Що ви шукаєте зараз?"
+            "state" : "translated",
+            "value" : "Спробуйте обрати варіант, який вам ближче"
           }
         }
       }
