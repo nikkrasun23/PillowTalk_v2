@@ -15,6 +15,9 @@ final class UserDefaultsService: NSObject {
         case viewedCardsDate
         case isOnboardingShown
         case selectedCategoryFromOverlay
+        case notificationMessages
+        case notificationMessagesLastUpdate
+        case localNotificationsEnabled
     }
 
     @UserDefaultValue(key: Keys.isSubscribed, defaultValue: false)
@@ -34,6 +37,15 @@ final class UserDefaultsService: NSObject {
     
     @UserDefaultValue(key: Keys.selectedCategoryFromOverlay, defaultValue: nil)
     public static var selectedCategoryFromOverlay: Int?
+    
+    @UserDefaultValue(key: Keys.notificationMessages, defaultValue: [])
+    public static var notificationMessages: [String]
+    
+    @UserDefaultValue(key: Keys.notificationMessagesLastUpdate, defaultValue: nil)
+    public static var notificationMessagesLastUpdate: Date?
+    
+    @UserDefaultValue(key: Keys.localNotificationsEnabled, defaultValue: true)
+    public static var localNotificationsEnabled: Bool
     
     public static func resetViewedCardsIfNeeded() {
         guard let savedDate = viewedCardsDate else { return }
@@ -59,6 +71,24 @@ final class UserDefaultsService: NSObject {
         return viewedCardsCount >= 5
     }
     
+    // MARK: - Notification Messages Cache
+    
+    public static var hasNotificationMessages: Bool {
+        return !notificationMessages.isEmpty
+    }
+    
+    public static func shouldRefreshNotificationMessages() -> Bool {
+        guard let lastUpdate = notificationMessagesLastUpdate else {
+            return true
+        }
+        return Date().timeIntervalSince(lastUpdate) >= 24 * 3600
+    }
+    
+    public static func saveNotificationMessages(_ messages: [String]) {
+        notificationMessages = messages
+        notificationMessagesLastUpdate = Date()
+    }
+    
     public static func debugClear() {
     #if DEBUG
         $isSubscribed.clear()
@@ -66,6 +96,8 @@ final class UserDefaultsService: NSObject {
         $selectedCategoryFromOverlay.clear()
         $viewedCardsCount.clear()
         $isOnboardingShown.clear()
+        $notificationMessages.clear()
+        $notificationMessagesLastUpdate.clear()
     #endif
     }
 }
