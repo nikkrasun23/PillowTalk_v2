@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class FirstScreenViewController: UIViewController {
     
@@ -60,5 +61,9 @@ class FirstScreenViewController: UIViewController {
                 print("Load ideas with error: \(error)")
             }
         }
+        
+        // Настройка локальных пушей: грузим с Firebase при первом запуске или используем кеш
+        NotificationService.shared.setupNotificationsOnFirstLaunch(with: dataLanguage) { _ in }
     }
 }
+

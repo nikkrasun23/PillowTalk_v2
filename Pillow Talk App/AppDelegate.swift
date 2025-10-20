@@ -52,6 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Фиксация начала сессии
         sessionStartTime = Date().timeIntervalSince1970
+        
+        // Обновляем сообщения нотификаций если нужно
+        if let currentLanguage = Locale.current.language.languageCode?.identifier,
+           let dataLanguage = DataLanguage(rawValue: currentLanguage) {
+            NotificationService.shared.refreshMessagesIfNeeded(with: dataLanguage)
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -74,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Логирование страны пользователя
     func logUserCountry() {
-        let country = Locale.current.regionCode ?? "Unknown"
+        let country = Locale.current.region?.identifier ?? "Unknown"
         Analytics.logEvent("country_logged", parameters: [
             "country": country
         ])
@@ -97,6 +103,23 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // Юзер открыл апку по пушу - обновляем кеш сообщений
+        if let currentLanguage = Locale.current.language.languageCode?.identifier,
+           let dataLanguage = DataLanguage(rawValue: currentLanguage) {
+            NotificationService.shared.refreshMessagesIfNeeded(with: dataLanguage)
+        }
+        
+        let userInfo = response.notification.request.content.userInfo
+        let reminderType = userInfo["reminder_type"] as? String ?? "unspecified"
+        let appName = userInfo["app_name"] as? String ?? "unknown"
+
+        // 🔹 Логування події у Firebase Analytics
+        Analytics.logEvent("open_app_from_reminder", parameters: [
+            "app_name": appName,
+            "reminder_type": reminderType,
+            "timestamp": Date().timeIntervalSince1970
+        ])
+        
         completionHandler()
     }
     
