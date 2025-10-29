@@ -34,14 +34,24 @@ class FirstScreenViewController: UIViewController {
     }
 
     @objc private func startGameButtonTapped() {
-//        let tabBar = TabBarViewController()
-//        tabBar.modalPresentationStyle = .fullScreen
-//        tabBar.modalTransitionStyle = .crossDissolve
-//        present(tabBar, animated: true, completion: nil)
-        let onboardingVC = OnboardingAssembler.configure()
-        onboardingVC.modalPresentationStyle = .fullScreen
-        onboardingVC.modalTransitionStyle = .crossDissolve
-        present(onboardingVC, animated: true)
+        if UserDefaultsService.isOnboardingCompleted {
+            presentTabBar()
+        } else {
+            let onboardingVC = OnboardingAssembler.configure { [weak self] in
+                guard let self else { return }
+                self.presentTabBar()
+            }
+            onboardingVC.modalPresentationStyle = .fullScreen
+            onboardingVC.modalTransitionStyle = .crossDissolve
+            present(onboardingVC, animated: true)
+        }
+    }
+    
+    private func presentTabBar() {
+        let tabBar = TabBarViewController()
+        tabBar.modalPresentationStyle = .fullScreen
+        tabBar.modalTransitionStyle = .crossDissolve
+        present(tabBar, animated: true, completion: nil)
     }
     
     func fetchData() {

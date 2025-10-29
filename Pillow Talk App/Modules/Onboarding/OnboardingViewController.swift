@@ -10,19 +10,11 @@ import UIKit
 final class OnboardingViewController: UIViewController {
     var presenter: OnboardingPresenterProtocol!
     
-    // MARK: - UI Elements
+    private var pageViewController: UIPageViewController!
+    private var pages: [OnboardingPageModel] = []
+    private var pageControllers: [OnboardingPageViewController] = []
     
-    private lazy var collectionView: UICollectionView = {
-        let layout = createLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .clear
-        collectionView.isPagingEnabled = true
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.register(OnboardingCollectionViewCell.self, forCellWithReuseIdentifier: OnboardingCollectionViewCell.reuseIdentifier)
-        return collectionView
-    }()
+    // MARK: - UI Elements
     
     private let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -44,23 +36,11 @@ final class OnboardingViewController: UIViewController {
     private let nextButtonLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Commissioner-SemiBold", size: 18)
+        label.font = UIFont(name: "RussoOne-Regular", size: 20)
         label.textColor = .white
         label.textAlignment = .center
         return label
     }()
-    
-    // MARK: - Properties
-    
-    private typealias DataSource = UICollectionViewDiffableDataSource<OnboardingSection, OnboardingPageModel>
-    private typealias Snapshot = NSDiffableDataSourceSnapshot<OnboardingSection, OnboardingPageModel>
-    private lazy var dataSource: DataSource = configureDataSource()
-    
-    private var pages: [OnboardingPageModel] = []
-    
-    private enum OnboardingSection {
-        case main
-    }
     
     // MARK: - Lifecycle
     
@@ -75,22 +55,41 @@ final class OnboardingViewController: UIViewController {
     func showPages(_ pages: [OnboardingPageModel]) {
         self.pages = pages
         pageControl.numberOfPages = pages.count
-        updateDataSource(pages)
+        
+        // Создаем контроллеры для каждой страницы
+        pageControllers = pages.map { OnboardingPageViewController(pageModel: $0) }
+        
+        // Показываем первую страницу
+        if let firstPage = pageControllers.first {
+            pageViewController.setViewControllers([firstPage], direction: .forward, animated: false)
+        }
+        
         updateButtonTitle(for: 0)
     }
     
     func scrollToPage(_ index: Int, animated: Bool) {
-        guard index < pages.count else { return }
+        guard index < pageControllers.count else { return }
         
-        let indexPath = IndexPath(item: index, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: animated)
+        let direction: UIPageViewController.NavigationDirection = index > currentPageIndex ? .forward : .reverse
+        pageViewController.setViewControllers([pageControllers[index]], direction: direction, animated: animated)
+        
         pageControl.currentPage = index
         updateButtonTitle(for: index)
     }
     
     func finishOnboarding() {
-        // Закрываем онбординг или переходим к основному экрану
+        print("OnboardingViewController: finishOnboarding called")
         dismiss(animated: true)
+    }
+  
+    // MARK: - Private Properties
+    
+    private var currentPageIndex: Int {
+        guard let currentViewController = pageViewController.viewControllers?.first,
+              let index = pageControllers.firstIndex(of: currentViewController as! OnboardingPageViewController) else {
+            return 0
+        }
+        return index
     }
 }
 
@@ -100,10 +99,17 @@ private extension OnboardingViewController {
     func setupUI() {
         view.backgroundColor = UIColor(hex: "#F7EEE4")
         
-        view.addSubview(collectionView)
+        // Создаем UIPageViewController
+        pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        pageViewController.delegate = self
+        pageViewController.dataSource = self
+        
+        addChild(pageViewController)
+        view.addSubview(pageViewController.view)
+        pageViewController.didMove(toParent: self)
+        
         view.addSubview(pageControl)
         view.addSubview(nextButton)
-        
         nextButton.addSubview(nextButtonLabel)
         
         setupConstraints()
@@ -111,12 +117,14 @@ private extension OnboardingViewController {
     }
     
     func setupConstraints() {
+        pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            // Collection View
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: pageControl.topAnchor, constant: -20),
+            // Page View Controller
+            pageViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            pageViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            pageViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            pageViewController.view.bottomAnchor.constraint(equalTo: pageControl.topAnchor, constant: -20),
             
             // Page Control
             pageControl.bottomAnchor.constraint(equalTo: nextButton.topAnchor, constant: -30),
@@ -127,7 +135,7 @@ private extension OnboardingViewController {
             nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
             nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            nextButton.heightAnchor.constraint(equalToConstant: 50),
+            nextButton.heightAnchor.constraint(equalToConstant: 60),
             
             // Next Button Label
             nextButtonLabel.centerXAnchor.constraint(equalTo: nextButton.centerXAnchor),
@@ -145,67 +153,52 @@ private extension OnboardingViewController {
         presenter.nextButtonTapped()
     }
     
-    func createLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0)
-        )
-        
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0)
-        )
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
-        
-        return UICollectionViewCompositionalLayout(section: section)
-    }
-    
-    private func configureDataSource() -> DataSource {
-        DataSource(collectionView: collectionView) { collectionView, indexPath, page in
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: OnboardingCollectionViewCell.reuseIdentifier,
-                for: indexPath
-            ) as? OnboardingCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-            
-            cell.configure(with: page)
-            return cell
-        }
-    }
-    
     func updateButtonTitle(for pageIndex: Int) {
         guard pageIndex < pages.count else { return }
         nextButtonLabel.text = pages[pageIndex].buttonTitle
     }
-    
-    func updateDataSource(_ pages: [OnboardingPageModel]) {
-        var snapshot = Snapshot()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(pages, toSection: .main)
+}
+
+// MARK: - UIPageViewControllerDataSource
+
+extension OnboardingViewController: UIPageViewControllerDataSource {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let pageVC = viewController as? OnboardingPageViewController,
+              let index = pageControllers.firstIndex(of: pageVC) else {
+            return nil
+        }
         
-        dataSource.apply(snapshot, animatingDifferences: false)
+        let previousIndex = index - 1
+        guard previousIndex >= 0 else { return nil }
+        
+        return pageControllers[previousIndex]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let pageVC = viewController as? OnboardingPageViewController,
+              let index = pageControllers.firstIndex(of: pageVC) else {
+            return nil
+        }
+        
+        let nextIndex = index + 1
+        guard nextIndex < pageControllers.count else { return nil }
+        
+        return pageControllers[nextIndex]
     }
 }
 
-// MARK: - UICollectionViewDelegate
+// MARK: - UIPageViewControllerDelegate
 
-extension OnboardingViewController: UICollectionViewDelegate {
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let pageWidth = scrollView.frame.width
-        let currentPage = Int((scrollView.contentOffset.x + pageWidth / 2) / pageWidth)
+extension OnboardingViewController: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard completed else { return }
         
-        if currentPage != pageControl.currentPage {
-            pageControl.currentPage = currentPage
-            updateButtonTitle(for: currentPage)
-            presenter.pageChanged(to: currentPage)
-        }
+        let currentIndex = self.currentPageIndex
+        pageControl.currentPage = currentIndex
+        updateButtonTitle(for: currentIndex)
+        
+        // Синхронизируем с моделью при ручном листании
+        presenter.pageChanged(to: currentIndex)
     }
 }
 

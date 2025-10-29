@@ -11,7 +11,8 @@ final class OnboardingAssembler {
     static func configure(completion: (() -> Void)? = nil) -> OnboardingViewController {
         let view = OnboardingViewController()
         let model = OnboardingViewModel()
-        let presenter = OnboardingPresenter(view: view, model: model)
+        let presenter = OnboardingPresenter(view: view, model: model, completion: completion)
+        
         view.presenter = presenter
         return view
     }

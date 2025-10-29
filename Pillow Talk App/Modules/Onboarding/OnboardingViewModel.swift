@@ -14,6 +14,7 @@ protocol OnboardingViewModelProtocol {
     func viewDidLoad()
     func nextPage()
     func skipOnboarding()
+    func updateCurrentPage(to index: Int)
 }
 
 enum OnboardingViewModelState {
@@ -36,16 +37,23 @@ final class OnboardingViewModel: OnboardingViewModelProtocol {
     func viewDidLoad() {
         pages = OnboardingPageModel.getPages()
         stateInternal = .pages(pages)
-        stateInternal = .currentPage(currentPageIndex)
+        
+        // Небольшая задержка для корректной обработки состояний
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.stateInternal = .currentPage(self.currentPageIndex)
+        }
     }
     
     func nextPage() {
         let nextIndex = currentPageIndex + 1
+        print("OnboardingViewModel: nextPage - current: \(currentPageIndex), next: \(nextIndex), total: \(pages.count)")
         
         if nextIndex < pages.count {
             currentPageIndex = nextIndex
+            print("OnboardingViewModel: Moving to page \(currentPageIndex)")
             stateInternal = .currentPage(currentPageIndex)
         } else {
+            print("OnboardingViewModel: Reached end, finishing onboarding")
             finishOnboarding()
         }
     }
@@ -53,11 +61,18 @@ final class OnboardingViewModel: OnboardingViewModelProtocol {
     func skipOnboarding() {
         finishOnboarding()
     }
+    
+    func updateCurrentPage(to index: Int) {
+        guard index >= 0 && index < pages.count else { return }
+        currentPageIndex = index
+    }
 }
 
 private extension OnboardingViewModel {
     func finishOnboarding() {
+        print("OnboardingViewModel: finishOnboarding called")
         UserDefaultsService.isOnboardingCompleted = true
+        print("OnboardingViewModel: Setting state to .finished")
         stateInternal = .finished
     }
 }

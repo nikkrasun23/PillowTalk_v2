@@ -18,11 +18,13 @@ protocol OnboardingPresenterProtocol {
 final class OnboardingPresenter: OnboardingPresenterProtocol {
     private weak var view: OnboardingViewController?
     private let model: OnboardingViewModel
+    private let completion: (()->Void)?
     private var cancellables = Set<AnyCancellable>()
     
-    init(view: OnboardingViewController, model: OnboardingViewModel) {
+    init(view: OnboardingViewController, model: OnboardingViewModel, completion: (()->Void)?) {
         self.view = view
         self.model = model
+        self.completion = completion
         
         subscribe()
     }
@@ -40,7 +42,8 @@ final class OnboardingPresenter: OnboardingPresenterProtocol {
     }
     
     func pageChanged(to index: Int) {
-        // Можно добавить аналитику или дополнительную логику при изменении страницы
+        // Синхронизируем индекс в модели при ручном скролле
+        model.updateCurrentPage(to: index)
     }
     
     deinit {
@@ -65,7 +68,10 @@ private extension OnboardingPresenter {
                 case .currentPage(let index):
                     view?.scrollToPage(index, animated: true)
                 case .finished:
+                    print("OnboardingPresenter: Onboarding finished")
                     view?.finishOnboarding()
+                    print("OnboardingPresenter: Calling completion")
+                    completion?()
                 }
             }
             .store(in: &cancellables)
