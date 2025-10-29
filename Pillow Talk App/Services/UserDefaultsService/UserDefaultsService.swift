@@ -14,6 +14,7 @@ final class UserDefaultsService: NSObject {
         case viewedCardsCount
         case viewedCardsDate
         case isOnboardingShown
+        case isOnboardingCompleted
         case selectedCategoryFromOverlay
         case notificationMessages
         case notificationMessagesLastUpdate
@@ -34,6 +35,9 @@ final class UserDefaultsService: NSObject {
     
     @UserDefaultValue(key: Keys.isOnboardingShown, defaultValue: false)
     public static var isOnboardingShown: Bool
+    
+    @UserDefaultValue(key: Keys.isOnboardingCompleted, defaultValue: false)
+    public static var isOnboardingCompleted: Bool
     
     @UserDefaultValue(key: Keys.selectedCategoryFromOverlay, defaultValue: nil)
     public static var selectedCategoryFromOverlay: Int?
@@ -96,6 +100,7 @@ final class UserDefaultsService: NSObject {
         $selectedCategoryFromOverlay.clear()
         $viewedCardsCount.clear()
         $isOnboardingShown.clear()
+        $isOnboardingCompleted.clear()
         $notificationMessages.clear()
         $notificationMessagesLastUpdate.clear()
     #endif

@@ -110,4 +110,3 @@ final class NotificationService {
         scheduleNotifications(with: messages, language: language)
     }
 }
-

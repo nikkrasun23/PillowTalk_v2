@@ -24,8 +24,6 @@
 		19E738D22D04944D00E30945 /* Extension UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738D12D04944D00E30945 /* Extension UIColor.swift */; };
 		19E738D42D04950200E30945 /* FirstScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E738D32D04950200E30945 /* FirstScreenView.swift */; };
 		19E738D82D04DDFE00E30945 /* RussoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19E738D72D04DDFE00E30945 /* RussoOne-Regular.ttf */; };
-		1AADF4FA7A2F4BAAA4FD0794 /* ProfileSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AADF4FA7A2F4BAAA4FD0795 /* ProfileSwitchTableViewCell.swift */; };
-		2364166EA9BA40778868032A /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2364166EA9BA40778868032B /* NotificationService.swift */; };
 		9D0ADDEA2D831B5D0030FDBA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9D0ADDE92D831B5D0030FDBA /* FirebaseAnalytics */; };
 		9D0ADDEC2D831B5D0030FDBA /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9D0ADDEB2D831B5D0030FDBA /* FirebaseCore */; };
 		9D0ADDEE2D831B5D0030FDBA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9D0ADDED2D831B5D0030FDBA /* FirebaseCrashlytics */; };
@@ -49,6 +47,13 @@
 		9D4CE6162E09B14F00CE5897 /* CategoryOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4CE6112E09AFDF00CE5897 /* CategoryOverlayViewModel.swift */; };
 		9D4CE6192E09C45600CE5897 /* CategoryOverlayItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4CE6182E09C45600CE5897 /* CategoryOverlayItemView.swift */; };
 		9D7694B42E7F099B009EC9B4 /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7694B32E7F099B009EC9B4 /* NotificationScheduler.swift */; };
+		9D81AAD92EB139B700B992F8 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D81AAD42EB139B700B992F8 /* OnboardingPresenter.swift */; };
+		9D81AADA2EB139B700B992F8 /* OnboardingAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D81AAD22EB139B700B992F8 /* OnboardingAssembler.swift */; };
+		9D81AADB2EB139B700B992F8 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D81AAD62EB139B700B992F8 /* OnboardingViewModel.swift */; };
+		9D81AADC2EB139B700B992F8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D81AAD52EB139B700B992F8 /* OnboardingViewController.swift */; };
+		9D81AADE2EB13A2F00B992F8 /* OnboardingPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D81AADD2EB13A2F00B992F8 /* OnboardingPageModel.swift */; };
+		9D81AAE02EB13BA300B992F8 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D81AADF2EB13BA300B992F8 /* NotificationService.swift */; };
+		9D81AAE22EB148DA00B992F8 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D81AAE12EB148DA00B992F8 /* OnboardingPageViewController.swift */; };
 		9DA31AA62D7F327300A8CDCA /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA52D7F327300A8CDCA /* CategoriesViewController.swift */; };
 		9DA31AA82D7F32AB00A8CDCA /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA72D7F32A300A8CDCA /* CategoriesViewModel.swift */; };
 		9DA31AAA2D7F32D000A8CDCA /* CategoriesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AA92D7F32C700A8CDCA /* CategoriesAssembler.swift */; };
@@ -80,8 +85,6 @@
 		19E738D12D04944D00E30945 /* Extension UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension UIColor.swift"; sourceTree = "<group>"; };
 		19E738D32D04950200E30945 /* FirstScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
 		19E738D72D04DDFE00E30945 /* RussoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RussoOne-Regular.ttf"; sourceTree = "<group>"; };
-		1AADF4FA7A2F4BAAA4FD0795 /* ProfileSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSwitchTableViewCell.swift; sourceTree = "<group>"; };
-		2364166EA9BA40778868032B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		9D0E492A2D82025D000D3F17 /* QuestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D2E054C2D7A44A200C1F9E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		9D2E05502D7A487D00C1F9E7 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
@@ -95,6 +98,13 @@
 		9D4CE6142E09AFF800CE5897 /* CategoryOverlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryOverlayPresenter.swift; sourceTree = "<group>"; };
 		9D4CE6182E09C45600CE5897 /* CategoryOverlayItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryOverlayItemView.swift; sourceTree = "<group>"; };
 		9D7694B32E7F099B009EC9B4 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
+		9D81AAD22EB139B700B992F8 /* OnboardingAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAssembler.swift; sourceTree = "<group>"; };
+		9D81AAD42EB139B700B992F8 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
+		9D81AAD52EB139B700B992F8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		9D81AAD62EB139B700B992F8 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		9D81AADD2EB13A2F00B992F8 /* OnboardingPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageModel.swift; sourceTree = "<group>"; };
+		9D81AADF2EB13BA300B992F8 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		9D81AAE12EB148DA00B992F8 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		9DA31AA52D7F327300A8CDCA /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		9DA31AA72D7F32A300A8CDCA /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		9DA31AA92D7F32C700A8CDCA /* CategoriesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAssembler.swift; sourceTree = "<group>"; };
@@ -188,6 +198,7 @@
 		19E738D02D04941E00E30945 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9D81AADD2EB13A2F00B992F8 /* OnboardingPageModel.swift */,
 				9DD69B112D808FBB00A715DF /* CardViewModel.swift */,
 				9DA31AB22D7F682F00A8CDCA /* CategoryModel.swift */,
 			);
@@ -199,7 +210,6 @@
 			children = (
 				194A88352D8A097900247D27 /* ProfileTableViewController.swift */,
 				194A88372D8A0C6000247D27 /* ProfileTableViewCell.swift */,
-				1AADF4FA7A2F4BAAA4FD0795 /* ProfileSwitchTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -216,6 +226,7 @@
 		9D2E054E2D7A44A200C1F9E7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9D81AAD72EB139B700B992F8 /* Onboarding */,
 				9D4CE60A2E09AF8400CE5897 /* CategoryOverlay */,
 				9D0E492C2D820CD2000D3F17 /* Profile */,
 				9DD69B142D80941300A715DF /* FirstScreen */,
@@ -267,6 +278,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		9D81AAD72EB139B700B992F8 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				9D81AAE12EB148DA00B992F8 /* OnboardingPageViewController.swift */,
+				9D81AAD22EB139B700B992F8 /* OnboardingAssembler.swift */,
+				9D81AAD42EB139B700B992F8 /* OnboardingPresenter.swift */,
+				9D81AAD52EB139B700B992F8 /* OnboardingViewController.swift */,
+				9D81AAD62EB139B700B992F8 /* OnboardingViewModel.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		9DA31AB12D7F5F1D00A8CDCA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,10 +302,10 @@
 		9DD096362D78EDBE000F02FC /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9D81AADF2EB13BA300B992F8 /* NotificationService.swift */,
 				9DCC3BD82DA976C700DDDD85 /* EasterEggService.swift */,
 				9DA31AB62D7F948F00A8CDCA /* StorageService.swift */,
 				197624292D20C3AF00CAC3D7 /* FirebaseServise.swift */,
-				2364166EA9BA40778868032B /* NotificationService.swift */,
 				9D38F3172D8A0E8A007B6790 /* UserDefaultsService */,
 				9D38F31A2D8A0E8F007B6790 /* IAPManager.swift */,
 			);
@@ -423,10 +446,14 @@
 				9D38F3182D8A0E8A007B6790 /* UserDefaultsService.swift in Sources */,
 				9D38F3192D8A0E8A007B6790 /* UserDefaultWrapper.swift in Sources */,
 				9D7694B42E7F099B009EC9B4 /* NotificationScheduler.swift in Sources */,
+				9D81AAD92EB139B700B992F8 /* OnboardingPresenter.swift in Sources */,
+				9D81AADA2EB139B700B992F8 /* OnboardingAssembler.swift in Sources */,
+				9D81AADB2EB139B700B992F8 /* OnboardingViewModel.swift in Sources */,
+				9D81AADC2EB139B700B992F8 /* OnboardingViewController.swift in Sources */,
 				194A88382D8A0C6000247D27 /* ProfileTableViewCell.swift in Sources */,
-				1AADF4FA7A2F4BAAA4FD0794 /* ProfileSwitchTableViewCell.swift in Sources */,
 				19E738D22D04944D00E30945 /* Extension UIColor.swift in Sources */,
 				9D4CE6192E09C45600CE5897 /* CategoryOverlayItemView.swift in Sources */,
+				9D81AAE22EB148DA00B992F8 /* OnboardingPageViewController.swift in Sources */,
 				9D0E492B2D82025D000D3F17 /* QuestionCollectionViewCell.swift in Sources */,
 				19E738CE2D04938B00E30945 /* FirstScreenViewController.swift in Sources */,
 				19E738D42D04950200E30945 /* FirstScreenView.swift in Sources */,
@@ -436,9 +463,11 @@
 				9DA31AB72D7F949800A8CDCA /* StorageService.swift in Sources */,
 				9D4CE60E2E09AFAE00CE5897 /* CategoryOverlayViewController.swift in Sources */,
 				9D2E054F2D7A44A200C1F9E7 /* TabBarViewController.swift in Sources */,
+				9D81AADE2EB13A2F00B992F8 /* OnboardingPageModel.swift in Sources */,
 				19E738C72D04937000E30945 /* SceneDelegate.swift in Sources */,
 				9DD69B122D808FC800A715DF /* CardViewModel.swift in Sources */,
 				9D4CE6152E09B00200CE5897 /* CategoryOverlayPresenter.swift in Sources */,
+				9D81AAE02EB13BA300B992F8 /* NotificationService.swift in Sources */,
 				9DA31AA82D7F32AB00A8CDCA /* CategoriesViewModel.swift in Sources */,
 				9DA31AAA2D7F32D000A8CDCA /* CategoriesAssembler.swift in Sources */,
 				9D4CE6162E09B14F00CE5897 /* CategoryOverlayViewModel.swift in Sources */,
@@ -450,7 +479,6 @@
 				9DA31AA62D7F327300A8CDCA /* CategoriesViewController.swift in Sources */,
 				194A88362D8A097900247D27 /* ProfileTableViewController.swift in Sources */,
 				1976242A2D20C3AF00CAC3D7 /* FirebaseServise.swift in Sources */,
-				2364166EA9BA40778868032A /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +502,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Pillow Talk App/Pillow Talk App.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U6BKV755T9;
@@ -489,10 +516,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.5;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -509,7 +535,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Pillow Talk App/Pillow Talk App.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U6BKV755T9;
@@ -524,10 +549,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.5;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
