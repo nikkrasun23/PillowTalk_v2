@@ -20,6 +20,11 @@ struct OnboardingPageModel: Hashable {
 
 extension OnboardingPageModel {
     static func getPages() -> [OnboardingPageModel] {
+        guard let currentLanguage = Locale.current.language.languageCode?.identifier,
+              let dataLanguage = DataLanguage(rawValue: currentLanguage) else { return [] }
+        
+        let image3 = "onboarding_3_\(dataLanguage.languageCode.lowercased())"
+        
         return [
             OnboardingPageModel(
                 id: 0,
@@ -49,7 +54,7 @@ extension OnboardingPageModel {
                 id: 3,
                 title: NSLocalizedString("onboarding_start_title", comment: ""),
                 description: NSLocalizedString("onboarding_start_description", comment: ""),
-                imageName: "onboarding_3",
+                imageName: image3,
                 buttonTitle: NSLocalizedString("onboarding_button_start", comment: ""),
                 isLastPage: true
             )

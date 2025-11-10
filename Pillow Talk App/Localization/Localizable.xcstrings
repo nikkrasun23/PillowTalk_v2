@@ -264,7 +264,6 @@
     },
     "menuNotifications" : {
       "comment" : "Notifications",
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

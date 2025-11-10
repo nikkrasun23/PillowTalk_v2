@@ -22,7 +22,10 @@ class SplashScreenViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F7EEE4")
         // Добавляем задержку и переход на следующий экран
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        
+        fetchData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.navigateToFirstScreen()
         }
     }

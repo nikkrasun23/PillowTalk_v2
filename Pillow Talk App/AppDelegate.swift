@@ -36,8 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Purchases.configure(withAPIKey: "appl_czbNyLwVCHFvXDwaoXvjCiKgQBQ")
         
         UserDefaultsService.isRated = false
+        UserDefaultsService.selectedCategoryFromOverlay = 0
         
-//        UserDefaultsService.debugClear()
+        UserDefaultsService.debugClear()
         
         UNUserNotificationCenter.current().setBadgeCount(.zero)
         
