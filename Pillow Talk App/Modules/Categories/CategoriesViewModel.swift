@@ -115,6 +115,7 @@ private extension CategoriesViewModel {
             case 1: "shapeSecondBlack"
             case 2: "shapeThirdBlack"
             case 3: "shapeFourthBlack"
+            case 4: "shapeFivthBlack"
             default: "shapeDefaulBlack"
             }
             
@@ -123,6 +124,7 @@ private extension CategoriesViewModel {
             case 1: "shapeSecondRed"
             case 2: "shapeThirdRed"
             case 3: "shapeFourthRed"
+            case 4: "shapeFivthRed"
             default: "shapeDefaulRed"
             }
             

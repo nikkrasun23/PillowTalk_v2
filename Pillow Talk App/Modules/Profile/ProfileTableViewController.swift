@@ -9,6 +9,11 @@ import UIKit
 import RevenueCatUI
 import RevenueCat
 
+enum SettingType {
+    case toggle
+    case action
+}
+
 class ProfileTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private let rightTopImageView: UIImageView = {
@@ -39,6 +44,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileTableViewCell.identifier)
+        tableView.register(ProfileSwitchTableViewCell.self, forCellReuseIdentifier: ProfileSwitchTableViewCell.identifier)
         tableView.separatorStyle = .none
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
@@ -48,12 +54,13 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
 //        tableView.dataSource = self
         return tableView
     }()
-    
-    private let settings = [
-        ("share", NSLocalizedString("menuShare", comment: "")/*"Поділитися"*/),
-        ("rate", NSLocalizedString("menuRate", comment: "")/*"Оцінити"*/),
-        ("bill", NSLocalizedString("menuManageSubscription", comment: "")/*"Керувати підпискою"*/),
-        ("language", NSLocalizedString("menuManageLanguage", comment: "")/*"Змінити мову додатку"*/)
+        
+    private let settings: [(type: SettingType, icon: String, title: String)] = [
+        (.action, "share", NSLocalizedString("menuShare", comment: "")/*"Поділитися"*/),
+        (.action, "rate", NSLocalizedString("menuRate", comment: "")/*"Оцінити"*/),
+        (.action, "bill", NSLocalizedString("menuManageSubscription", comment: "")/*"Керувати підпискою"*/),
+        (.action, "language", NSLocalizedString("menuManageLanguage", comment: "")/*"Змінити мову додатку"*/),
+        (.toggle, "notification", NSLocalizedString("menuNotifications", comment: "Notifications")/*"Сповіщення"*/)
     ]
     
     private lazy var easterEggService: EasterEggService = {
@@ -71,6 +78,21 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
 
+    }
+    
+    private func toggleNotifications(_ isEnabled: Bool) {
+        UserDefaultsService.localNotificationsEnabled = isEnabled
+        
+        guard let currentLanguage = Locale.current.language.languageCode?.identifier,
+              let dataLanguage = DataLanguage(rawValue: currentLanguage) else { return }
+        
+        if isEnabled {
+            // Включаем - планируем пуши из кеша
+            NotificationService.shared.scheduleNotificationsFromCache(language: dataLanguage)
+        } else {
+            // Выключаем - удаляем все запланированные локальные пуши
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        }
     }
     
     @objc private func dismissSelection() {
@@ -127,16 +149,33 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.identifier, for: indexPath) as? ProfileTableViewCell else {
-            fatalError("Ошибка: ячейка не найдена")
-        }
-
-        let data = settings[indexPath.row]
-        let icon = UIImage(named: data.0)
-
-        cell.configure(icon: icon, title: data.1)
-
-        return cell
+        let setting = settings[indexPath.row]
+        let icon = UIImage(named: setting.icon)
+       
+       switch setting.type {
+       case .toggle:
+           guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileSwitchTableViewCell.identifier, for: indexPath) as? ProfileSwitchTableViewCell else {
+               fatalError("Ошибка: ячейка не найдена")
+           }
+           
+           cell.configure(
+               icon: icon,
+               title: setting.title,
+               isOn: UserDefaultsService.localNotificationsEnabled
+           ) { [weak self] isOn in
+               self?.toggleNotifications(isOn)
+           }
+           
+           return cell
+           
+       case .action:
+           guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.identifier, for: indexPath) as? ProfileTableViewCell else {
+               fatalError("Ошибка: ячейка не найдена")
+           }
+           
+           cell.configure(icon: icon, title: setting.title)
+           return cell
+       }
     }
 
     // MARK: - TableView Delegate
@@ -145,22 +184,23 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        let setting = settings[indexPath.row]
+                
+        // Игнорируем тап на ячейку с тогглом
+        guard setting.type == .action else { return }
         
-        let selectedOption = settings[indexPath.row].0
-            
-            switch selectedOption {
-            case "share":
-                shareApp()
-            case "rate":
-                rateApp()
-            case "bill":
-                manageSubscription()
-            case "language":
-                manageLanguage()
-            default:
-                break
-            }
+        switch setting.icon {
+        case "share":
+            shareApp()
+        case "rate":
+            rateApp()
+        case "bill":
+            manageSubscription()
+        case "language":
+            manageLanguage()
+        default:
+            break
+        }
     }
     
     private func setupProfileUI() {
@@ -185,7 +225,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             
             contentView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24),
             contentView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24),
-            contentView.heightAnchor.constraint(equalToConstant: 256),
+            contentView.heightAnchor.constraint(equalToConstant: 312),
             contentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 

@@ -88,7 +88,7 @@ final class CategoriesViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        showSelectCategoryOverlayIfNeeded()
+//        showSelectCategoryOverlayIfNeeded()
     }
     
     func showCards(_ cards: [CardViewModel]) {
