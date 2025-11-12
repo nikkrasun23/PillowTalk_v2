@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct MainCategoriesSwiftUIView: View {
     @ObservedObject var viewModel: MainCategoriesSwiftUIViewModel
@@ -38,7 +39,7 @@ struct MainCategoriesSwiftUIView: View {
     // MARK: - Header
     
     private var headerView: some View {
-        Text("Сьогодні гарний день, щоб поговорити 💛")
+        Text(NSLocalizedString("mainCategoriesHeader", comment: ""))
             .font(.custom("Commissioner-SemiBold", size: 24))
             .foregroundColor(Color(hex: "#33363F"))
             .multilineTextAlignment(.leading)
@@ -59,7 +60,7 @@ struct MainCategoriesSwiftUIView: View {
             viewModel.onDateJarTap?()
         }) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("NEW")
+                Text(NSLocalizedString("mainCategoriesNewTag", comment: ""))
                     .font(.custom("Commissioner-SemiBold", size: 12))
                     .foregroundColor(.white)
                     .padding(.horizontal, 10)
@@ -67,11 +68,11 @@ struct MainCategoriesSwiftUIView: View {
                     .background(Color(hex: "#DB5A3D"))
                     .cornerRadius(20)
                 
-                Text("Банка побачень")
+                Text(NSLocalizedString("tabDateJar", comment: ""))
                     .font(.custom("Commissioner-SemiBold", size: 18))
                     .foregroundColor(Color(hex: "#33363F"))
                 
-                Text("Спробуйте нові функції")
+                Text(NSLocalizedString("mainCategoriesTryNewFeatures", comment: ""))
                     .font(.custom("Commissioner-Regular", size: 14))
                     .foregroundColor(Color(hex: "#33363F"))
             }
@@ -94,7 +95,7 @@ struct MainCategoriesSwiftUIView: View {
                     .resizable()
                     .frame(width: 40, height: 40)
                 
-                Text("Підписуйтесь у Instagram")
+                Text(NSLocalizedString("mainCategoriesFollowInstagram", comment: ""))
                     .font(.custom("Commissioner-SemiBold", size: 16))
                     .foregroundColor(Color(hex: "#33363F"))
                     .multilineTextAlignment(.leading)
@@ -124,11 +125,11 @@ struct MainCategoriesSwiftUIView: View {
                 .frame(width: 44, height: 44)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Користуйтесь без обмежень")
+                    Text(NSLocalizedString("mainCategoriesUseWithoutLimits", comment: ""))
                         .font(.custom("Commissioner-SemiBold", size: 18))
                         .foregroundColor(Color(hex: "#33363F"))
                     
-                    Text("Ліміт питань на день: \(viewModel.viewedCardsCount) з 5")
+                    Text(String(format: NSLocalizedString("mainCategoriesDailyLimit", comment: ""), viewModel.viewedCardsCount))
                         .font(.custom("Commissioner-Regular", size: 16))
                         .foregroundColor(Color(hex: "#444444"))
                 }
@@ -137,7 +138,7 @@ struct MainCategoriesSwiftUIView: View {
             Button(action: {
                 viewModel.onSubscribeTap?()
             }) {
-                Text("Оформити")
+                Text(NSLocalizedString("mainCategoriesSubscribe", comment: ""))
                     .font(.custom("Commissioner-SemiBold", size: 16))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
@@ -156,19 +157,19 @@ struct MainCategoriesSwiftUIView: View {
     private var categoriesSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("Всі питання")
+                Text(NSLocalizedString("mainCategoriesAllQuestions", comment: ""))
                     .font(.custom("Commissioner-SemiBold", size: 18))
                     .foregroundColor(Color(hex: "#33363F"))
                 
                 if !viewModel.isSubscribed {
-                    Text("Доступна 1 категорія")
+                    Text(NSLocalizedString("mainCategoriesAvailableCategory", comment: ""))
                         .font(.custom("Commissioner-Regular", size: 14))
                         .foregroundColor(Color(hex: "#B3B8C6"))
                 }
             }
             
             if viewModel.categories.isEmpty {
-                Text("Завантаження...")
+                Text(NSLocalizedString("mainCategoriesLoading", comment: ""))
                     .font(.custom("Commissioner-Regular", size: 14))
                     .foregroundColor(Color(hex: "#B3B8C6"))
                     .padding()

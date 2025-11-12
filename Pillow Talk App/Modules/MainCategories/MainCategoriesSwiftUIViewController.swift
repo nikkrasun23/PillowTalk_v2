@@ -31,7 +31,7 @@ final class MainCategoriesSwiftUIViewController: UIHostingController<MainCategor
         }
         
         viewModel.onInstagramTap = {
-            if let url = URL(string: "https://www.instagram.com/pillowtalkapp/") {
+            if let url = URL(string: "https://www.instagram.com/pillowtalk_app") {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
