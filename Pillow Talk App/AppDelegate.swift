@@ -100,6 +100,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // Логируем событие показываемого уведомления
+        logNotificationShown(notification: notification)
+        
         completionHandler([.banner, .sound, .badge])
     }
     
@@ -110,18 +113,97 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             NotificationService.shared.refreshMessagesIfNeeded(with: dataLanguage)
         }
         
-        let userInfo = response.notification.request.content.userInfo
-        let reminderType = userInfo["reminder_type"] as? String ?? "unspecified"
-        let appName = userInfo["app_name"] as? String ?? "unknown"
-
-        // 🔹 Логування події у Firebase Analytics
-        Analytics.logEvent("open_app_from_reminder", parameters: [
-            "app_name": appName,
-            "reminder_type": reminderType,
-            "timestamp": Date().timeIntervalSince1970
-        ])
+        // Логируем событие открытия уведомления
+        logNotificationOpened(notification: response.notification)
         
         completionHandler()
+    }
+    
+    // MARK: - Analytics Helpers
+    
+    /// Логирует событие показа уведомления
+    private func logNotificationShown(notification: UNNotification) {
+        let userInfo = notification.request.content.userInfo
+        let notificationType = userInfo["notification_type"] as? String ?? "remote"
+        
+        var parameters: [String: Any] = [
+            "notification_type": notificationType,
+            "timestamp": Date().timeIntervalSince1970
+        ]
+        
+        if notificationType == "local" {
+            // Для локальных уведомлений добавляем дополнительную информацию
+            if let language = userInfo["language"] as? String {
+                parameters["language"] = language
+            }
+            if let source = userInfo["notification_source"] as? String {
+                parameters["source"] = source
+            }
+            if let title = userInfo["title"] as? String {
+                parameters["title"] = title
+            }
+            
+            Analytics.logEvent("notification_shown", parameters: parameters)
+        } else {
+            // Для удаленных уведомлений логируем стандартные параметры
+            let reminderType = userInfo["reminder_type"] as? String ?? "unspecified"
+            let appName = userInfo["app_name"] as? String ?? "unknown"
+            parameters["reminder_type"] = reminderType
+            parameters["app_name"] = appName
+            
+            Analytics.logEvent("notification_shown", parameters: parameters)
+        }
+    }
+    
+    /// Логирует событие открытия уведомления
+    private func logNotificationOpened(notification: UNNotification) {
+        let userInfo = notification.request.content.userInfo
+        let notificationType = userInfo["notification_type"] as? String ?? "remote"
+        
+        var parameters: [String: Any] = [
+            "notification_type": notificationType,
+            "timestamp": Date().timeIntervalSince1970
+        ]
+        
+        if notificationType == "local" {
+            // Для локальных уведомлений
+            if let language = userInfo["language"] as? String {
+                parameters["language"] = language
+            }
+            if let source = userInfo["notification_source"] as? String {
+                parameters["source"] = source
+            }
+            if let title = userInfo["title"] as? String {
+                parameters["title"] = title
+            }
+            if let message = userInfo["message"] as? String {
+                // Ограничиваем длину сообщения для аналитики
+                let truncatedMessage = String(message.prefix(100))
+                parameters["message_preview"] = truncatedMessage
+            }
+            
+            // Основное событие для локальных уведомлений
+            Analytics.logEvent("notification_opened", parameters: parameters)
+            
+            // Дополнительное событие для совместимости со старым кодом
+            Analytics.logEvent("open_app_from_local_notification", parameters: parameters)
+        } else {
+            // Для удаленных уведомлений (remote push)
+            let reminderType = userInfo["reminder_type"] as? String ?? "unspecified"
+            let appName = userInfo["app_name"] as? String ?? "unknown"
+            parameters["reminder_type"] = reminderType
+            parameters["app_name"] = appName
+            
+            // Основное событие
+            Analytics.logEvent("notification_opened", parameters: parameters)
+            
+            // Старое событие для обратной совместимости
+            Analytics.logEvent("open_app_from_reminder", parameters: [
+                "app_name": appName,
+                "reminder_type": reminderType,
+                "timestamp": Date().timeIntervalSince1970
+            ])
+        }
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

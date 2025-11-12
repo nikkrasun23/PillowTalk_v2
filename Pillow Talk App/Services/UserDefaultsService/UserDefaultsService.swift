@@ -17,7 +17,9 @@ final class UserDefaultsService: NSObject {
         case isOnboardingCompleted
         case selectedCategoryFromOverlay
         case notificationMessages
+        case notificationTitle
         case notificationMessagesLastUpdate
+        case notificationMessagesLanguage
         case localNotificationsEnabled
     }
 
@@ -45,8 +47,14 @@ final class UserDefaultsService: NSObject {
     @UserDefaultValue(key: Keys.notificationMessages, defaultValue: [])
     public static var notificationMessages: [String]
     
+    @UserDefaultValue(key: Keys.notificationTitle, defaultValue: nil)
+    public static var notificationTitle: String?
+    
     @UserDefaultValue(key: Keys.notificationMessagesLastUpdate, defaultValue: nil)
     public static var notificationMessagesLastUpdate: Date?
+    
+    @UserDefaultValue(key: Keys.notificationMessagesLanguage, defaultValue: nil)
+    public static var notificationMessagesLanguage: String?
     
     @UserDefaultValue(key: Keys.localNotificationsEnabled, defaultValue: true)
     public static var localNotificationsEnabled: Bool
@@ -81,16 +89,28 @@ final class UserDefaultsService: NSObject {
         return !notificationMessages.isEmpty
     }
     
-    public static func shouldRefreshNotificationMessages() -> Bool {
+    public static func shouldRefreshNotificationMessages(for language: DataLanguage) -> Bool {
+        // Проверяем, совпадает ли язык кеша с текущим языком
+        if notificationMessagesLanguage != language.rawValue {
+            return true
+        }
+        
         guard let lastUpdate = notificationMessagesLastUpdate else {
             return true
         }
         return Date().timeIntervalSince(lastUpdate) >= 24 * 3600
     }
     
-    public static func saveNotificationMessages(_ messages: [String]) {
-        notificationMessages = messages
+    public static func saveNotificationData(_ notificationData: NotificationDataModel, for language: DataLanguage) {
+        notificationMessages = notificationData.messages
+        // Сохраняем title из Firebase, если он есть, иначе используем fallback
+        notificationTitle = notificationData.title ?? language.notificationTitle
+        notificationMessagesLanguage = language.rawValue
         notificationMessagesLastUpdate = Date()
+    }
+    
+    public static func isNotificationMessagesLanguageMatching(_ language: DataLanguage) -> Bool {
+        return notificationMessagesLanguage == language.rawValue
     }
     
     public static func debugClear() {
@@ -102,7 +122,9 @@ final class UserDefaultsService: NSObject {
         $isOnboardingShown.clear()
         $isOnboardingCompleted.clear()
         $notificationMessages.clear()
+        $notificationTitle.clear()
         $notificationMessagesLastUpdate.clear()
+        $notificationMessagesLanguage.clear()
     #endif
     }
 }
