@@ -33,6 +33,16 @@ final class NotificationScheduler {
         content.body = message
         content.sound = .default
         
+        // Добавляем userInfo для аналитики
+        let currentLanguage = Locale.current.language.languageCode?.identifier ?? "unknown"
+        content.userInfo = [
+            "notification_type": "local",
+            "notification_source": "test",
+            "language": currentLanguage,
+            "title": title,
+            "message": message
+        ]
+        
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: seconds, repeats: false)
         let id = "\(testIdPrefix)\(Int(Date().timeIntervalSince1970))"
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
@@ -90,6 +100,17 @@ private extension NotificationScheduler {
             content.title = title
             content.body = message
             content.sound = .default
+            
+            // Добавляем userInfo для аналитики
+            let currentLanguage = Locale.current.language.languageCode?.identifier ?? "unknown"
+            content.userInfo = [
+                "notification_type": "local",
+                "notification_source": "daily_reminder",
+                "language": currentLanguage,
+                "title": title,
+                "message": message,
+                "scheduled_date": formattedDateIdentifier(from: components)
+            ]
             
             let identifier = "\(requestIdPrefix)\(formattedDateIdentifier(from: components))"
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)

@@ -136,6 +136,43 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         
         configureEasterEgg()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        #if DEBUG
+        // Устанавливаем возможность получать shake gesture
+        becomeFirstResponder()
+        #endif
+    }
+    
+    #if DEBUG
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            // Отправляем тестовое уведомление при shake жесте
+            guard let currentLanguage = Locale.current.language.languageCode?.identifier,
+                  let dataLanguage = DataLanguage(rawValue: currentLanguage) else {
+                print("⚠️ Cannot determine language for test notification")
+                return
+            }
+            
+            NotificationService.shared.sendTestNotificationNow(with: dataLanguage)
+            
+            // Показываем алерт для подтверждения
+            let alert = UIAlertController(
+                title: "🧪 Test Notification",
+                message: "Test notification will appear in 1 second\n\nTitle and message language: \(currentLanguage)",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
+        }
+    }
+    #endif
 
     // MARK: - Table view data source
 

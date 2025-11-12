@@ -8,6 +8,35 @@
 import Foundation
 import FirebaseFirestore
 
+// MARK: - NotificationDataModel
+
+struct NotificationDataModel {
+    let title: String?
+    let messages: [String]
+    
+    func title(with fallback: String) -> String {
+        return title ?? fallback
+    }
+}
+
+extension NotificationDataModel {
+    init?(from document: [String: Any]) {
+        // Title опционален - если его нет в Firebase, будет использован fallback
+        let title = document["title"] as? String
+        let messages = document["values"] as? [String] ?? []
+        
+        guard !messages.isEmpty else {
+            print("Failed to parse notification messages: messages array is empty")
+            return nil
+        }
+        
+        self.title = title
+        self.messages = messages
+    }
+}
+
+// MARK: - FirebaseService
+
 final public class FirebaseService {
     private let firestore: Firestore
     
@@ -44,7 +73,7 @@ final public class FirebaseService {
             }
             
             guard let documents = querySnapshot?.documents else {
-                completion(.failure(NSError(domain: "FirebaseService", code: -1, userInfo: [NSLocalizedDescriptionKey: "No categories found"])))
+                completion(.failure(NSError(domain: "FirebaseService", code: -1, userInfo: [NSLocalizedDescriptionKey: "No ideas found"])))
                 return
             }
             
@@ -54,7 +83,7 @@ final public class FirebaseService {
         }
     }
     
-    func getLocalNotifications(with language: DataLanguage, completion: @escaping (Result<[String], Error>) -> Void) {
+    func getLocalNotifications(with language: DataLanguage, completion: @escaping (Result<NotificationDataModel, Error>) -> Void) {
         let docRef = firestore.collection(language.languageCode).document(language.documentId)
         
         docRef.collection("Notifications").getDocuments { (querySnapshot, error) in
@@ -63,14 +92,18 @@ final public class FirebaseService {
                 return
             }
             
-            guard let documents = querySnapshot?.documents else {
-                completion(.failure(NSError(domain: "FirebaseService", code: -1, userInfo: [NSLocalizedDescriptionKey: "No categories found"])))
+            guard let documents = querySnapshot?.documents,
+                  let firstDocument = documents.first else {
+                completion(.failure(NSError(domain: "FirebaseService", code: -1, userInfo: [NSLocalizedDescriptionKey: "No notifications found"])))
                 return
             }
             
-            let ideas: [String] = (documents.first?.data()["values"] as? [String]) ?? []
+            guard let notificationData = NotificationDataModel(from: firstDocument.data()) else {
+                completion(.failure(NSError(domain: "FirebaseService", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to parse notification data"])))
+                return
+            }
             
-            completion(.success(ideas))
+            completion(.success(notificationData))
         }
     }
     
