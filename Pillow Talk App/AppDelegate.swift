@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaultsService.isRated = false
         UserDefaultsService.selectedCategoryFromOverlay = 0
         
-        UserDefaultsService.debugClear()
+//        UserDefaultsService.debugClear()
         
         UNUserNotificationCenter.current().setBadgeCount(.zero)
         

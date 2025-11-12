@@ -39,7 +39,7 @@ final class TabBarViewController: UIViewController {
     }
 }
 
-private extension TabBarViewController {
+extension TabBarViewController {
     func setupContainerView() {
         view.addSubview(tabsStackView)
         view.addSubview(containerView)
@@ -92,12 +92,12 @@ private extension TabBarViewController {
     }
     
     func setupControllers() {
-        let firstVC = CategoriesAssembler.configure(payload: .init(screenType: .categories))
+        let firstVC = MainCategoriesAssembler.configure(tabBarController: self)
+        let firstNC = UINavigationController(rootViewController: firstVC)
         let secondVC = CategoriesAssembler.configure(payload: .init(screenType: .cup))
-        
         let thirdVC = ProfileTableViewController()
         
-        controllers = [firstVC, secondVC, thirdVC]
+        controllers = [firstNC, secondVC, thirdVC]
     }
     
     

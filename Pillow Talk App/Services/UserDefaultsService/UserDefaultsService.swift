@@ -21,6 +21,7 @@ final class UserDefaultsService: NSObject {
         case notificationMessagesLastUpdate
         case notificationMessagesLanguage
         case localNotificationsEnabled
+        case shownCardsCount
     }
 
     @UserDefaultValue(key: Keys.isSubscribed, defaultValue: false)
@@ -58,6 +59,9 @@ final class UserDefaultsService: NSObject {
     
     @UserDefaultValue(key: Keys.localNotificationsEnabled, defaultValue: true)
     public static var localNotificationsEnabled: Bool
+    
+    @UserDefaultValue(key: Keys.shownCardsCount, defaultValue: 0)
+    public static var shownCardsCount: Int
     
     public static func resetViewedCardsIfNeeded() {
         guard let savedDate = viewedCardsDate else { return }
