@@ -24,12 +24,24 @@ struct MainCategoriesSwiftUIView: View {
                 
                 categoriesSection
             }
+            .padding(.top, 16)
             .padding(.horizontal, 16)
         }
         .scrollContentBackground(.hidden)
-        .background {
-            Color(hex: "#F7EEE4")
-                .ignoresSafeArea()
+        .background(alignment: .topTrailing) {
+            Image("greenPlant")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 186, height: 184)
+                .ignoresSafeArea(edges: .top)
+        }
+        .background(alignment: .bottomLeading) {
+            Image("orangePlant")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 186, height: 184)
+                .ignoresSafeArea(edges: .leading)
+                .padding(.leading, -10)
         }
         .onAppear {
             viewModel.loadData()
@@ -174,7 +186,7 @@ struct MainCategoriesSwiftUIView: View {
                     .foregroundColor(Color(hex: "#B3B8C6"))
                     .padding()
             } else {
-                VStack(spacing: 12) {
+                VStack(spacing: 8) {
                     ForEach(viewModel.categories, id: \.id) { category in
                         categoryRow(category: category)
                     }
