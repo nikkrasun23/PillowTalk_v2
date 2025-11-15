@@ -24,7 +24,9 @@ final class CategoriesPresenter: CategoriesPresenterProtocol {
     private let model: CategoriesViewModel
     private var cancellables = Set<AnyCancellable>()
     
-    var shownCardsCount: Int = .zero
+    var shownCardsCount: Int {
+        return UserDefaultsService.shownCardsCount
+    }
 
     init(view: CategoriesViewController, model: CategoriesViewModel) {
         self.model = model
@@ -50,9 +52,9 @@ final class CategoriesPresenter: CategoriesPresenterProtocol {
     }
     
     func incrementShownCardCount() {
-        shownCardsCount += 1
+        UserDefaultsService.shownCardsCount += 1
         
-        if shownCardsCount > 3 && !UserDefaultsService.isRated {
+        if UserDefaultsService.shownCardsCount > 3 && !UserDefaultsService.isRated {
             view?.requestReviewPopup()
             UserDefaultsService.isRated = true
         }

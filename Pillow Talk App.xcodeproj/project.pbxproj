@@ -61,6 +61,9 @@
 		9DA31AB02D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AAF2D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift */; };
 		9DA31AB32D7F683600A8CDCA /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AB22D7F682F00A8CDCA /* CategoryModel.swift */; };
 		9DA31AB72D7F949800A8CDCA /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AB62D7F948F00A8CDCA /* StorageService.swift */; };
+		9DBCBE932EC5324900F5EDA7 /* MainCategoriesSwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBCBE902EC5324900F5EDA7 /* MainCategoriesSwiftUIViewController.swift */; };
+		9DBCBE972EC5324900F5EDA7 /* MainCategoriesSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBCBE8F2EC5324900F5EDA7 /* MainCategoriesSwiftUIView.swift */; };
+		9DBCBE982EC5324900F5EDA7 /* MainCategoriesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBCBE8D2EC5324900F5EDA7 /* MainCategoriesAssembler.swift */; };
 		9DCC3BD92DA976C700DDDD85 /* EasterEggService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC3BD82DA976C700DDDD85 /* EasterEggService.swift */; };
 		9DD69B122D808FC800A715DF /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD69B112D808FBB00A715DF /* CardViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -112,6 +115,9 @@
 		9DA31AAF2D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DA31AB22D7F682F00A8CDCA /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		9DA31AB62D7F948F00A8CDCA /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		9DBCBE8D2EC5324900F5EDA7 /* MainCategoriesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoriesAssembler.swift; sourceTree = "<group>"; };
+		9DBCBE8F2EC5324900F5EDA7 /* MainCategoriesSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoriesSwiftUIView.swift; sourceTree = "<group>"; };
+		9DBCBE902EC5324900F5EDA7 /* MainCategoriesSwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoriesSwiftUIViewController.swift; sourceTree = "<group>"; };
 		9DCC3BD82DA976C700DDDD85 /* EasterEggService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasterEggService.swift; sourceTree = "<group>"; };
 		9DD69B112D808FBB00A715DF /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		9DEFD1272DA308EB0022F8BC /* Pillow Talk App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Pillow Talk App.entitlements"; sourceTree = "<group>"; };
@@ -227,6 +233,7 @@
 		9D2E054E2D7A44A200C1F9E7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9DBCBE8C2EC52B8E00F5EDA7 /* MainCategories */,
 				9D81AAD72EB139B700B992F8 /* Onboarding */,
 				9D4CE60A2E09AF8400CE5897 /* CategoryOverlay */,
 				9D0E492C2D820CD2000D3F17 /* Profile */,
@@ -297,6 +304,16 @@
 				9D0E492A2D82025D000D3F17 /* QuestionCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		9DBCBE8C2EC52B8E00F5EDA7 /* MainCategories */ = {
+			isa = PBXGroup;
+			children = (
+				9DBCBE8D2EC5324900F5EDA7 /* MainCategoriesAssembler.swift */,
+				9DBCBE8F2EC5324900F5EDA7 /* MainCategoriesSwiftUIView.swift */,
+				9DBCBE902EC5324900F5EDA7 /* MainCategoriesSwiftUIViewController.swift */,
+			);
+			path = MainCategories;
 			sourceTree = "<group>";
 		};
 		9DD096362D78EDBE000F02FC /* Services */ = {
@@ -436,6 +453,9 @@
 				9D38F31B2D8A0E8F007B6790 /* IAPManager.swift in Sources */,
 				19E738C62D04937000E30945 /* AppDelegate.swift in Sources */,
 				9D38F3182D8A0E8A007B6790 /* UserDefaultsService.swift in Sources */,
+				9DBCBE932EC5324900F5EDA7 /* MainCategoriesSwiftUIViewController.swift in Sources */,
+				9DBCBE972EC5324900F5EDA7 /* MainCategoriesSwiftUIView.swift in Sources */,
+				9DBCBE982EC5324900F5EDA7 /* MainCategoriesAssembler.swift in Sources */,
 				9D38F3192D8A0E8A007B6790 /* UserDefaultWrapper.swift in Sources */,
 				9D54C4F12EB2AEA300C0C0ED /* ProfileSwitchTableViewCell.swift in Sources */,
 				9D7694B42E7F099B009EC9B4 /* NotificationScheduler.swift in Sources */,
@@ -495,7 +515,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Pillow Talk App/Pillow Talk App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = U6BKV755T9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pillow Talk App/Info.plist";
@@ -508,7 +528,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.0;
+				MARKETING_VERSION = 2.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -528,7 +548,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Pillow Talk App/Pillow Talk App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = U6BKV755T9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pillow Talk App/Info.plist";
@@ -541,7 +561,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.0;
+				MARKETING_VERSION = 2.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
