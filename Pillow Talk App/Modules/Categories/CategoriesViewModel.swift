@@ -116,6 +116,7 @@ private extension CategoriesViewModel {
             case 2: "shapeThirdBlack"
             case 3: "shapeFourthBlack"
             case 4: "shapeFivthBlack"
+            case 5: "Snowflake"
             default: "shapeDefaulBlack"
             }
             
@@ -125,6 +126,7 @@ private extension CategoriesViewModel {
             case 2: "shapeThirdRed"
             case 3: "shapeFourthRed"
             case 4: "shapeFivthRed"
+            case 5: "Snowflake"
             default: "shapeDefaulRed"
             }
             
@@ -134,7 +136,7 @@ private extension CategoriesViewModel {
                 selectedIconName: selectedIconName,
                 text: model.title,
                 isSelected: model.id == currentCategoryId,
-                isSelectable: model.id == categoryId ? true : UserDefaultsService.isSubscribed
+                isSelectable: model.id == categoryId ? true : (UserDefaultsService.isSubscribed || model.id == 5)
             )
         }
     }

@@ -40,7 +40,7 @@ final class CategoriesPresenter: CategoriesPresenterProtocol {
     }
     
     func select(categoryId: Int) {
-        if categoryId == UserDefaultsService.selectedCategoryFromOverlay ?? .zero || UserDefaultsService.isSubscribed {
+        if categoryId == UserDefaultsService.selectedCategoryFromOverlay ?? .zero || UserDefaultsService.isSubscribed || categoryId == 5 {
             model.selectCategory(with: categoryId)
         } else {
             view?.showPayWall()

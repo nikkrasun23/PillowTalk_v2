@@ -196,7 +196,7 @@ struct MainCategoriesSwiftUIView: View {
     }
     
     private func categoryRow(category: CategoryModel) -> some View {
-        let isLocked = !viewModel.isSubscribed && category.id != 0
+        let isLocked = !viewModel.isSubscribed && category.id != 0 && category.id != 5
         
         return Button(action: {
             if isLocked {
@@ -216,13 +216,25 @@ struct MainCategoriesSwiftUIView: View {
                     }
                     .frame(width: 44, height: 44)
                 } else {
-                    if let iconImage = UIImage(named: iconName(for: category.id)) {
+                    let iconName = iconName(for: category.id)
+                    if let iconImage = UIImage(named: iconName) {
                         ZStack {
                             Circle()
                                 .foregroundStyle(Color(hex: "#C0DBDE"))
                             
                             Image(uiImage: iconImage)
                                 .frame(width: 24, height: 24)
+                        }
+                        .frame(width: 44, height: 44)
+                    } else {
+                        // Fallback icon if image not found
+                        ZStack {
+                            Circle()
+                                .foregroundStyle(Color(hex: "#C0DBDE"))
+                            
+                            Image(systemName: "snowflake")
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(Color(hex: "#33363F"))
                         }
                         .frame(width: 44, height: 44)
                     }
@@ -248,6 +260,7 @@ struct MainCategoriesSwiftUIView: View {
         case 2: return "shapeThirdBlack"
         case 3: return "shapeFourthBlack"
         case 4: return "shapeFivthBlack"
+        case 5: return "Snowflake"
         default: return "shapeDefaulBlack"
         }
     }
@@ -286,7 +299,14 @@ class MainCategoriesSwiftUIViewModel: ObservableObject {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.isSubscribed = UserDefaultsService.isSubscribed
-            self.categories = StorageService.shared.categories.sorted { $0.id < $1.id }
+            // Sort categories: id=0 first, id=5 second, then rest by id
+            self.categories = StorageService.shared.categories.sorted { category1, category2 in
+                if category1.id == 0 { return true }
+                if category2.id == 0 { return false }
+                if category1.id == 5 { return true }
+                if category2.id == 5 { return false }
+                return category1.id < category2.id
+            }
             UserDefaultsService.resetViewedCardsIfNeeded()
             self.viewedCardsCount = UserDefaultsService.viewedCardsCount
         }
