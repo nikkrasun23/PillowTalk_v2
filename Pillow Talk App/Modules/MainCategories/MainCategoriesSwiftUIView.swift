@@ -172,12 +172,6 @@ struct MainCategoriesSwiftUIView: View {
                 Text(NSLocalizedString("mainCategoriesAllQuestions", comment: ""))
                     .font(.custom("Commissioner-SemiBold", size: 18))
                     .foregroundColor(Color(hex: "#33363F"))
-                
-                if !viewModel.isSubscribed {
-                    Text(NSLocalizedString("mainCategoriesAvailableCategory", comment: ""))
-                        .font(.custom("Commissioner-Regular", size: 14))
-                        .foregroundColor(Color(hex: "#B3B8C6"))
-                }
             }
             
             if viewModel.categories.isEmpty {
@@ -307,9 +301,13 @@ class MainCategoriesSwiftUIViewModel: ObservableObject {
                 if category2.id == 5 { return false }
                 return category1.id < category2.id
             }
-            UserDefaultsService.resetViewedCardsIfNeeded()
-            self.viewedCardsCount = UserDefaultsService.viewedCardsCount
+            self.updateViewedCardsCount()
         }
+    }
+    
+    func updateViewedCardsCount() {
+        UserDefaultsService.resetViewedCardsIfNeeded()
+        self.viewedCardsCount = UserDefaultsService.viewedCardsCount
     }
 }
 

@@ -14,6 +14,12 @@ import FirebaseAnalytics
 final class CategoriesViewController: UIViewController {
     var presenter: CategoriesPresenterProtocol!
     
+    // Track the maximum viewed card index in the current category
+    private var maxViewedCardIndexInCurrentCategory: Int = -1
+    private var currentCategoryId: Int = -1
+    // Track which card indices have already been counted to prevent double counting
+    private var viewedCardIndices: Set<Int> = []
+    
     private let rightTopImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "greenPlant"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -92,6 +98,12 @@ final class CategoriesViewController: UIViewController {
     }
     
     func showCards(_ cards: [CardViewModel]) {
+        // Reset viewed card index when category changes
+        if currentCategoryId != presenter.currentCategoryId {
+            maxViewedCardIndexInCurrentCategory = -1
+            currentCategoryId = presenter.currentCategoryId
+            viewedCardIndices.removeAll() // Reset viewed indices for new category
+        }
         updateQuestionsDataSource(for: .question, items: cards)
     }
     
@@ -305,8 +317,11 @@ extension CategoriesViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if collectionView == questionsCollectionView {
+            // Check if current category is free (id = 0 or id = 5)
+            let isFreeCategory = presenter.currentCategoryId == 0 || presenter.currentCategoryId == 5
             
-            if !UserDefaultsService.isSubscribed {
+            if !UserDefaultsService.isSubscribed && isFreeCategory {
+                // Check daily limit before allowing to view the card
                 if UserDefaultsService.hasReachedDailyLimit {
                     DispatchQueue.main.async {
                         self.questionsCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
@@ -314,21 +329,31 @@ extension CategoriesViewController: UICollectionViewDelegate {
                     showPayWall()
                     return
                 }
-
-                if indexPath.item >= 5 {
-                    DispatchQueue.main.async {
-                        self.questionsCollectionView.scrollToItem(at: IndexPath(item: 4, section: 0), at: .centeredHorizontally, animated: true)
-                    }
-                    showPayWall()
-                    return
-                }
-
-                
             }
             
-            if indexPath.item > presenter.shownCardsCount {
+            // Only increment viewed cards count if this is a new card that hasn't been counted yet
+            // Skip counting the first card (index 0) - only count from the second card onwards
+            if indexPath.item > 0 && indexPath.item > maxViewedCardIndexInCurrentCategory && !viewedCardIndices.contains(indexPath.item) {
+                maxViewedCardIndexInCurrentCategory = indexPath.item
+                viewedCardIndices.insert(indexPath.item) // Mark this index as viewed
                 presenter.incrementShownCardCount()
-                UserDefaultsService.incrementViewedCards()
+                
+                // Only increment viewed cards count for free categories
+                if !UserDefaultsService.isSubscribed && isFreeCategory {
+                    UserDefaultsService.incrementViewedCards()
+                    
+                    // Check if limit reached after incrementing
+                    if UserDefaultsService.hasReachedDailyLimit {
+                        DispatchQueue.main.async {
+                            // Scroll back to previous card if limit reached
+                            if indexPath.item > 0 {
+                                self.questionsCollectionView.scrollToItem(at: IndexPath(item: indexPath.item - 1, section: 0), at: .centeredHorizontally, animated: true)
+                            }
+                        }
+                        showPayWall()
+                        return
+                    }
+                }
             }
             
             let totalItems = questionsDataSource.snapshot().itemIdentifiers.count

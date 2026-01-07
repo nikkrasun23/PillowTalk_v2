@@ -59,6 +59,8 @@ final class MainCategoriesSwiftUIViewController: UIHostingController<MainCategor
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        // Update viewed cards count to ensure counter is accurate
+        viewModel.updateViewedCardsCount()
         viewModel.loadData()
     }
     

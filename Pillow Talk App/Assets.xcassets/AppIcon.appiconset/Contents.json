@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "appstore 1.png",
+      "filename" : "PillowTalkAppIcon.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -13,7 +13,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "appstore.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -25,7 +24,6 @@
           "value" : "tinted"
         }
       ],
-      "filename" : "appstore 2.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

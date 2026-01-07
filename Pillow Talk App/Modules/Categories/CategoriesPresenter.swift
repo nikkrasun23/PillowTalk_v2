@@ -11,6 +11,7 @@ import UIKit
 
 protocol CategoriesPresenterProtocol {
     var shownCardsCount: Int { get }
+    var currentCategoryId: Int { get }
     
     func viewDidLoad()
     func select(categoryId: Int)
@@ -26,6 +27,10 @@ final class CategoriesPresenter: CategoriesPresenterProtocol {
     
     var shownCardsCount: Int {
         return UserDefaultsService.shownCardsCount
+    }
+    
+    var currentCategoryId: Int {
+        return model.currentCategoryId
     }
 
     init(view: CategoriesViewController, model: CategoriesViewModel) {
