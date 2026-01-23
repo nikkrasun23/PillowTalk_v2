@@ -55,13 +55,16 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         return tableView
     }()
         
-    private let settings: [(type: SettingType, icon: String, title: String)] = [
-        (.action, "share", NSLocalizedString("menuShare", comment: "")/*"Поділитися"*/),
-        (.action, "rate", NSLocalizedString("menuRate", comment: "")/*"Оцінити"*/),
-        (.action, "bill", NSLocalizedString("menuManageSubscription", comment: "")/*"Керувати підпискою"*/),
-        (.action, "language", NSLocalizedString("menuManageLanguage", comment: "")/*"Змінити мову додатку"*/),
-        (.toggle, "notification", NSLocalizedString("menuNotifications", comment: "Notifications")/*"Сповіщення"*/)
-    ]
+    private var settings: [(type: SettingType, icon: String, title: String)] {
+        return [
+            (.action, "download", NSLocalizedString("menuDownloadOffline", comment: "")),
+            (.action, "share", NSLocalizedString("menuShare", comment: "")/*"Поділитися"*/),
+            (.action, "rate", NSLocalizedString("menuRate", comment: "")/*"Оцінити"*/),
+            (.action, "bill", NSLocalizedString("menuManageSubscription", comment: "")/*"Керувати підпискою"*/),
+            (.action, "language", NSLocalizedString("menuManageLanguage", comment: "")/*"Змінити мову додатку"*/),
+            (.toggle, "notification", NSLocalizedString("menuNotifications", comment: "Notifications")/*"Сповіщення"*/)
+        ]
+    }
     
     private lazy var easterEggService: EasterEggService = {
         let service = EasterEggService {
@@ -126,6 +129,127 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+    private func downloadForOffline() {
+        // Check if user is subscribed
+        if !UserDefaultsService.isSubscribed {
+            // Show paywall if not subscribed
+            IAPManager.shared.presentPaywall(self)
+            return
+        }
+        
+        // User is subscribed, proceed with download
+        guard let currentLanguage = Locale.current.language.languageCode?.identifier,
+              let dataLanguage = DataLanguage(rawValue: currentLanguage) else {
+            showErrorAlert(message: NSLocalizedString("errorLanguageNotSupported", comment: "Language not supported"))
+            return
+        }
+        
+        // Show loading alert
+        let loadingAlert = UIAlertController(
+            title: NSLocalizedString("downloading", comment: "Downloading..."),
+            message: NSLocalizedString("downloadingData", comment: "Downloading data for offline use..."),
+            preferredStyle: .alert
+        )
+        present(loadingAlert, animated: true)
+        
+        let firebaseService = FirebaseService()
+        var categoriesLoaded = false
+        var ideasLoaded = false
+        
+        // Load categories
+        firebaseService.getCategories(with: dataLanguage) { [weak self] result in
+            switch result {
+            case .success(let categories):
+                CacheService.shared.saveCategories(categories, for: dataLanguage)
+                categoriesLoaded = true
+                
+                if ideasLoaded {
+                    DispatchQueue.main.async {
+                        loadingAlert.dismiss(animated: true) {
+                            self?.showSuccessToast()
+                        }
+                    }
+                }
+            case .failure(let error):
+                print("Failed to load categories: \(error)")
+                DispatchQueue.main.async {
+                    loadingAlert.dismiss(animated: true) {
+                        self?.showErrorAlert(message: NSLocalizedString("errorDownloadFailed", comment: "Failed to download data"))
+                    }
+                }
+            }
+        }
+        
+        // Load ideas
+        firebaseService.getIdeas(with: dataLanguage) { [weak self] result in
+            switch result {
+            case .success(let ideas):
+                CacheService.shared.saveIdeas(ideas, for: dataLanguage)
+                ideasLoaded = true
+                
+                if categoriesLoaded {
+                    DispatchQueue.main.async {
+                        loadingAlert.dismiss(animated: true) {
+                            self?.showSuccessToast()
+                        }
+                    }
+                }
+            case .failure(let error):
+                print("Failed to load ideas: \(error)")
+                DispatchQueue.main.async {
+                    loadingAlert.dismiss(animated: true) {
+                        self?.showErrorAlert(message: NSLocalizedString("errorDownloadFailed", comment: "Failed to download data"))
+                    }
+                }
+            }
+        }
+    }
+    
+    private func showSuccessToast() {
+        let toastLabel = UILabel()
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center
+        toastLabel.font = UIFont(name: "Commissioner-Regular", size: 16)
+        toastLabel.text = NSLocalizedString("downloadSuccess", comment: "Data downloaded successfully. You can now use the app offline.")
+        toastLabel.numberOfLines = 0
+        toastLabel.alpha = 0.0
+        toastLabel.layer.cornerRadius = 10
+        toastLabel.clipsToBounds = true
+        
+        let padding: CGFloat = 16
+        let maxWidth = view.frame.width - 80
+        let size = toastLabel.sizeThatFits(CGSize(width: maxWidth, height: CGFloat.greatestFiniteMagnitude))
+        toastLabel.frame = CGRect(
+            x: (view.frame.width - size.width - padding * 2) / 2,
+            y: view.frame.height - 150,
+            width: size.width + padding * 2,
+            height: size.height + padding * 2
+        )
+        
+        view.addSubview(toastLabel)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            toastLabel.alpha = 1.0
+        }) { _ in
+            UIView.animate(withDuration: 0.3, delay: 2.0, options: [], animations: {
+                toastLabel.alpha = 0.0
+            }) { _ in
+                toastLabel.removeFromSuperview()
+            }
+        }
+    }
+    
+    private func showErrorAlert(message: String) {
+        let alert = UIAlertController(
+            title: NSLocalizedString("error", comment: "Error"),
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "OK"), style: .default))
+        present(alert, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupProfileUI()
@@ -135,6 +259,14 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         tableView.dataSource = self
         
         configureEasterEgg()
+        
+        // Listen for subscription status changes
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(subscriptionStatusChanged),
+            name: NSNotification.Name("SubscriptionStatusChanged"),
+            object: nil
+        )
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -144,6 +276,14 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         // Устанавливаем возможность получать shake gesture
         becomeFirstResponder()
         #endif
+    }
+    
+    @objc private func subscriptionStatusChanged() {
+        // No need to reload table since download button is always visible now
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     #if DEBUG
@@ -187,7 +327,18 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let setting = settings[indexPath.row]
-        let icon = UIImage(named: setting.icon)
+        let icon: UIImage? = {
+            if setting.icon == "download" {
+                // Use SF Symbol as fallback until download icon is added to assets
+                if #available(iOS 13.0, *) {
+                    let image = UIImage(systemName: "arrow.down.circle.fill")
+                    // Apply custom color #80B6BC
+                    return image?.withTintColor(UIColor(hex: "#80B6BC"), renderingMode: .alwaysOriginal)
+                }
+                return nil
+            }
+            return UIImage(named: setting.icon)
+        }()
        
        switch setting.type {
        case .toggle:
@@ -227,6 +378,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         guard setting.type == .action else { return }
         
         switch setting.icon {
+        case "download":
+            downloadForOffline()
         case "share":
             shareApp()
         case "rate":
@@ -262,7 +415,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             
             contentView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24),
             contentView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24),
-            contentView.heightAnchor.constraint(equalToConstant: 312),
+            contentView.heightAnchor.constraint(equalToConstant: 380),
             contentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 

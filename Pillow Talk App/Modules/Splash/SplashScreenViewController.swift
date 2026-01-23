@@ -57,12 +57,27 @@ class SplashScreenViewController: UIViewController {
         guard let currentLanguage = Locale.current.language.languageCode?.identifier,
               let dataLanguage = DataLanguage(rawValue: currentLanguage) else { return }
         
+        // Try to load from cache first
+        if let cachedCategories = CacheService.shared.loadCategories(for: dataLanguage) {
+            StorageService.shared.categories = cachedCategories
+            print("✅ Loaded categories from cache")
+        }
+        
+        if let cachedIdeas = CacheService.shared.loadIdeas(for: dataLanguage) {
+            StorageService.shared.ideas = cachedIdeas
+            print("✅ Loaded ideas from cache")
+        }
+        
+        // Try to load from Firebase (will update cache if successful)
         firebaseService.getCategories(with: dataLanguage) { result in
             switch result {
             case .success(let categories):
                 StorageService.shared.categories = categories
+                // Update cache with fresh data
+                CacheService.shared.saveCategories(categories, for: dataLanguage)
             case .failure(let error):
                 print("Load categories with error: \(error)")
+                // If we have cached data, it's already loaded above
             }
         }
         
@@ -70,8 +85,11 @@ class SplashScreenViewController: UIViewController {
             switch result {
             case .success(let ideas):
                 StorageService.shared.ideas = ideas
+                // Update cache with fresh data
+                CacheService.shared.saveIdeas(ideas, for: dataLanguage)
             case .failure(let error):
                 print("Load ideas with error: \(error)")
+                // If we have cached data, it's already loaded above
             }
         }
         

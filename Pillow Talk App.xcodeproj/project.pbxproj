@@ -61,6 +61,7 @@
 		9DA31AB02D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AAF2D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift */; };
 		9DA31AB32D7F683600A8CDCA /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AB22D7F682F00A8CDCA /* CategoryModel.swift */; };
 		9DA31AB72D7F949800A8CDCA /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA31AB62D7F948F00A8CDCA /* StorageService.swift */; };
+		48282C321FFE4198B6084191 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27251222F8F84643967FA0A9 /* CacheService.swift */; };
 		9DBCBE932EC5324900F5EDA7 /* MainCategoriesSwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBCBE902EC5324900F5EDA7 /* MainCategoriesSwiftUIViewController.swift */; };
 		9DBCBE972EC5324900F5EDA7 /* MainCategoriesSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBCBE8F2EC5324900F5EDA7 /* MainCategoriesSwiftUIView.swift */; };
 		9DBCBE982EC5324900F5EDA7 /* MainCategoriesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBCBE8D2EC5324900F5EDA7 /* MainCategoriesAssembler.swift */; };
@@ -115,6 +116,7 @@
 		9DA31AAF2D7F5C6C00A8CDCA /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DA31AB22D7F682F00A8CDCA /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		9DA31AB62D7F948F00A8CDCA /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		27251222F8F84643967FA0A9 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		9DBCBE8D2EC5324900F5EDA7 /* MainCategoriesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoriesAssembler.swift; sourceTree = "<group>"; };
 		9DBCBE8F2EC5324900F5EDA7 /* MainCategoriesSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoriesSwiftUIView.swift; sourceTree = "<group>"; };
 		9DBCBE902EC5324900F5EDA7 /* MainCategoriesSwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoriesSwiftUIViewController.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				9D81AADF2EB13BA300B992F8 /* NotificationService.swift */,
 				9DCC3BD82DA976C700DDDD85 /* EasterEggService.swift */,
 				9DA31AB62D7F948F00A8CDCA /* StorageService.swift */,
+				27251222F8F84643967FA0A9 /* CacheService.swift */,
 				197624292D20C3AF00CAC3D7 /* FirebaseServise.swift */,
 				9D38F3172D8A0E8A007B6790 /* UserDefaultsService */,
 				9D38F31A2D8A0E8F007B6790 /* IAPManager.swift */,
@@ -473,6 +476,7 @@
 				9DA31AB32D7F683600A8CDCA /* CategoryModel.swift in Sources */,
 				1948DAF52D1C747F0082F8DC /* SplashScreenViewController.swift in Sources */,
 				9DA31AB72D7F949800A8CDCA /* StorageService.swift in Sources */,
+				48282C321FFE4198B6084191 /* CacheService.swift in Sources */,
 				9D4CE60E2E09AFAE00CE5897 /* CategoryOverlayViewController.swift in Sources */,
 				9D2E054F2D7A44A200C1F9E7 /* TabBarViewController.swift in Sources */,
 				9D81AADE2EB13A2F00B992F8 /* OnboardingPageModel.swift in Sources */,
@@ -528,7 +532,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4.1;
+				MARKETING_VERSION = 2.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -561,7 +565,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4.1;
+				MARKETING_VERSION = 2.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikkrasun.pillowtalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
